@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nogaletto — Panel Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5EDD8;
+    --sand2: #EDE1C4;
+    --bark: #3B2A1A;
+    --bark2: #5C3D22;
+    --amber: #D4850A;
+    --amber2: #F0A020;
+    --cream: #FAF6EE;
+    --green: #4A6741;
+    --red: #C0392B;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--bark); padding-bottom:60px; }
+  header { background:var(--bark); padding:18px 24px; }
+  header h1 { font-family:'Playfair Display',serif; color:var(--amber2); font-size:1.4rem; }
+  header p { color:var(--sand2); font-size:0.8rem; margin-top:4px; }
+
+  .container { max-width:900px; margin:0 auto; padding:20px; }
+
+  .alert {
+    background:#fff3cd; border:1.5px solid var(--amber); border-radius:10px;
+    padding:12px 16px; font-size:0.85rem; margin-bottom:20px; line-height:1.5;
+  }
+
+  .toolbar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+  .btn {
+    background:var(--bark); color:var(--amber2); border:none; border-radius:8px;
+    padding:10px 18px; font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.85rem;
+    cursor:pointer; transition:background .2s;
+  }
+  .btn:hover { background:var(--bark2); }
+  .btn.secondary { background:var(--sand2); color:var(--bark2); }
+  .btn.secondary:hover { background:var(--sand); }
+
+  .search {
+    width:100%; padding:10px 14px; border:1.5px solid var(--sand2); border-radius:10px;
+    font-size:0.9rem; margin-bottom:16px; background:#fff;
+  }
+
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(59,42,26,0.06); }
+  th { background:var(--sand); text-align:left; padding:10px 12px; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--bark2); }
+  td { padding:10px 12px; border-bottom:1px solid var(--sand); font-size:0.85rem; vertical-align:middle; }
+  tr.hidden-row { opacity:0.4; }
+  tr:hover { background:#fffdf8; }
+
+  .prices-cell { display:flex; gap:6px; flex-wrap:wrap; }
+  .price-group { display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .price-group label { font-size:0.62rem; color:#999; text-transform:uppercase; letter-spacing:0.5px; }
+
+  .price-input {
+    width:62px; padding:5px 6px; border:1.5px solid var(--sand2); border-radius:6px; font-size:0.78rem;
+    font-family:'DM Sans',sans-serif; text-align:center;
+  }
+  .price-input:disabled { background:#f0f0f0; color:#bbb; }
+  .price-input:focus { border-color:var(--amber); outline:none; }
+
+  .toggle {
+    position:relative; display:inline-block; width:44px; height:24px; cursor:pointer;
+  }
+  .toggle input { opacity:0; width:0; height:0; }
+  .slider {
+    position:absolute; inset:0; background:#ccc; border-radius:24px; transition:.2s;
+  }
+  .slider:before {
+    content:''; position:absolute; height:18px; width:18px; left:3px; bottom:3px;
+    background:#fff; border-radius:50%; transition:.2s;
+  }
+  input:checked + .slider { background:var(--green); }
+  input:checked + .slider:before { transform:translateX(20px); }
+
+  .stock-badge {
+    display:inline-block; padding:2px 8px; border-radius:6px; font-size:0.7rem; font-weight:600;
+  }
+  .stock-ok { background:#e3f2e1; color:var(--green); }
+  .stock-out { background:#fbe3e1; color:var(--red); }
+
+  .code-output {
+    background:var(--bark); color:#f0e8d8; padding:16px; border-radius:10px;
+    font-family:monospace; font-size:0.75rem; white-space:pre-wrap; word-break:break-all;
+    max-height:300px; overflow-y:auto; margin-top:16px; display:none;
+  }
+  .code-output.visible { display:block; }
+
+  .copy-msg { color:var(--green); font-size:0.85rem; margin-top:8px; display:none; }
+  .copy-msg.visible { display:block; }
+
+  @media (max-width: 600px) {
+    th:nth-child(4), td:nth-child(4) { display:none; }
+    .container { padding:12px; }
+    td, th { padding:8px 6px; font-size:0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌰 Nogaletto — Panel Admin</h1>
+  <p>Gestión de stock y catálogo</p>
+</header>
+
+<div class="container">
+  <div class="alert">
+    ⚠️ <strong>Cómo funciona:</strong> Activá/desactivá productos y editá precios acá. Cuando termines, tocá <strong>"Generar código actualizado"</strong>, copiá el resultado y pegalo en el archivo de la tienda (reemplazando el bloque <code>PRODUCTS</code>). Los cambios NO se aplican solos a la tienda online — hay que actualizar el archivo.
+  </div>
+
+  <input class="search" id="search" placeholder="🔍 Buscar producto..." onkeyup="renderTable()">
+
+  <div class="toolbar">
+    <button class="btn" onclick="generateCode()">📋 Generar código actualizado</button>
+    <button class="btn secondary" onclick="sortAZ()">🔤 Ordenar A-Z</button>
+<button class="btn secondary" onclick="addProduct()">➕ Agregar producto</button>
+<button class="btn secondary" onclick="resetAll()">↺ Restaurar original</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Categoría</th>
+        <th>Visible</th>
+        <th>Stock</th>
+        <th>Precios por presentación</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <div class="code-output" id="codeOutput"></div>
+  <div class="copy-msg" id="copyMsg">✅ Copiado al portapapeles — pegalo en el archivo de la tienda dentro de PRODUCTS.</div>
+</div>
+
+<script>
+// ============================================================
+// PRODUCTOS — debe coincidir con la tienda
+// ============================================================
+const CAT_NAMES = { frutos:"Frutos secos", frutas:"Frutas deshidratadas", semillas:"Semillas y legumbres" };
+
+const DEFAULT_PRODUCTS = [
+  { id:1,  name:"Pasas de uva Jumbo grande",      emoji:"🍇", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/Pasa_de_uva_Jumbo_hdq3bz.jpg", cat:"frutas",   prices:{"100g":1400,"200g":2700,"500g":3500,"1kg":5000} },
+  { id:2,  name:"Pasas de uva Jumbo mediana",     emoji:"🍇", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg", cat:"frutas",   prices:{"100g":1400,"200g":2700,"500g":3500,"1kg":5000} },
+  { id:3,  name:"Pasas de uva ULT Flame",         emoji:"🍇", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/pasa_de_uva_flame_hje9xb.webp", cat:"frutas",   prices:{"100g":1400,"200g":3800,"500g":3000,"1kg":4500} },
+  { id:4,  name:"Tomate seco premium",            emoji:"🍅", img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop", cat:"frutas",   prices:{"100g":1400,"200g":3000,"500g":7000,"1kg":12500} },
+  { id:5,  name:"Arveja partida",                 emoji:"🟢", img:"", cat:"semillas", prices:{"100g":null,"200g":1500,"500g":2500,"1kg":4300} },
+  { id:6,  name:"Garbanzo 7mm",                   emoji:"🟡", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg", cat:"semillas", prices:{"100g":1500,"200g":1800,"500g":2000,"1kg":5200} },
+  { id:7,  name:"Garbanzo 8mm",                   emoji:"🟡", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg", cat:"semillas", prices:{"100g":1000,"200g":1500,"500g":2000,"1kg":5200} },
+  { id:8,  name:"Girasol pelado",                 emoji:"🌻", img:"https://images.unsplash.com/photo-1543362906-acfc16c67564?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":2000,"200g":2500,"500g":4000,"1kg":7000} },
+  { id:9,  name:"Lenteja nacional",               emoji:"🟠", img:"https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1000,"200g":1500,"500g":2500,"1kg":4500} },
+  { id:10, name:"Lino marrón",                    emoji:"🌾", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316600/semillas-de-lino-kan-1200x630_abc_xjivky.jpg", cat:"semillas", prices:{"100g":1800,"200g":2100,"500g":2500,"1kg":4000} },
+  { id:11, name:"Maní tostado pelado natural",    emoji:"🥜", img:"https://images.unsplash.com/photo-1567892737950-30c4db1a7510?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1100,"200g":1500,"500g":2500,"1kg":4000} },
+  { id:12, name:"Maní tostado pelado y salado",   emoji:"🥜", img:"https://images.unsplash.com/photo-1567892737950-30c4db1a7510?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1100,"200g":1500,"500g":2500,"1kg":4000} },
+  { id:13, name:"Poroto alubia",                  emoji:"⚪", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/poroto-alubia1-665bb8987eb310b3ce15822293977835-1024-1024_pww65b.webp", cat:"semillas", prices:{"100g":null,"200g":1500,"500g":2500,"1kg":4000} },
+  { id:14, name:"Poroto colorado dark",           emoji:"🔴", img:"https://images.unsplash.com/photo-1637197884664-0e43e1a8fa81?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":null,"200g":2700,"500g":3700,"1kg":6800} },
+  { id:15, name:"Poroto mung",                    emoji:"🟢", img:"", cat:"semillas", prices:{"100g":null,"200g":1000,"500g":2661,"1kg":4000} },
+  { id:16, name:"Poroto negro",                   emoji:"⚫", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319892/Poroto_Negro_r2yett.webp", cat:"semillas", prices:{"100g":null,"200g":2300,"500g":3400,"1kg":4300} },
+  { id:17, name:"Quinoa blanca real lavada",      emoji:"🌿", img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1500,"200g":2500,"500g":4500,"1kg":12500} },
+  { id:18, name:"Sésamo integral",                emoji:"🌾", img:"https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1800,"200g":2100,"500g":2500,"1kg":4000} },
+  { id:19, name:"Sésamo negro Paraguay",          emoji:"🖤", img:"https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":2000,"200g":2500,"500g":3500,"1kg":6000} },
+  { id:20, name:"Almendra Non Pareil (Cal. Exportación)", emoji:"🤍", img:"https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400&q=80&fit=crop", cat:"frutos", prices:{"100g":3400,"200g":7500,"500g":13000,"1kg":25000} },
+  { id:21, name:"Nuez Pecan premium (Cal. Exportación)",  emoji:"🌰", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316243/mesa-de-trabajo-4-bd321fca8a518e6f3717339361203494-1024-1024_kku9mn.webp", cat:"frutos", prices:{"100g":4500,"200g":7000,"500g":13000,"1kg":25000} },
+  { id:22, name:"Piñones Araucanos Naturales",            emoji:"🌲", img:"https://images.unsplash.com/photo-1621568272260-cd15e4f92e20?w=400&q=80&fit=crop", cat:"frutos", prices:{"100g":2000,"200g":3500,"500g":5700,"1kg":10500} },
+  { id:23, name:"Pistacho Natural c/Cáscara sin sal",     emoji:"💚", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp", cat:"frutos", prices:{"100g":3900,"200g":7200,"500g":18000,"1kg":35000} },
+  { id:24, name:"Pistacho Pelado Pulpa natural",          emoji:"💚", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg", cat:"frutos", prices:{"100g":8000,"200g":14400,"500g":36000,"1kg":65000} },
+  { id:25, name:"Pistacho Tostado y Salado c/Cáscara",   emoji:"💚", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp", cat:"frutos", prices:{"100g":6000,"200g":10000,"500g":19000,"1kg":36000} },
+];
+// ============================================================
+
+let state = loadState();
+
+function loadState() {
+  const saved = localStorage.getItem('nogaletto_admin_state');
+  if (saved) {
+    try { return JSON.parse(saved); } catch(e) {}
+  }
+  return DEFAULT_PRODUCTS.map(p => ({
+    id: p.id, name: p.name, emoji: p.emoji, img: p.img, cat: p.cat, prices: {...p.prices},
+    visible: true, inStock: true
+  }));
+}
+
+function saveState() {
+  localStorage.setItem('nogaletto_admin_state', JSON.stringify(state));
+}
+
+
+function sortAZ(){
+ state.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+ saveState();
+ renderTable();
+}
+
+function addProduct(){
+ const name=prompt('Nombre del producto:');
+ if(!name) return;
+ const cat=prompt('Categoría (frutos, frutas, semillas):','frutos')||'frutos';
+ const img=prompt('URL imagen:','')||'';
+ state.push({
+   id:Date.now(),
+   name:name,
+   emoji:'🌰',
+   img:img,
+   cat:cat,
+   prices:{'100g':null,'200g':null,'500g':null,'1kg':null},
+   visible:true,
+   inStock:true
+ });
+ saveState();
+ renderTable();
+}
+
+
+function renderTable() {
+  const filter = document.getElementById('search').value.toLowerCase();
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  const SIZES = ["100g","200g","500g","1kg"];
+  state.forEach((p, idx) => {
+    if (filter && !p.name.toLowerCase().includes(filter)) return;
+    const tr = document.createElement('tr');
+    if (!p.visible) tr.className = 'hidden-row';
+
+    const pricesHtml = SIZES.map(size => {
+      const val = p.prices[size];
+      const disabled = val === null || val === undefined;
+      return `
+        <div class="price-group">
+          <label>${size}</label>
+          <input class="price-input" type="number"
+            value="${disabled ? '' : val}"
+            placeholder="${disabled ? 'N/A' : ''}"
+            onchange="updatePrice(${idx}, '${size}', this.value)">
+        </div>`;
+    }).join('');
+
+    tr.innerHTML = `
+      <td>${p.name}</td>
+      <td>${CAT_NAMES[p.cat] || p.cat}</td>
+      <td>
+        <label class="toggle">
+          <input type="checkbox" ${p.visible ? 'checked' : ''} onchange="toggleVisible(${idx})">
+          <span class="slider"></span>
+        </label>
+      </td>
+      <td>
+        <span class="stock-badge ${p.inStock ? 'stock-ok' : 'stock-out'}" style="cursor:pointer" onclick="toggleStock(${idx})">
+          ${p.inStock ? '✓' : '✕'}
+        </span>
+      </td>
+      <td><div class="prices-cell">${pricesHtml}</div></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function toggleVisible(idx) {
+  state[idx].visible = !state[idx].visible;
+  saveState();
+  renderTable();
+}
+
+function toggleStock(idx) {
+  state[idx].inStock = !state[idx].inStock;
+  saveState();
+  renderTable();
+}
+
+function updatePrice(idx, size, value) {
+  state[idx].prices[size] = value ? Number(value) : null;
+  saveState();
+}
+
+function resetAll() {
+  if (!confirm('¿Restaurar todos los productos al estado original? Se perderán los cambios.')) return;
+  localStorage.removeItem('nogaletto_admin_state');
+  state = loadState();
+  renderTable();
+}
+
+function generateCode() {
+  // Genera solo la lista de productos visibles, con stock actualizado
+  let code = `// PRODUCTOS ACTUALIZADOS — ${new Date().toLocaleDateString('es-AR')}\n`;
+  code += `// Productos ocultos: ${state.filter(p => !p.visible).map(p => p.name).join(', ') || 'ninguno'}\n`;
+  code += `// Productos sin stock: ${state.filter(p => !p.inStock).map(p => p.name).join(', ') || 'ninguno'}\n\n`;
+
+  state.filter(p => p.visible).forEach(p => {
+    const pricesStr = JSON.stringify(p.prices);
+    const stockComment = p.inStock ? '' : '  // ⚠️ SIN STOCK';
+    code += `  { id:${p.id}, name:"${p.name}", emoji:"${p.emoji}", img:"${p.img}", cat:"${p.cat}", prices:${pricesStr} },${stockComment}\n`;
+  });
+
+  const out = document.getElementById('codeOutput');
+  out.textContent = code;
+  out.classList.add('visible');
+
+  // Copiar al portapapeles
+  navigator.clipboard.writeText(code).then(() => {
+    document.getElementById('copyMsg').classList.add('visible');
+    setTimeout(() => document.getElementById('copyMsg').classList.remove('visible'), 4000);
+  }).catch(() => {});
+}
+
+renderTable();
+</script>
+</body>
+</html>

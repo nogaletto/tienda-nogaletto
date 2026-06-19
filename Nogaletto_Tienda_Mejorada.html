@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frutos Secos — Tienda</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5EDD8;
+    --sand2: #EDE1C4;
+    --bark: #3B2A1A;
+    --bark2: #5C3D22;
+    --amber: #D4850A;
+    --amber2: #F0A020;
+    --cream: #FAF6EE;
+    --green: #4A6741;
+    --red: #C0392B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--bark);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--bark);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--amber2);
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--sand); font-size: 0.85rem; display: block; font-family: 'DM Sans', sans-serif; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+
+  .cart-btn {
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+  }
+  .cart-btn:hover { background: var(--amber2); }
+  .cart-count {
+    background: #fff;
+    color: var(--amber);
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--bark) 0%, var(--bark2) 60%, #7A5230 100%);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: var(--sand);
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .hero p {
+    color: var(--sand2);
+    font-size: 1rem;
+    font-weight: 300;
+    position: relative;
+  }
+
+  /* CATEGORIES */
+  .categories {
+    display: flex;
+    gap: 10px;
+    padding: 20px 20px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .categories::-webkit-scrollbar { display: none; }
+  .cat-btn {
+    background: var(--sand2);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--bark2);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .cat-btn.active, .cat-btn:hover {
+    background: var(--bark);
+    color: var(--amber2);
+    border-color: var(--amber);
+  }
+
+  /* PRODUCTS GRID */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    padding: 20px 20px 4px;
+    color: var(--bark2);
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 12px 20px 100px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(59,42,26,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(59,42,26,0.15); }
+  .card.hidden { display: none; }
+
+  .card-img-wrap {
+    position: relative;
+    height: 130px;
+    background: var(--sand);
+    overflow: hidden;
+  }
+  .card-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+  .card-img-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    z-index: 1;
+  }
+  .card-body { padding: 12px; }
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--bark);
+    margin-bottom: 2px;
+  }
+  .card-weight {
+    font-size: 0.75rem;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .card-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+  .add-btn {
+    width: 100%;
+    background: var(--bark);
+    color: var(--amber2);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .add-btn:hover { background: var(--bark2); }
+
+  /* QUANTITY CONTROL */
+  .qty-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--sand);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .qty-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    width: 36px; height: 36px;
+    cursor: pointer;
+    color: var(--bark);
+    font-weight: 700;
+    transition: background 0.15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qty-btn:hover { background: var(--sand2); }
+  .qty-num { font-weight: 700; font-size: 0.95rem; color: var(--bark); }
+
+  /* CART DRAWER */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+  }
+  .overlay.open { display: block; }
+
+  .drawer {
+    position: fixed;
+    right: -100%;
+    top: 0; bottom: 0;
+    width: min(400px, 100vw);
+    background: var(--cream);
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -4px 0 30px rgba(0,0,0,0.2);
+  }
+  .drawer.open { right: 0; }
+
+  .drawer-header {
+    background: var(--bark);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .drawer-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--sand);
+    font-size: 1.2rem;
+  }
+  .close-btn {
+    background: none;
+    border: none;
+    color: var(--sand2);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .drawer-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+  }
+
+  .drawer-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #aaa;
+  }
+  .drawer-empty span { font-size: 3rem; display: block; margin-bottom: 12px; }
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  .ci-emoji { font-size: 2rem; }
+  .ci-info { flex: 1; }
+  .ci-name { font-weight: 500; font-size: 0.9rem; }
+  .ci-price { color: var(--amber); font-size: 0.85rem; }
+  .ci-remove {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .ci-remove:hover { color: var(--red); }
+
+  .drawer-footer {
+    padding: 16px;
+    border-top: 2px solid var(--sand2);
+    background: #fff;
+  }
+
+  /* CUSTOMER INFO */
+  .customer-section {
+    margin-bottom: 14px;
+  }
+  .customer-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--bark2);
+    margin-bottom: 8px;
+  }
+  .input-field {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--sand2);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--bark);
+    background: var(--cream);
+    margin-bottom: 8px;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .input-field:focus { border-color: var(--amber); }
+  .input-field.error { border-color: var(--red); }
+  textarea.input-field { resize: vertical; min-height: 60px; }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .total-label { font-size: 0.9rem; color: #888; }
+  .total-amount { font-size: 1.4rem; font-weight: 700; color: var(--bark); }
+
+  .whatsapp-btn {
+    width: 100%;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .whatsapp-btn:hover { background: #128C7E; }
+  .whatsapp-btn:active { transform: scale(0.98); }
+  .whatsapp-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+  /* FLOATING CART */
+  .fab {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 22px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(212,133,10,0.4);
+    z-index: 100;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    transition: transform 0.2s;
+  }
+  .fab:hover { transform: scale(1.05); }
+  .fab.visible { display: flex; }
+
+  /* SELECTOR DE TAMAÑO */
+  .size-selector {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .size-btn {
+    background: var(--sand);
+    border: 1.5px solid var(--sand2);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--bark2);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .size-btn.active {
+    background: var(--bark);
+    color: var(--amber2);
+    border-color: var(--bark);
+  }
+  .size-btn:hover:not(.active) { border-color: var(--amber); }
+
+  /* BANNER LOCAL */
+  .local-banner {
+    display: none;
+    background: var(--green);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 0.88rem;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .local-banner strong { color: var(--amber2); }
+  .local-banner.visible { display: block; }
+
+  /* SEPARADOR SECCIÓN */
+  .section-divider {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #aaa;
+    padding: 10px 0 4px;
+    border-top: 1px solid var(--sand2);
+    margin-top: 4px;
+  }
+
+  /* CÓDIGO DE LOCAL — campo destacado */
+  .local-code-box {
+    background: var(--sand);
+    border: 2px dashed var(--amber);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+  .local-code-box label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--bark2);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .local-code-box .input-field {
+    margin-bottom: 0;
+    background: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .local-code-hint {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 480px) {
+    .products { grid-template-columns: repeat(2, 1fr); gap: 12px; padding-left: 14px; padding-right: 14px; }
+    .hero { padding: 36px 20px 30px; }
+  }
+
+.card-desc{font-size:.78rem;color:#777;line-height:1.3;margin:6px 0 8px;}
+.stock-badge{font-size:.72rem;font-weight:700;margin-bottom:6px;}
+.stock-ok{color:#2e7d32;}
+.nutrition-box{font-size:.75rem;margin-bottom:8px;}
+.nutrition-box summary{cursor:pointer;color:var(--green);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    🌰 Nogaletto
+    <span>Frutos Secos Naturales · Neuquén</span>
+  </div>
+  <button class="cart-btn" onclick="toggleDrawer()">
+    🛒 Carrito
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+</header>
+
+<div class="local-banner" id="localBanner">
+  📍 Estás comprando desde <strong id="localBannerName"></strong> — tu pedido quedará registrado en este local
+</div>
+
+<section class="hero">
+  <h1>Nogaletto</h1>
+  <p>Frutos Secos · Semillas · Deshidratados · Neuquén</p>
+</section>
+
+<div class="categories">
+  <button class="cat-btn active" onclick="filterCat('frutos', this)">🌰 Frutos secos</button>
+  <button class="cat-btn" onclick="filterCat('frutas', this)">🍇 Frutas deshidratadas</button>
+  <button class="cat-btn" onclick="filterCat('semillas', this)">🌱 Semillas y legumbres</button>
+  <button class="cat-btn" onclick="filterCat('all', this)">📦 Todos</button>
+</div>
+
+<p class="section-title">Catálogo</p>
+
+<div class="products" id="productsGrid"></div>
+
+<!-- FAB -->
+<button class="fab" id="fab" onclick="toggleDrawer()">
+  🛒 Ver pedido · <span id="fabTotal">$0</span>
+</button>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
+
+<!-- Cart Drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <h2>🛒 Tu pedido</h2>
+    <button class="close-btn" onclick="toggleDrawer()">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems">
+    <div class="drawer-empty">
+      <span>🛒</span>
+      Todavía no agregaste productos
+    </div>
+  </div>
+  <div class="drawer-footer">
+    <div class="customer-section">
+      <h3>Tus datos</h3>
+      <input class="input-field" id="custName" type="text" placeholder="Tu nombre *" />
+      <input class="input-field" id="custPhone" type="tel" placeholder="Tu teléfono *" />
+      <textarea class="input-field" id="custAddress" placeholder="Dirección de entrega (opcional)"></textarea>
+    </div>
+    <div class="local-code-box">
+      <label>🏪 Código del local</label>
+      <input class="input-field" id="localCode" type="text" placeholder="Ej: ROBERTO" maxlength="20" />
+      <div class="local-code-hint">Si hay un código en el flyer del local, escribilo acá</div>
+    </div>
+    <div class="total-row">
+      <span class="total-label">Total del pedido</span>
+      <span class="total-amount" id="totalAmount">$0</span>
+    </div>
+    <button class="whatsapp-btn" id="waBtn" onclick="sendWhatsApp()">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.822.76 5.467 2.09 7.742L2 30l6.44-2.06A13.9 13.9 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="#fff"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.473-.15-.672.15-.2.3-.772.972-.947 1.172-.174.2-.348.225-.647.075-.3-.15-1.267-.467-2.413-1.487-.892-.794-1.494-1.775-1.669-2.075-.175-.3-.018-.462.131-.611.134-.134.3-.35.45-.524.15-.175.2-.3.3-.5.1-.2.05-.374-.025-.524-.075-.15-.672-1.62-.92-2.22-.243-.583-.49-.504-.672-.513l-.573-.01c-.2 0-.523.075-.796.374-.274.3-1.045 1.02-1.045 2.49s1.07 2.889 1.22 3.089c.15.2 2.106 3.214 5.103 4.508.714.308 1.27.491 1.704.629.716.228 1.368.196 1.883.119.574-.086 1.77-.724 2.02-1.422.249-.698.249-1.296.174-1.422-.074-.125-.274-.2-.573-.35z" fill="#25D366"/></svg>
+      Enviar pedido por WhatsApp
+    </button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// CONFIGURACIÓN — EDITÁ ESTO CON TUS DATOS
+// ============================================================
+const WHATSAPP_NUMBER = "5492994159772"; // Nogaletto Neuquén
+const CURRENCY = "$";
+const STORE_NAME = "Nogaletto";
+
+// Precios: { "100g": precio, "200g": precio, "500g": precio, "1kg": precio }
+// null = no disponible en ese tamaño
+const PRODUCTS = [
+  // FRUTAS DESHIDRATADAS
+  { id:1,  name:"Pasas de uva Jumbo grande",      emoji:"🍇", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/Pasa_de_uva_Jumbo_hdq3bz.jpg", cat:"frutas",   prices:{"100g":1400,"200g":2700,"500g":3500,"1kg":5000} },
+  { id:2,  name:"Pasas de uva Jumbo mediana",     emoji:"🍇", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg", cat:"frutas",   prices:{"100g":1400,"200g":2700,"500g":3500,"1kg":5000} },
+  { id:3,  name:"Pasas de uva ULT Flame",         emoji:"🍇", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/pasa_de_uva_flame_hje9xb.webp", cat:"frutas",   prices:{"100g":1400,"200g":3800,"500g":3000,"1kg":4500} },
+  { id:4,  name:"Tomate seco premium",            emoji:"🍅", img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop", cat:"frutas",   prices:{"100g":1400,"200g":3000,"500g":7000,"1kg":12500} },
+  // SEMILLAS Y LEGUMBRES
+  { id:5,  name:"Arveja partida",                 emoji:"🟢", img:"", cat:"semillas", prices:{"100g":null,"200g":1500,"500g":2500,"1kg":4300} },
+  { id:6,  name:"Garbanzo 7mm",                   emoji:"🟡", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg", cat:"semillas", prices:{"100g":1500,"200g":1800,"500g":2000,"1kg":5200} },
+  { id:7,  name:"Garbanzo 8mm",                   emoji:"🟡", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg", cat:"semillas", prices:{"100g":1000,"200g":1500,"500g":2000,"1kg":5200} },
+  { id:8,  name:"Girasol pelado",                 emoji:"🌻", img:"https://images.unsplash.com/photo-1543362906-acfc16c67564?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":2000,"200g":2500,"500g":4000,"1kg":7000} },
+  { id:9,  name:"Lenteja nacional",               emoji:"🟠", img:"https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1000,"200g":1500,"500g":2500,"1kg":4500} },
+  { id:10, name:"Lino marrón",                    emoji:"🌾", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316600/semillas-de-lino-kan-1200x630_abc_xjivky.jpg", cat:"semillas", prices:{"100g":1800,"200g":2100,"500g":2500,"1kg":4000} },
+  { id:11, name:"Maní tostado pelado natural",    emoji:"🥜", img:"https://images.unsplash.com/photo-1567892737950-30c4db1a7510?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1100,"200g":1500,"500g":2500,"1kg":4000} },
+  { id:12, name:"Maní tostado pelado y salado",   emoji:"🥜", img:"https://images.unsplash.com/photo-1567892737950-30c4db1a7510?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1100,"200g":1500,"500g":2500,"1kg":4000} },
+  { id:13, name:"Poroto alubia",                  emoji:"⚪", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/poroto-alubia1-665bb8987eb310b3ce15822293977835-1024-1024_pww65b.webp", cat:"semillas", prices:{"100g":null,"200g":1500,"500g":2500,"1kg":4000} },
+  { id:14, name:"Poroto colorado dark",           emoji:"🔴", img:"https://images.unsplash.com/photo-1637197884664-0e43e1a8fa81?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":null,"200g":2700,"500g":3700,"1kg":6800} },
+  { id:15, name:"Poroto mung",                    emoji:"🟢", img:"", cat:"semillas", prices:{"100g":null,"200g":1000,"500g":2661,"1kg":4000} },
+  { id:16, name:"Poroto negro",                   emoji:"⚫", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319892/Poroto_Negro_r2yett.webp", cat:"semillas", prices:{"100g":null,"200g":2300,"500g":3400,"1kg":4300} },
+  { id:17, name:"Quinoa blanca real lavada",      emoji:"🌿", img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1500,"200g":2500,"500g":4500,"1kg":12500} },
+  { id:18, name:"Sésamo integral",                emoji:"🌾", img:"https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":1800,"200g":2100,"500g":2500,"1kg":4000} },
+  { id:19, name:"Sésamo negro Paraguay",          emoji:"🖤", img:"https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop", cat:"semillas", prices:{"100g":2000,"200g":2500,"500g":3500,"1kg":6000} },
+  // FRUTOS SECOS
+  { id:20, name:"Almendra Non Pareil (Cal. Exportación)", emoji:"🤍", img:"https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400&q=80&fit=crop", cat:"frutos", description:"Producto premium seleccionado.", nutrition:"Información nutricional disponible a pedido.", stock:"ok", prices:{"100g":3400,"200g":7500,"500g":13000,"1kg":25000} },
+  { id:21, name:"Nuez Pecan premium (Cal. Exportación)",  emoji:"🌰", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316243/mesa-de-trabajo-4-bd321fca8a518e6f3717339361203494-1024-1024_kku9mn.webp", cat:"frutos", description:"Producto premium seleccionado.", nutrition:"Información nutricional disponible a pedido.", stock:"ok", prices:{"100g":4500,"200g":7000,"500g":13000,"1kg":25000} },
+  { id:22, name:"Piñones Araucanos Naturales",            emoji:"🌲", img:"https://images.unsplash.com/photo-1621568272260-cd15e4f92e20?w=400&q=80&fit=crop", cat:"frutos", description:"Producto premium seleccionado.", nutrition:"Información nutricional disponible a pedido.", stock:"ok", prices:{"100g":2000,"200g":3500,"500g":5700,"1kg":10500} },
+  { id:23, name:"Pistacho Natural c/Cáscara sin sal",     emoji:"💚", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp", cat:"frutos", description:"Producto premium seleccionado.", nutrition:"Información nutricional disponible a pedido.", stock:"ok", prices:{"100g":3900,"200g":7200,"500g":18000,"1kg":35000} },
+  { id:24, name:"Pistacho Pelado Pulpa natural",          emoji:"💚", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg", cat:"frutos", description:"Producto premium seleccionado.", nutrition:"Información nutricional disponible a pedido.", stock:"ok", prices:{"100g":8000,"200g":14400,"500g":36000,"1kg":65000} },
+  { id:25, name:"Pistacho Tostado y Salado c/Cáscara",   emoji:"💚", img:"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp", cat:"frutos", description:"Producto premium seleccionado.", nutrition:"Información nutricional disponible a pedido.", stock:"ok", prices:{"100g":6000,"200g":10000,"500g":19000,"1kg":36000} },
+];
+// ============================================================
+
+const SIZES = ["100g","200g","500g","1kg"];
+// Tamaño seleccionado por producto: { productId: "200g" }
+let selectedSize = {};
+// Carrito: { "productId_200g": { product, size, qty } }
+let cart = {};
+let currentCat = 'frutos';
+
+function getDefaultSize(p) {
+  return SIZES.find(s => p.prices[s] !== null && p.prices[s] !== undefined) || "200g";
+}
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = '';
+  PRODUCTS.forEach(p => {
+    const size = selectedSize[p.id] || getDefaultSize(p);
+    const price = p.prices[size];
+    const cartKey = `${p.id}_${size}`;
+    const qty = cart[cartKey]?.qty || 0;
+    const availableSizes = SIZES.filter(s => p.prices[s] !== null && p.prices[s] !== undefined);
+
+    const div = document.createElement('div');
+    div.className = 'card' + (currentCat !== 'all' && p.cat !== currentCat ? ' hidden' : '');
+    div.innerHTML = `
+      <div class="card-img-wrap">
+        <div class="card-img-fallback" id="fallback-${p.id}">${p.emoji}</div>
+        ${p.img
+          ? `<img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy"
+              onload="document.getElementById('fallback-${p.id}').style.display='none'"
+              onerror="this.style.display='none'" />`
+          : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+<div class="stock-badge stock-${p.stock || "ok"}">${(p.stock==="low"?"🟠 Últimas unidades":p.stock==="out"?"🔴 Sin stock":"🟢 Disponible")}</div>
+<div class="card-desc">${p.description || ""}</div>
+<details class="nutrition-box"><summary>ⓘ Información nutricional</summary><p>${p.nutrition || "Consultar información nutricional."}</p></details>
+        <div class="size-selector">
+          ${availableSizes.map(s => `
+            <button class="size-btn ${s === size ? 'active' : ''}"
+              onclick="selectSize(${p.id}, '${s}')">${s}</button>
+          `).join('')}
+        </div>
+        <div class="card-price">${CURRENCY}${price.toLocaleString('es-AR')}</div>
+        ${qty === 0
+          ? `<button class="add-btn" onclick="addItem(${p.id})">+ Agregar</button>`
+          : `<div class="qty-control">
+               <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
+               <span class="qty-num">${qty}</span>
+               <button class="qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
+             </div>`
+        }
+      </div>`;
+    grid.appendChild(div);
+  });
+}
+
+function selectSize(id, size) {
+  selectedSize[id] = size;
+  renderProducts();
+}
+
+function addItem(id) {
+  const size = selectedSize[id] || getDefaultSize(PRODUCTS.find(p => p.id === id));
+  const key = `${id}_${size}`;
+  if (!cart[key]) cart[key] = { product: PRODUCTS.find(p => p.id === id), size, qty: 0 };
+  cart[key].qty++;
+  update();
+}
+
+function changeQty(id, delta) {
+  const size = selectedSize[id] || getDefaultSize(PRODUCTS.find(p => p.id === id));
+  const key = `${id}_${size}`;
+  if (!cart[key]) return;
+  cart[key].qty += delta;
+  if (cart[key].qty <= 0) delete cart[key];
+  update();
+}
+
+function update() {
+  renderProducts();
+  renderDrawer();
+  const total = getTotal();
+  const count = Object.values(cart).reduce((a,b) => a + b.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('totalAmount').textContent = CURRENCY + total.toLocaleString('es-AR');
+  document.getElementById('fabTotal').textContent = CURRENCY + total.toLocaleString('es-AR');
+  const fab = document.getElementById('fab');
+  if (count > 0) fab.classList.add('visible'); else fab.classList.remove('visible');
+}
+
+function getTotal() {
+  return Object.values(cart).reduce((acc, item) => {
+    return acc + (item.product.prices[item.size] * item.qty);
+  }, 0);
+}
+
+function renderDrawer() {
+  const el = document.getElementById('drawerItems');
+  const items = Object.values(cart);
+  if (items.length === 0) {
+    el.innerHTML = '<div class="drawer-empty"><span>🛒</span>Todavía no agregaste productos</div>';
+    return;
+  }
+  el.innerHTML = items.map(item => {
+    const subtotal = item.product.prices[item.size] * item.qty;
+    return `<div class="cart-item">
+      <div style="width:48px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">
+        <img src="${item.product.img}" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+        <span style="position:absolute;">${item.product.emoji}</span>
+      </div>
+      <div class="ci-info">
+        <div class="ci-name">${item.product.name}</div>
+        <div class="ci-price">${item.size} × ${item.qty} — ${CURRENCY}${subtotal.toLocaleString('es-AR')}</div>
+      </div>
+      <button class="ci-remove" onclick="removeCartItem('${item.product.id}_${item.size}')" title="Quitar">🗑</button>
+    </div>`;
+  }).join('');
+}
+
+function removeCartItem(key) {
+  delete cart[key];
+  update();
+}
+
+function toggleDrawer() {
+  const d = document.getElementById('drawer');
+  const o = document.getElementById('overlay');
+  d.classList.toggle('open');
+  o.classList.toggle('open');
+}
+
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+
+function sendWhatsApp() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  const localCode = document.getElementById('localCode').value.trim().toUpperCase();
+
+  // Validación
+  let valid = true;
+  ['custName','custPhone'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+    else el.classList.remove('error');
+  });
+  if (!valid) { alert('Por favor completá tu nombre y teléfono.'); return; }
+
+  const items = Object.values(cart);
+  if (items.length === 0) { alert('Tu carrito está vacío.'); return; }
+
+  let msg = `🌰 *Nuevo pedido — ${STORE_NAME}*\n\n`;
+  if (localCode) msg += `🏪 *Local:* ${localCode}\n`;
+  msg += `👤 *Cliente:* ${name}\n`;
+  msg += `📱 *Teléfono:* ${phone}\n`;
+  if (address) msg += `📍 *Dirección:* ${address}\n`;
+  msg += `\n📦 *Productos:*\n`;
+
+  items.forEach(item => {
+    const subtotal = item.product.prices[item.size] * item.qty;
+    msg += `• ${item.product.emoji} ${item.product.name} — ${item.size} × ${item.qty} = ${CURRENCY}${subtotal.toLocaleString('es-AR')}\n`;
+  });
+
+  msg += `\n💰 *Total: ${CURRENCY}${getTotal().toLocaleString('es-AR')}*`;
+  if (localCode) msg += `\n🤝 _Comisión a registrar: ${localCode}_`;
+  msg += `\n\n¡Gracias por tu pedido! 🙏`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+// Leer código de local desde la URL (?local=ROBERTO)
+function initLocalCode() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('local');
+  if (code) {
+    const upper = code.toUpperCase();
+    document.getElementById('localCode').value = upper;
+    document.getElementById('localBannerName').textContent = upper;
+    document.getElementById('localBanner').classList.add('visible');
+  }
+}
+
+// Init
+renderProducts();
+initLocalCode();
+</script>
+</body>
+</html>

@@ -19,10 +19,11 @@
     --whatsapp: #25D366;
     --whatsapp-hover: #20BA56;
     --blue: #0284c7;
+    --cloud: #0ea5e9;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--bark); padding-bottom:60px; }
-  header { background:var(--bark); padding:18px 24px; }
+  header { background:var(--bark); padding:18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
   header h1 { font-family:'Playfair Display',serif; color:var(--amber2); font-size:1.4rem; }
   header p { color:var(--sand2); font-size:0.8rem; margin-top:4px; }
 
@@ -33,6 +34,15 @@
     padding:12px 16px; font-size:0.85rem; margin-bottom:15px; line-height:1.5;
   }
   
+  /* Panel de automatización GitHub */
+  .github-panel {
+    background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 10px;
+    padding: 12px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .github-panel summary { font-weight: bold; font-size: 0.85rem; cursor: pointer; color: var(--bark2); }
+  .github-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 5px; }
+  .github-input { padding: 6px 10px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.8rem; min-width: 200px; }
+
   /* Panel de configuración de costos de empaque */
   .config-panel {
     background:#e0f2fe; border:1.5px solid #0284c7; color:#0369a1; border-radius:10px;
@@ -51,6 +61,8 @@
     cursor:pointer; transition:background .2s;
   }
   .btn:hover { background:var(--bark2); }
+  .btn.cloud-save { background: var(--cloud); color: white; font-weight: bold; box-shadow: 0 2px 8px rgba(14,165,233,0.3); }
+  .btn.cloud-save:hover { background: #0284c7; }
   .btn.secondary { background:var(--sand2); color:var(--bark2); }
   .btn.secondary:hover { background:var(--sand); }
   .btn.whatsapp { background:var(--whatsapp); color:#fff; font-weight:bold; }
@@ -102,7 +114,7 @@
   .code-output.visible { display:block; }
   .code-output.whatsapp-style { background:#075E54; color:#fff; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; }
 
-  .copy-msg { color:var(--green); font-size:0.85rem; margin-top:8px; display:none; font-weight: bold; }
+  .copy-msg { color:var(--green); font-size:0.85rem; margin-top:8px; display:none; font-weight: bold; text-align: center; padding: 10px; background: #e8f5e9; border-radius: 8px; }
   .copy-msg.visible { display:block; }
 
   .small-input { padding:6px 8px; border-radius:6px; border:1.5px solid var(--sand2); width:100%; font-family:'DM Sans',sans-serif; }
@@ -119,11 +131,25 @@
 <body>
 
 <header>
-  <h1>🌰 Nogaletto — Panel Admin</h1>
-  <p>Gestión de stock, catálogo y fijación estratégica de precios</p>
+  <div>
+    <h1>🌰 Nogaletto — Panel Admin</h1>
+    <p>Gestión de stock, catálogo y fijación estratégica de precios</p>
+  </div>
 </header>
 
 <div class="container">
+  
+  <!-- PANEL OCULTO PARA CREDENCIALES GITHUB -->
+  <details class="github-panel">
+    <summary>⚙️ Configurar Conexión Automática con GitHub (Hacer clic aquí)</summary>
+    <div class="github-grid">
+      <input type="password" id="ghToken" class="github-input" placeholder="Pegar Token de GitHub (ghp_...)" onchange="localStorage.setItem('ng_gh_token', this.value)">
+      <input type="text" id="ghUser" class="github-input" placeholder="Tu Usuario de GitHub" onchange="localStorage.setItem('ng_gh_user', this.value)">
+      <input type="text" id="ghRepo" class="github-input" placeholder="Nombre del Repositorio" onchange="localStorage.setItem('ng_gh_repo', this.value)">
+    </div>
+    <small style="color:#64748b;">* Estos datos se guardan de forma segura únicamente en tu navegador actual.</small>
+  </details>
+
   <div class="alert">
     🔄 <strong>¡Automatización Activa!</strong> Al abrir o modificar costos, el catálogo se recalcula al instante en base al precio de 1kg + los recargos fijos de empaque definidos abajo.
   </div>
@@ -150,7 +176,8 @@
   <input class="search" id="search" placeholder="🔍 Buscar producto por nombre o descripción..." onkeyup="renderTable()">
 
   <div class="toolbar">
-    <button class="btn" onclick="generateCode()">📋 Generar código tienda</button>
+    <button class="btn cloud-save" onclick="saveDirectToGitHub()">🚀 Guardar Cambios en la Web</button>
+    <button class="btn" onclick="generateCode()">📋 Ver código generado</button>
     <button class="btn whatsapp" onclick="generateWhatsAppList()">📱 Generar Lista WhatsApp</button>
     <button class="btn secondary" onclick="sortAZ()">🔤 Ordenar A-Z</button>
     <button class="btn secondary" onclick="sortZA()">🔤 Ordenar Z-A</button>
@@ -162,6 +189,8 @@
       <button class="btn secondary" onclick="createCategory()">➕ Crear categoría</button>
     </div>
   </div>
+
+  <div class="copy-msg" id="globalMsg"></div>
 
   <table>
     <thead>
@@ -236,6 +265,11 @@ function initPkgInputs() {
   document.getElementById('pkg100').value = pkgCosts["100g"];
   document.getElementById('pkg200').value = pkgCosts["200g"];
   document.getElementById('pkg500').value = pkgCosts["500g"];
+  
+  // Cargar credenciales guardadas de GitHub
+  document.getElementById('ghToken').value = localStorage.getItem('ng_gh_token') || '';
+  document.getElementById('ghUser').value = localStorage.getItem('ng_gh_user') || '';
+  document.getElementById('ghRepo').value = localStorage.getItem('ng_gh_repo') || '';
 }
 
 function updatePkgCost(size, val) {
@@ -386,14 +420,98 @@ function resetAll() {
   pkgCosts = loadPkgCosts(); state = loadState(); initPkgInputs(); autoRecalculateAll(); renderTable();
 }
 
+function buildProductsJSON() {
+  let list = [];
+  state.filter(p => p.visible).forEach(p => {
+    let cleanPrices = {}; 
+    ["100g", "200g", "500g", "1kg"].forEach(s => { if(p.prices[s] !== undefined) cleanPrices[s] = p.prices[s]; });
+    list.push({
+      id: p.id,
+      name: p.name,
+      emoji: p.emoji,
+      img: p.img,
+      cat: p.cat,
+      description: p.description || '',
+      nutrition: p.nutrition || '',
+      prices: cleanPrices
+    });
+  });
+  return list;
+}
+
 function generateCode() {
   document.getElementById('copyBtn').style.display = 'inline-block';
-  let code = `// PRODUCTOS ACTUALIZADOS — ${new Date().toLocaleDateString('es-AR')}\n\n`;
-  state.filter(p => p.visible).forEach(p => {
-    let cleanPrices = {}; ["100g", "200g", "500g", "1kg"].forEach(s => { if(p.prices[s] !== undefined) cleanPrices[s] = p.prices[s]; });
-    code += `  { id:${p.id}, name:"${p.name.replace(/"/g, '\\"')}", emoji:"${p.emoji}", img:"${p.img}", cat:"${p.cat}", description:"${(p.description||'').replace(/"/g, '\\"')}", nutrition:"${(p.nutrition||'').replace(/"/g, '\\"')}", prices:${JSON.stringify(cleanPrices)} },\n`;
-  });
+  let code = `// PRODUCTOS ACTUALIZADOS — ${new Date().toLocaleDateString('es-AR')}\nconst PRODUCTS = ${JSON.stringify(buildProductsJSON(), null, 2)};`;
   const out = document.getElementById('codeOutput'); out.className = "code-output visible"; out.textContent = code;
+}
+
+function showGlobalMessage(text, isError = false) {
+  const m = document.getElementById('globalMsg');
+  m.textContent = text;
+  m.style.background = isError ? "#fbe3e1" : "#e8f5e9";
+  m.style.color = isError ? var(--red) : var(--green);
+  m.className = "copy-msg visible";
+  setTimeout(() => m.className = "copy-msg", 5000);
+}
+
+// NUEVA FUNCIÓN TOTALMENTE AUTOMÁTICA
+async function saveDirectToGitHub() {
+  const token = localStorage.getItem('ng_gh_token');
+  const user = localStorage.getItem('ng_gh_user');
+  const repo = localStorage.getItem('ng_gh_repo');
+
+  if (!token || !user || !repo) {
+    showGlobalMessage("❌ Error: Primero desplegá la configuración de arriba y cargá tus datos de GitHub.", true);
+    return;
+  }
+
+  showGlobalMessage("⏳ Conectando con GitHub y procesando archivo...");
+
+  const filePath = "index.html"; 
+  const url = `https://api.github.com/repos/${user}/${repo}/contents/${filePath}`;
+
+  try {
+    // 1. Obtener el index.html actual para no romper nada y conseguir el código SHA obligatorio
+    const getRes = await fetch(url, {
+      headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
+    });
+
+    if (!getRes.ok) throw new Error("No se pudo descargar el index.html original. Revisá el usuario y repositorio.");
+    const fileData = await getRes.json();
+    const originalContent = decodeURIComponent(escape(atob(fileData.sha ? fileData.content.replace(/\s/g, '') : '')));
+
+    // 2. Crear la nueva lista de productos formateada
+    const freshProducts = buildProductsJSON();
+    const newProductsString = `const PRODUCTS = ${JSON.stringify(freshProducts, null, 2)};`;
+
+    // 3. Reemplazar la vieja constante PRODUCTS del index.html por la nueva de forma exacta
+    const regex = /const\s+PRODUCTS\s*=\s*\[[\s\S]*?\];/;
+    if (!regex.test(originalContent)) {
+      throw new Error("No se encontró la línea 'const PRODUCTS = [...];' exacta dentro de tu index.html.");
+    }
+    const updatedContent = originalContent.replace(regex, newProductsString);
+
+    // 4. Enviar el archivo modificado de vuelta a GitHub encriptado en Base64
+    const putRes = await fetch(url, {
+      method: "PUT",
+      headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: "🔄 Actualización automática de catálogo y precios desde Panel Admin",
+        content: btoa(unescape(encodeURIComponent(updatedContent))),
+        sha: fileData.sha
+      })
+    });
+
+    if (putRes.ok) {
+      showGlobalMessage("🚀 ¡Éxito rotundo! Los precios se subieron a GitHub. En 1 o 2 minutos impactará en tu web.");
+    } else {
+      const errData = await putRes.json();
+      throw new Error(errData.message || "Error al subir los datos.");
+    }
+
+  } catch (error) {
+    showGlobalMessage(`❌ Error: ${error.message}`, true);
+  }
 }
 
 function generateWhatsAppList() {

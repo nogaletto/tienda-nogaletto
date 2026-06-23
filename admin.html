@@ -139,7 +139,6 @@
 
 <div class="container">
   
-  <!-- PANEL OCULTO PARA CREDENCIALES GITHUB -->
   <details class="github-panel">
     <summary>⚙️ Configurar Conexión Automática con GitHub (Hacer clic aquí)</summary>
     <div class="github-grid">
@@ -154,7 +153,6 @@
     🔄 <strong>¡Automatización Activa!</strong> Al abrir o modificar costos, el catálogo se recalcula al instante en base al precio de 1kg + los recargos fijos de empaque definidos abajo.
   </div>
 
-  <!-- CONFIGURACIÓN DE PACKAGING DINÁMICA -->
   <div class="config-panel">
     <h3>📦 Configuración del Costo de Envase/Packaging (Modificable)</h3>
     <div class="config-grid">
@@ -266,7 +264,6 @@ function initPkgInputs() {
   document.getElementById('pkg200').value = pkgCosts["200g"];
   document.getElementById('pkg500').value = pkgCosts["500g"];
   
-  // Cargar credenciales guardadas de GitHub
   document.getElementById('ghToken').value = localStorage.getItem('ng_gh_token') || '';
   document.getElementById('ghUser').value = localStorage.getItem('ng_gh_user') || '';
   document.getElementById('ghRepo').value = localStorage.getItem('ng_gh_repo') || '';
@@ -292,9 +289,10 @@ function saveCategories(){
 
 function loadState() {
   const saved = localStorage.getItem('nogaletto_admin_state');
-  if (saved) {
+  if (saved && JSON.parse(saved).length > 0) {
     try { return JSON.parse(saved); } catch(e) {}
   }
+  // Forzar siempre la carga desde el código si la memoria está vacía
   return DEFAULT_PRODUCTS.map(p => ({
     id: p.id, name: p.name, emoji: p.emoji || '🌰', img: p.img || '', cat: p.cat || 'frutos', prices: {...p.prices}, visible: true, stock: p.stock || 'ok', description: p.description || '', nutrition: p.nutrition || ''
   }));
@@ -449,12 +447,11 @@ function showGlobalMessage(text, isError = false) {
   const m = document.getElementById('globalMsg');
   m.textContent = text;
   m.style.background = isError ? "#fbe3e1" : "#e8f5e9";
-  m.style.color = isError ? var(--red) : var(--green);
+  m.style.color = isError ? "#C0392B" : "#4A6741";
   m.className = "copy-msg visible";
   setTimeout(() => m.className = "copy-msg", 5000);
 }
 
-// NUEVA FUNCIÓN TOTALMENTE AUTOMÁTICA
 async function saveDirectToGitHub() {
   const token = localStorage.getItem('ng_gh_token');
   const user = localStorage.getItem('ng_gh_user');
@@ -471,7 +468,6 @@ async function saveDirectToGitHub() {
   const url = `https://api.github.com/repos/${user}/${repo}/contents/${filePath}`;
 
   try {
-    // 1. Obtener el index.html actual para no romper nada y conseguir el código SHA obligatorio
     const getRes = await fetch(url, {
       headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
     });
@@ -480,18 +476,15 @@ async function saveDirectToGitHub() {
     const fileData = await getRes.json();
     const originalContent = decodeURIComponent(escape(atob(fileData.sha ? fileData.content.replace(/\s/g, '') : '')));
 
-    // 2. Crear la nueva lista de productos formateada
     const freshProducts = buildProductsJSON();
     const newProductsString = `const PRODUCTS = ${JSON.stringify(freshProducts, null, 2)};`;
 
-    // 3. Reemplazar la vieja constante PRODUCTS del index.html por la nueva de forma exacta
     const regex = /const\s+PRODUCTS\s*=\s*\[[\s\S]*?\];/;
     if (!regex.test(originalContent)) {
       throw new Error("No se encontró la línea 'const PRODUCTS = [...];' exacta dentro de tu index.html.");
     }
     const updatedContent = originalContent.replace(regex, newProductsString);
 
-    // 4. Enviar el archivo modificado de vuelta a GitHub encriptado en Base64
     const putRes = await fetch(url, {
       method: "PUT",
       headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },

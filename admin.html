@@ -150,7 +150,7 @@
   </details>
 
   <div class="alert">
-    🔄 <strong>¡Automatización Activa!</strong> Al abrir o modificar costos, el catálogo se recalcula al instante en base al precio de 1kg + los recargos fijos de empaque definidos abajo.
+    🔄 <strong>¡Automatización Activa!</strong> Al modificar el valor de 1kg, el sistema calcula de forma inteligente los fraccionamientos sumando el costo base de envase configurado abajo.
   </div>
 
   <div class="config-panel">
@@ -249,21 +249,14 @@ let pkgCosts = loadPkgCosts();
 
 function loadPkgCosts() {
   const saved = localStorage.getItem('nogaletto_pkg_costs');
-  if (saved) {
-    try { return JSON.parse(saved); } catch(e) {}
-  }
-  return { "100g": 450, "200g": 450, "500g": 550 };
+  return saved ? JSON.parse(saved) : { "100g": 450, "200g": 450, "500g": 550 };
 }
-
-function savePkgCosts() {
-  localStorage.setItem('nogaletto_pkg_costs', JSON.stringify(pkgCosts));
-}
+function savePkgCosts() { localStorage.setItem('nogaletto_pkg_costs', JSON.stringify(pkgCosts)); }
 
 function initPkgInputs() {
   document.getElementById('pkg100').value = pkgCosts["100g"];
   document.getElementById('pkg200').value = pkgCosts["200g"];
   document.getElementById('pkg500').value = pkgCosts["500g"];
-  
   document.getElementById('ghToken').value = localStorage.getItem('ng_gh_token') || '';
   document.getElementById('ghUser').value = localStorage.getItem('ng_gh_user') || '';
   document.getElementById('ghRepo').value = localStorage.getItem('ng_gh_repo') || '';
@@ -271,33 +264,27 @@ function initPkgInputs() {
 
 function updatePkgCost(size, val) {
   pkgCosts[size] = val ? Math.max(0, Number(val)) : 0;
-  savePkgCosts();
-  autoRecalculateAll();
-  renderTable();
+  savePkgCosts(); autoRecalculateAll(); renderTable();
 }
 
 function loadCategories(){
   const raw = localStorage.getItem('nogaletto_admin_cats');
-  if(raw){
-    try{ const arr = JSON.parse(raw); return Array.isArray(arr) ? arr : ['frutos','frutas','semillas']; }catch(e){}
-  }
-  return ['frutos','frutas','semillas'];
+  return raw ? JSON.parse(raw) : ['frutos','frutas','semillas'];
 }
-function saveCategories(){
-  localStorage.setItem('nogaletto_admin_cats', JSON.stringify(categories));
-}
+function saveCategories(){ localStorage.setItem('nogaletto_admin_cats', JSON.stringify(categories)); }
 
 function loadState() {
   const saved = localStorage.getItem('nogaletto_admin_state');
-  if (saved && JSON.parse(saved).length > 0) {
-    try { return JSON.parse(saved); } catch(e) {}
+  if (saved) {
+    try { 
+      const parsed = JSON.parse(saved); 
+      if(parsed && parsed.length > 0) return parsed;
+    } catch(e) {}
   }
-  // Forzar siempre la carga desde el código si la memoria está vacía
   return DEFAULT_PRODUCTS.map(p => ({
     id: p.id, name: p.name, emoji: p.emoji || '🌰', img: p.img || '', cat: p.cat || 'frutos', prices: {...p.prices}, visible: true, stock: p.stock || 'ok', description: p.description || '', nutrition: p.nutrition || ''
   }));
 }
-
 function saveState() { localStorage.setItem('nogaletto_admin_state', JSON.stringify(state)); }
 
 function sortAZ(){ state.sort((a,b)=>a.name.localeCompare(b.name,'es')); saveState(); renderTable(); }
@@ -308,8 +295,7 @@ function addProduct(){
  const cat=prompt('Categoría:', 'frutos')||'frutos';
  const lowerCat = cat.trim().toLowerCase();
  if(!categories.includes(lowerCat)) { categories.push(lowerCat); saveCategories(); }
- const id = Date.now();
- state.push({ id:id, name:name.trim(), emoji:'🌰', img:'', cat:lowerCat, prices:{'100g':0,'200g':0,'500g':0,'1kg':0}, visible:true, stock:'ok', description:'', nutrition:'' });
+ state.push({ id:Date.now(), name:name.trim(), emoji:'🌰', img:'', cat:lowerCat, prices:{'100g':0,'200g':0,'500g':0,'1kg':0}, visible:true, stock:'ok', description:'', nutrition:'' });
  saveState(); renderTable();
 }
 
@@ -329,12 +315,12 @@ function createCategory(){
 function autoCalculateRow(product, basePrice) {
   if (!basePrice || basePrice <= 0) return;
   const matrix = {
-    "100g": { ratio: 0.10, markup: 1.20, key: "100g" }, 
-    "200g": { ratio: 0.20, markup: 1.15, key: "200g" }, 
-    "500g": { ratio: 0.50, markup: 1.05, key: "500g" }  
+    "100g": { ratio: 0.10, markup: 1.20 }, 
+    "200g": { ratio: 0.20, markup: 1.15 }, 
+    "500g": { ratio: 0.50, markup: 1.05 }  
   };
   Object.keys(matrix).forEach(size => {
-    if (product.prices[size] !== undefined && product.prices[size] !== null) {
+    if (product.prices[size] !== undefined) {
       let costPkg = pkgCosts[size] || 0;
       let rawCalculated = ((basePrice * matrix[size].ratio) * matrix[size].markup) + costPkg;
       product.prices[size] = Math.round(rawCalculated / 10) * 10;
@@ -344,9 +330,7 @@ function autoCalculateRow(product, basePrice) {
 }
 
 function autoRecalculateAll() {
-  state.forEach(p => {
-    if (p.prices["1kg"] && p.prices["1kg"] > 0) { autoCalculateRow(p, p.prices["1kg"]); }
-  });
+  state.forEach(p => { if (p.prices["1kg"] && p.prices["1kg"] > 0) { autoCalculateRow(p, p.prices["1kg"]); } });
 }
 
 function renderTable() {
@@ -395,6 +379,7 @@ function renderTable() {
 }
 
 function updateName(id, val) { const p = state.find(p => p.id === id); if (p) { p.name = val.trim(); saveState(); } }
+// Corregido: renderTable tras editar emoji para redibujar la celda de inmediato sin descalabrar el foco
 function updateEmoji(id, val) { const p = state.find(p => p.id === id); if (p) { p.emoji = val.trim() || '🌰'; saveState(); renderTable(); } }
 function toggleVisible(id) { const p = state.find(p => p.id === id); if (p) { p.visible = !p.visible; saveState(); renderTable(); } }
 function cycleStock(id) { const p = state.find(p => p.id === id); if (p) { const seq = ['ok','low','out']; p.stock = seq[(seq.indexOf(p.stock || 'ok') + 1) % seq.length]; saveState(); renderTable(); } }
@@ -412,7 +397,7 @@ function updatePriceField(id, size, value) {
 }
 
 function resetAll() {
-  if (!confirm('¿Restaurar todo?')) return;
+  if (!confirm('¿Restaurar todo el catálogo original de fábrica?')) return;
   localStorage.removeItem('nogaletto_admin_state');
   localStorage.removeItem('nogaletto_pkg_costs');
   pkgCosts = loadPkgCosts(); state = loadState(); initPkgInputs(); autoRecalculateAll(); renderTable();
@@ -424,14 +409,8 @@ function buildProductsJSON() {
     let cleanPrices = {}; 
     ["100g", "200g", "500g", "1kg"].forEach(s => { if(p.prices[s] !== undefined) cleanPrices[s] = p.prices[s]; });
     list.push({
-      id: p.id,
-      name: p.name,
-      emoji: p.emoji,
-      img: p.img,
-      cat: p.cat,
-      description: p.description || '',
-      nutrition: p.nutrition || '',
-      prices: cleanPrices
+      id: p.id, name: p.name, emoji: p.emoji, img: p.img, cat: p.cat,
+      description: p.description || '', nutrition: p.nutrition || '', prices: cleanPrices
     });
   });
   return list;
@@ -449,61 +428,79 @@ function showGlobalMessage(text, isError = false) {
   m.style.background = isError ? "#fbe3e1" : "#e8f5e9";
   m.style.color = isError ? "#C0392B" : "#4A6741";
   m.className = "copy-msg visible";
-  setTimeout(() => m.className = "copy-msg", 5000);
+  setTimeout(() => m.className = "copy-msg", 8000);
 }
 
+// 🚀 NUEVA FUNCIÓN DE GUARDADO ULTRA SEGURA CON DECODER UTF-8
 async function saveDirectToGitHub() {
   const token = localStorage.getItem('ng_gh_token');
   const user = localStorage.getItem('ng_gh_user');
   const repo = localStorage.getItem('ng_gh_repo');
 
   if (!token || !user || !repo) {
-    showGlobalMessage("❌ Error: Primero desplegá la configuración de arriba y cargá tus datos de GitHub.", true);
+    showGlobalMessage("❌ Error: Configurá primero tus credenciales de GitHub arriba.", true);
     return;
   }
 
-  showGlobalMessage("⏳ Conectando con GitHub y procesando archivo...");
-
+  showGlobalMessage("⏳ Leyendo archivo original desde GitHub...");
   const filePath = "index.html"; 
   const url = `https://api.github.com/repos/${user}/${repo}/contents/${filePath}`;
 
   try {
-    const getRes = await fetch(url, {
-      headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
-    });
-
-    if (!getRes.ok) throw new Error("No se pudo descargar el index.html original. Revisá el usuario y repositorio.");
+    const getRes = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+    if (!getRes.ok) throw new Error("No se pudo descargar index.html. Verificá repositorio y usuario.");
+    
     const fileData = await getRes.json();
-    const originalContent = decodeURIComponent(escape(atob(fileData.sha ? fileData.content.replace(/\s/g, '') : '')));
+    
+    // Decodificación segura UTF-8 para evitar rotura de acentos y caracteres raros
+    const binaryString = atob(fileData.content.replace(/\s/g, ''));
+    const len = binaryString.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) { bytes[i] = binaryString.charCodeAt(i); }
+    const originalContent = new TextDecoder("utf-8").decode(bytes);
 
+    // Preparar el bloque nuevo de datos
     const freshProducts = buildProductsJSON();
     const newProductsString = `const PRODUCTS = ${JSON.stringify(freshProducts, null, 2)};`;
 
+    // Expresión regular robusta para ubicar el array original sin importar espacios
     const regex = /const\s+PRODUCTS\s*=\s*\[[\s\S]*?\];/;
+    
     if (!regex.test(originalContent)) {
-      throw new Error("No se encontró la línea 'const PRODUCTS = [...];' exacta dentro de tu index.html.");
+      throw new Error("CRÍTICO: No se encontró la variable exacta 'const PRODUCTS = [...];' en tu index.html. Modificación cancelada para proteger tus datos.");
     }
+
+    // Reemplazo limpio del array de productos manteniendo el resto del archivo idéntico
     const updatedContent = originalContent.replace(regex, newProductsString);
+
+    // Codificación segura a UTF-8 antes de subir a GitHub
+    const encoder = new TextEncoder();
+    const encodedBytes = encoder.encode(updatedContent);
+    let outBin = "";
+    for (let i = 0; i < encodedBytes.length; i++) { outBin += String.fromCharCode(encodedBytes[i]); }
+    const base64Payload = btoa(outBin);
+
+    showGlobalMessage("⏳ Subiendo cambios seguros a GitHub...");
 
     const putRes = await fetch(url, {
       method: "PUT",
       headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        message: "🔄 Actualización automática de catálogo y precios desde Panel Admin",
-        content: btoa(unescape(encodeURIComponent(updatedContent))),
+        message: "🔄 Sincronización Blindada de Precios y URLs desde Panel Admin",
+        content: base64Payload,
         sha: fileData.sha
       })
     });
 
     if (putRes.ok) {
-      showGlobalMessage("🚀 ¡Éxito rotundo! Los precios se subieron a GitHub. En 1 o 2 minutos impactará en tu web.");
+      showGlobalMessage("🚀 ¡Sincronizado con éxito! El archivo index.html se actualizó respetando todas las URLs e imágenes. En 1 minuto impactará en la web.");
     } else {
       const errData = await putRes.json();
-      throw new Error(errData.message || "Error al subir los datos.");
+      throw new Error(errData.message || "Error del servidor de GitHub.");
     }
 
   } catch (error) {
-    showGlobalMessage(`❌ Error: ${error.message}`, true);
+    showGlobalMessage(`❌ Proceso Interrumpido: ${error.message}`, true);
   }
 }
 

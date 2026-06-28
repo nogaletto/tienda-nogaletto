@@ -220,59 +220,97 @@ const DEFAULT_PRODUCTS =  [{"id":20,"name":"Almendra Non Pareil (Cal. Exportaci�
 let state = loadState();
 let categories = loadCategories();
 let pkgCosts = loadPkgCosts();
-
-function loadPkgCosts() {
-  const saved = localStorage.getItem('nogaletto_pkg_costs');
-  return saved ? JSON.parse(saved) : { "100g": 450, "200g": 450, "500g": 550 };
-}
-function savePkgCosts() { localStorage.setItem('nogaletto_pkg_costs', JSON.stringify(pkgCosts)); }
-
-function initPkgInputs() {
-  document.getElementById('pkg100').value = pkgCosts["100g"];
-  document.getElementById('pkg200').value = pkgCosts["200g"];
-  document.getElementById('pkg500').value = pkgCosts["500g"];
-  document.getElementById('ghToken').value = localStorage.getItem('ng_gh_token') || '';
-  document.getElementById('ghUser').value = localStorage.getItem('ng_gh_user') || '';
-  document.getElementById('ghRepo').value = localStorage.getItem('ng_gh_repo') || '';
-}
-
-function updatePkgCost(size, val) {
-  pkgCosts[size] = val ? Math.max(0, Number(val)) : 0;
-  savePkgCosts(); autoRecalculateAll(); renderTable();
-}
-
-function loadCategories(){
-  const raw = localStorage.getItem('nogaletto_admin_cats');
-  return raw ? JSON.parse(raw) : ['frutos','frutas','semillas'];
-}
-function saveCategories(){ localStorage.setItem('nogaletto_admin_cats', JSON.stringify(categories)); }
-
-function loadState() {
-  const saved = localStorage.getItem('nogaletto_admin_state');
-  if (saved) {
-    try { 
-      const parsed = JSON.parse(saved); 
-      if(parsed && parsed.length > 0) return parsed;
-    } catch(e) {}
+async function saveDirectToGitHub() {
+  if (!GITHUB_TOKEN || GITHUB_TOKEN === 'TU_GITHUB_TOKEN') {
+    alert("❌ Error: Configura tu GitHub Token en las variables de arriba.");
+    return;
   }
-  return DEFAULT_PRODUCTS.map(p => ({
-    id: p.id, name: p.name, emoji: p.emoji || '🌰', img: p.img || '', cat: p.cat || 'frutos', prices: {...p.prices}, visible: true, stock: p.stock || 'ok', description: p.description || '', nutrition: p.nutrition || ''
-  }));
-}
-function saveState() { localStorage.setItem('nogaletto_admin_state', JSON.stringify(state)); }
 
-function sortAZ(){ state.sort((a,b)=>a.name.localeCompare(b.name,'es')); saveState(); renderTable(); }
-function sortZA(){ state.sort((a,b)=>b.name.localeCompare(a.name,'es')); saveState(); renderTable(); }
+  const btn = document.querySelector('button[onclick="saveDirectToGitHub()"]');
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = "⏳ Guardando en GitHub de forma definitiva...";
 
-function addProduct(){
- const name=prompt('Nombre del producto:'); if(!name) return;
- const cat=prompt('Categoría:', 'frutos')||'frutos';
- const lowerCat = cat.trim().toLowerCase();
- if(!categories.includes(lowerCat)) { categories.push(lowerCat); saveCategories(); }
- state.push({ id:Date.now(), name:name.trim(), emoji:'🌰', img:'', cat:lowerCat, prices:{'100g':0,'200g':0,'500g':0,'1kg':0}, visible:true, stock:'ok', description:'', nutrition:'' });
- saveState(); renderTable();
-}
+  try {
+    const jsonState = JSON.stringify(state);
 
+    // ==========================================
+    // 1. ACTUALIZAR TIENDA (index.html)
+    // ==========================================
+    const urlIndex = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/index.html`;
+    const resIndex = await fetch(urlIndex, {
+      headers: { "Authorization": `token ${GITHUB_TOKEN}` }
+    });
+    
+    if (!resIndex.ok) throw new Error("No se pudo obtener el SHA de index.html");
+    const dataIndex = await resIndex.json();
+    const shaIndex = dataIndex.sha;
+    
+    let htmlContent = decodeURIComponent(escape(atob(dataIndex.content)));
+    const regexIndex = /const\s+DEFAULT_PRODUCTS\s*=\s*\[[\s\S]*?\]\s*;/;
+    htmlContent = htmlContent.replace(regexIndex, `const DEFAULT_PRODUCTS = ${jsonState};`);
+    
+    const updatedBase64Index = btoa(unescape(encodeURIComponent(htmlContent)));
+
+    const putIndex = await fetch(urlIndex, {
+      method: "PUT",
+      headers: {
+        "Authorization": `token ${GITHUB_TOKEN}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Actualización automática de catálogo (Tienda) 📦",
+        content: updatedBase64Index,
+        sha: shaIndex
+      })
+    });
+
+    if (!putIndex.ok) throw new Error("Fallo al escribir en index.html");
+
+    // ==========================================
+    // 2. AUTO-ACTUALIZAR PANEL (admin.html) - AQUÍ ESTABA EL ERROR
+    // ==========================================
+    const urlAdmin = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/admin.html`;
+    const resAdmin = await fetch(urlAdmin, {
+      headers: { "Authorization": `token ${GITHUB_TOKEN}` }
+    });
+
+    if (resAdmin.ok) {
+      const dataAdmin = await resAdmin.json();
+      const shaAdmin = dataAdmin.sha;
+      let adminContent = decodeURIComponent(escape(atob(dataAdmin.content)));
+      
+      // Buscamos la lista vieja hardcodeada en el admin y la pisamos con la nueva
+      const regexAdmin = /const\s+DEFAULT_PRODUCTS\s*=\s*\[[\s\S]*?\]\s*;/;
+      adminContent = adminContent.replace(regexAdmin, `const DEFAULT_PRODUCTS = ${jsonState};`);
+      
+      const updatedBase64Admin = btoa(unescape(encodeURIComponent(adminContent)));
+
+      await fetch(urlAdmin, {
+        method: "PUT",
+        headers: {
+          "Authorization": `token ${GITHUB_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: "Auto-actualización de estructura interna (Admin) 🛠️",
+          content: updatedBase64Admin,
+          sha: shaAdmin
+        })
+      });
+    }
+
+    alert("✅ ¡Automatización completa! Tus modificaciones e imágenes de Cloudinary impactaron con éxito tanto en la Tienda como en este Panel de Administración.");
+    localStorage.removeItem('nogaletto_admin_state'); // Limpiamos caché porque ya es oficial en el código
+    location.reload();
+
+  } catch (error) {
+    console.error(error);
+    alert("❌ Error crítico en la automatización: " + error.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
 function deleteProduct(id) {
   const target = state.find(p => p.id === id); if (!target) return;
   if (!confirm(`¿Eliminar "${target.name}"?`)) return;

@@ -349,6 +349,16 @@ function autoRecalculateAll() {
 function sortAZ() { state.sort((a, b) => a.name.localeCompare(b.name)); saveState(); renderTable(); }
 function sortZA() { state.sort((a, b) => b.name.localeCompare(a.name)); saveState(); renderTable(); }
 
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
 function renderTable() {
   const filter = document.getElementById('search').value.toLowerCase();
   const tbody = document.getElementById('tableBody'); tbody.innerHTML = '';

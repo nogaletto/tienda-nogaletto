@@ -247,7 +247,7 @@ let pkgCosts = loadPkgCosts();
 
 async function loadProductsFromRepo() {
   try {
-    const res = await fetch('products.json?t=' + Date.now()); // ?t= evita caché vieja
+    const res = await fetch('/products.json?t=' + Date.now()); // ?t= evita caché vieja
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const remote = await res.json();
 

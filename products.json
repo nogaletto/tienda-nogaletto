@@ -14,9 +14,31 @@
       "id": "semillas",
       "name": "Semillas y legumbres",
       "emoji": "🌱"
+    },
+    {
+      "id": "por-mayor",
+      "name": "Por Mayor",
+      "emoji": "🏷️"
     }
   ],
   "products": [
+    {
+      "id": 26,
+      "name": "Pistachos Naturales llevando 10kg",
+      "emoji": "🥜",
+      "img": "",
+      "cat": "por-mayor",
+      "prices": {
+        "100g": 33700,
+        "200g": 64550,
+        "500g": 147200,
+        "1kg": 280000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
     {
       "id": 20,
       "name": "Almendra Non Pareil (Cal. Exportación)",
@@ -28,8 +50,8 @@
         "500g": 13680,
         "1kg": 25000
       },
-      "visible": false,
-      "stock": "ok",
+      "visible": true,
+      "stock": "out",
       "description": "",
       "nutrition": ""
     },
@@ -45,7 +67,7 @@
         "1kg": 4300
       },
       "visible": true,
-      "stock": "ok",
+      "stock": "low",
       "description": "",
       "nutrition": ""
     },
@@ -88,9 +110,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266078/Semillas_de_girasol_total_con_cuchara_de_madera_zeqogb.png",
       "cat": "semillas",
       "prices": {
-        "200g": 2060,
-        "500g": 4230,
-        "1kg": 7000
+        "200g": 1530,
+        "500g": 3350,
+        "1kg": 6000
       },
       "visible": true,
       "stock": "ok",
@@ -384,8 +406,8 @@
         "500g": 2650,
         "1kg": 4000
       },
-      "visible": false,
-      "stock": "ok",
+      "visible": true,
+      "stock": "out",
       "description": "",
       "nutrition": ""
     },
@@ -417,8 +439,8 @@
         "500g": 7110,
         "1kg": 12500
       },
-      "visible": false,
-      "stock": "ok",
+      "visible": true,
+      "stock": "out",
       "description": "",
       "nutrition": ""
     }

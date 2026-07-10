@@ -1,5 +1,22 @@
 [
   {
+    "id": 26,
+    "name": "Pistachos Naturales llevando 10kg",
+    "emoji": "🥜",
+    "img": "",
+    "cat": "frutos",
+    "prices": {
+      "100g": 33700,
+      "200g": 64550,
+      "500g": 147200,
+      "1kg": 280000
+    },
+    "visible": true,
+    "stock": "ok",
+    "description": "",
+    "nutrition": ""
+  },
+  {
     "id": 20,
     "name": "Almendra Non Pareil (Cal. Exportación)",
     "emoji": "🤍",

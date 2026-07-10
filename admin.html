@@ -211,27 +211,33 @@
 </div>
 
 <script>
-const CAT_NAMES = { frutos:"Frutos secos", frutas:"Frutas deshidratadas", semillas:"Semillas y legumbres" };
+let CAT_NAMES = {}; // se reconstruye dinámicamente desde `categories` (ver rebuildCatNames)
+function rebuildCatNames() {
+  CAT_NAMES = {};
+  categories.forEach(c => { CAT_NAMES[c.id] = c.name; });
+}
+const DEFAULT_CATEGORIES = [
+  { id: "frutos", name: "Frutos secos", emoji: "🌰" },
+  { id: "frutas", name: "Frutas deshidratadas", emoji: "🍇" },
+  { id: "semillas", name: "Semillas y legumbres", emoji: "🌱" }
+];
 
 const DEFAULT_PRODUCTS = [{"id":20,"name":"Almendra Non Pareil (Cal. Exportación)","emoji":"🤍","img":"https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400&q=80&fit=crop","cat":"frutos","prices":{"200g":6200,"500g":13680,"1kg":25000},"visible":false,"stock":"ok","description":"","nutrition":""},{"id":5,"name":"Arveja partida","emoji":"🟢","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261005/Arveja_partida_en_cuenco_hd0zsl.png","cat":"semillas","prices":{"200g":1440,"500g":2810,"1kg":4300},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":6,"name":"Garbanzo","emoji":"🟡","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg","cat":"semillas","prices":{"200g":1650,"500g":3280,"1kg":5200},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":7,"name":"Garbanzo 8mm","emoji":"🟡","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg","cat":"semillas","prices":{"200g":1030,"500g":1860,"1kg":2500},"visible":false,"stock":"ok","description":"","nutrition":""},{"id":8,"name":"Girasol pelado","emoji":"🌻","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266078/Semillas_de_girasol_total_con_cuchara_de_madera_zeqogb.png","cat":"semillas","prices":{"200g":2060,"500g":4230,"1kg":7000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":9,"name":"Lenteja nacional","emoji":"🟠","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261573/Lentejas_Nacionales_cuenco_de_madera_desde_arriba_vyydsg.png","cat":"semillas","prices":{"200g":1440,"500g":2910,"1kg":4500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":10,"name":"Lino marrón","emoji":"🌾","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316600/semillas-de-lino-kan-1200x630_abc_xjivky.jpg","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":11,"name":"Maní tostado pelado natural","emoji":"🥜","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":12,"name":"Maní tostado pelado y salado","emoji":"🥜","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":21,"name":"Nuez Pecan premium (Cal. Exportación)","emoji":"🌰","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316243/mesa-de-trabajo-4-bd321fca8a518e6f3717339361203494-1024-1024_kku9mn.webp","cat":"frutos","prices":{"200g":7030,"500g":15570,"1kg":28600},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":1,"name":"Pasas de uva Jumbo grande","emoji":"🍇","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/Pasa_de_uva_Jumbo_hdq3bz.jpg","cat":"frutas","prices":{"100g":1050,"200g":1600,"500g":3180,"1kg":5000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":2,"name":"Pasas de uva Jumbo mediana","emoji":"🍇","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg","cat":"frutas","prices":{"100g":1050,"200g":1600,"500g":3180,"1kg":5000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":3,"name":"Pasas de uva ULT Flame","emoji":"🍇","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/pasa_de_uva_flame_hje9xb.webp","cat":"frutas","prices":{"100g":990,"200g":1490,"500g":2910,"1kg":4500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":22,"name":"Piñones Araucanos Naturales","emoji":"🌲","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782265032/efd111c3-4eeb-44bc-a7be-8ff159b3cfa1.png","cat":"frutos","prices":{"100g":1710,"200g":2870,"500g":6060,"1kg":10500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":23,"name":"Pistacho Natural c/Cáscara sin sal","emoji":"💚","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp","cat":"frutos","prices":{"200g":8500,"500g":18930,"1kg":35000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":24,"name":"Pistacho Pelado Pulpa natural","emoji":"💚","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg","cat":"frutos","prices":{"200g":14250,"500g":32050,"1kg":60000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":25,"name":"Pistacho Tostado y Salado c/Cáscara","emoji":"💚","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp","cat":"frutos","prices":{"200g":8730,"500g":19450,"1kg":36000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":13,"name":"Poroto alubia","emoji":"⚪","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/poroto-alubia1-665bb8987eb310b3ce15822293977835-1024-1024_pww65b.jpg","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":14,"name":"Poroto colorado dark","emoji":"🔴","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266110/Poroto_colorado_Dark_total_con_cuchara_de_madera_ygerdt.png","cat":"semillas","prices":{"200g":2010,"500g":4120,"1kg":6800},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":15,"name":"Poroto mung","emoji":"🟢","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782267025/Poroto_mung_rl8r06.png","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":16,"name":"Poroto negro","emoji":"⚫","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319892/Poroto_Negro_r2yett.webp","cat":"semillas","prices":{"200g":1440,"500g":2810,"1kg":4300},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":17,"name":"Quinoa blanca real lavada","emoji":"🌿","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266580/Quina_blanca_real_total_con_cuchara_de_madera_xbkpwr.png","cat":"semillas","prices":{"200g":3330,"500g":7110,"1kg":12500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":18,"name":"Sésamo integral","emoji":"🌾","img":"https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":false,"stock":"ok","description":"","nutrition":""},{"id":19,"name":"Sésamo negro Paraguay","emoji":"🖤","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782265982/Sesamo_negro_total_con_cuchara_de_madera_dxgtba.png","cat":"semillas","prices":{"200g":1830,"500g":3700,"1kg":6000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":4,"name":"Tomate seco premium","emoji":"🍅","img":"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop","cat":"frutas","prices":{"100g":1950,"200g":3330,"500g":7110,"1kg":12500},"visible":false,"stock":"ok","description":"","nutrition":""}];
 
 // --- FUNCIONES ESENCIALES DE PERSISTENCIA ---
-// El catálogo real vive en products.json dentro del repo (NO en localStorage).
+// El catálogo real (productos Y categorías) vive en products.json dentro del repo (NO en localStorage).
 // localStorage se usa solo como borrador de seguridad por si cerrás la pestaña sin publicar.
 function saveDraftLocal() {
   try {
-    localStorage.setItem('nogaletto_admin_draft', JSON.stringify({ state, savedAt: Date.now() }));
+    localStorage.setItem('nogaletto_admin_draft', JSON.stringify({ state, categories, savedAt: Date.now() }));
   } catch (e) { /* si falla, no es crítico */ }
 }
 function saveState() {
   saveDraftLocal();
 }
-function loadCategories() {
-  const saved = localStorage.getItem('nogaletto_categories');
-  return saved ? JSON.parse(saved) : ["frutos", "frutas", "semillas"];
-}
 function saveCategories() {
-  localStorage.setItem('nogaletto_categories', JSON.stringify(categories));
+  rebuildCatNames();
+  saveDraftLocal();
 }
 function loadPkgCosts() {
   const saved = localStorage.getItem('nogaletto_pkg_costs');
@@ -242,7 +248,7 @@ function savePkgCosts() {
 }
 
 let state = [];
-let categories = loadCategories();
+let categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
 let pkgCosts = loadPkgCosts();
 
 async function loadProductsFromRepo() {
@@ -250,6 +256,10 @@ async function loadProductsFromRepo() {
     const res = await fetch('/products.json?t=' + Date.now()); // ?t= evita caché vieja
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const remote = await res.json();
+
+    // Compatibilidad: products.json puede ser el formato viejo (array plano) o el nuevo ({categories, products})
+    const remoteProducts = Array.isArray(remote) ? remote : (remote.products || []);
+    const remoteCategories = Array.isArray(remote) ? DEFAULT_CATEGORIES : (remote.categories || DEFAULT_CATEGORIES);
 
     // Si hay un borrador local sin publicar, ofrecer recuperarlo en vez del catálogo publicado
     const draftRaw = localStorage.getItem('nogaletto_admin_draft');
@@ -259,17 +269,23 @@ async function loadProductsFromRepo() {
       const usarBorrador = confirm(`Hay cambios sin publicar de una sesión anterior (${fecha}).\n\n¿Querés recuperarlos? (Cancelar = usar el catálogo publicado)`);
       if (usarBorrador) {
         state = draft.state;
+        categories = draft.categories || DEFAULT_CATEGORIES;
+        rebuildCatNames();
         renderTable();
         showGlobalMessage('📝 Recuperamos tu borrador. No olvides "Guardar Cambios en la Web" para publicarlo.');
         return;
       }
     }
-    state = remote;
+    state = remoteProducts;
+    categories = remoteCategories;
+    rebuildCatNames();
     renderTable();
   } catch (err) {
     console.error('Error cargando products.json:', err);
     showGlobalMessage('❌ No se pudo cargar products.json. Si abriste este archivo con doble clic (file://), el navegador bloquea esta carga por seguridad. Abrí el admin desde https://nogaletto.ar/admin.', true);
     state = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+    categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+    rebuildCatNames();
     renderTable();
   }
 }
@@ -306,7 +322,7 @@ function initGitHubInputs() {
 function addProduct() {
   const newId = state.length > 0 ? Math.max(...state.map(p => p.id)) + 1 : 1;
   const newP = {
-    id: newId, name: "Nuevo Producto", emoji: "🥜", img: "", cat: categories[0] || "frutos",
+    id: newId, name: "Nuevo Producto", emoji: "🥜", img: "", cat: (categories[0] && categories[0].id) || "frutos",
     prices: { "100g": 0, "200g": 0, "500g": 0, "1kg": 0 }, visible: true, stock: "ok", description: "", nutrition: ""
   };
   state.unshift(newP); saveState(); renderTable();
@@ -318,11 +334,23 @@ function deleteProduct(id) {
   state = state.filter(p => p.id !== id); saveState(); renderTable();
 }
 
+function slugify(str) {
+  return str.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // saca tildes
+    .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 function createCategory(){
-  const val = document.getElementById('newCategory').value.trim().toLowerCase();
-  if(!val || categories.includes(val)) return;
-  categories.push(val); saveCategories();
-  document.getElementById('newCategory').value = ''; renderTable();
+  const input = document.getElementById('newCategory');
+  const name = input.value.trim();
+  if (!name) return;
+  const id = slugify(name);
+  if (!id || categories.some(c => c.id === id)) { alert('Esa categoría ya existe o el nombre no es válido.'); return; }
+  categories.push({ id, name, emoji: '🏷️' });
+  saveCategories();
+  input.value = '';
+  renderTable();
+  showGlobalMessage(`✅ Categoría "${name}" creada. No olvides "Guardar Cambios en la Web" para que aparezca en la tienda.`);
 }
 
 function autoCalculateRow(product, basePrice) {
@@ -380,7 +408,7 @@ function renderTable() {
         </div>`;
     }).join('');
 
-    const catOptions = categories.map(c => `<option value="${c}" ${c===p.cat ? 'selected' : ''}>${CAT_NAMES[c] || c.toUpperCase()}</option>`).join('');
+    const catOptions = categories.map(c => `<option value="${c.id}" ${c.id===p.cat ? 'selected' : ''}>${c.name}</option>`).join('');
     const stockClass = p.stock === 'out' ? 'stock-out' : (p.stock === 'low' ? 'stock-low' : 'stock-ok');
     const stockLabel = p.stock === 'out' ? 'Sin stock' : (p.stock === 'low' ? 'Últimas' : 'Disponible');
 
@@ -425,8 +453,7 @@ function resetAll() {
   if (!confirm('¿Descartar tus cambios sin publicar y volver a cargar el catálogo publicado en la web?')) return;
   localStorage.removeItem('nogaletto_admin_draft');
   localStorage.removeItem('nogaletto_pkg_costs');
-  localStorage.removeItem('nogaletto_categories');
-  pkgCosts = loadPkgCosts(); categories = loadCategories(); initPkgInputs();
+  pkgCosts = loadPkgCosts(); initPkgInputs();
   loadProductsFromRepo().then(() => autoRecalculateAll());
 }
 
@@ -434,7 +461,7 @@ function generateCode() {
   // Muestra el products.json tal cual quedaría — útil como respaldo manual (pegarlo en GitHub)
   // si por algún motivo no querés usar el botón de guardado automático.
   document.getElementById('copyBtn').style.display = 'inline-block';
-  const code = JSON.stringify(state, null, 2);
+  const code = JSON.stringify({ categories, products: state }, null, 2);
   const out = document.getElementById('codeOutput'); out.className = "code-output visible"; out.textContent = code;
 }
 
@@ -461,7 +488,7 @@ async function saveDirectToGitHub() {
 
   showGlobalMessage("⏳ Sincronizando catálogo seguro en GitHub...");
   try {
-    const content = JSON.stringify(state, null, 2);
+    const content = JSON.stringify({ categories, products: state }, null, 2);
     const path = 'products.json';
     const url = `https://api.github.com/repos/${user}/${repo}/contents/${path}`;
 
@@ -525,9 +552,9 @@ function generateWhatsAppList() {
   let msg = `🌰 *Catálogo Nogaletto* — ${new Date().toLocaleDateString('es-AR')}\n\n`;
 
   categories.forEach(cat => {
-    const items = visible.filter(p => p.cat === cat && p.stock !== 'out');
+    const items = visible.filter(p => p.cat === cat.id && p.stock !== 'out');
     if (items.length === 0) return;
-    msg += `*${(CAT_NAMES[cat] || cat).toUpperCase()}*\n`;
+    msg += `*${cat.name.toUpperCase()}*\n`;
     items.forEach(p => {
       const sizesText = ["100g", "200g", "500g", "1kg"]
         .filter(s => p.prices[s] !== undefined && p.prices[s] !== null)

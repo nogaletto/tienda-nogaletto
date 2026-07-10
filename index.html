@@ -518,12 +518,7 @@
   <p>Frutos Secos · Semillas · Deshidratados · Neuquén</p>
 </section>
 
-<div class="categories">
-  <button class="cat-btn active" onclick="filterCat('frutos', this)">🌰 Frutos secos</button>
-  <button class="cat-btn" onclick="filterCat('frutas', this)">🍇 Frutas deshidratadas</button>
-  <button class="cat-btn" onclick="filterCat('semillas', this)">🌱 Semillas y legumbres</button>
-  <button class="cat-btn" onclick="filterCat('all', this)">📦 Todos</button>
-</div>
+<div class="categories" id="categoriesBar"></div>
 
 <p class="section-title">Catálogo</p>
 
@@ -583,6 +578,7 @@ const STORE_NAME = "Nogaletto";
 // Precios: { "100g": precio, "200g": precio, "500g": precio, "1kg": precio }
 // null = no disponible en ese tamaño
 let PRODUCTS = [];
+let CATEGORIES = [];
 // Los productos se cargan dinámicamente desde products.json (misma fuente que usa el panel admin)
 // ============================================================
 // ============================================================
@@ -780,15 +776,37 @@ function initLocalCode() {
 async function loadProducts() {
   const grid = document.getElementById('productsGrid');
   try {
-    const res = await fetch('products.json?t=' + Date.now()); // evita cache vieja
+    const res = await fetch('/products.json?t=' + Date.now()); // evita cache vieja
     if (!res.ok) throw new Error('No se pudo leer products.json');
-    PRODUCTS = await res.json();
+    const data = await res.json();
+    // Compatibilidad: acepta tanto el formato viejo (array plano) como el nuevo ({categories, products})
+    PRODUCTS = Array.isArray(data) ? data : (data.products || []);
+    CATEGORIES = Array.isArray(data) ? [] : (data.categories || []);
   } catch (err) {
     console.error('Error cargando catálogo:', err);
     grid.innerHTML = '<div style="padding:40px;text-align:center;color:#C0392B;">No pudimos cargar el catálogo. Recargá la página en unos minutos.</div>';
     return;
   }
+  renderCategoryButtons();
   renderProducts();
+}
+
+function renderCategoryButtons() {
+  const bar = document.getElementById('categoriesBar');
+  bar.innerHTML = '';
+  CATEGORIES.forEach((cat, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (i === 0 ? ' active' : '');
+    btn.textContent = `${cat.emoji || '🏷️'} ${cat.name}`;
+    btn.onclick = () => filterCat(cat.id, btn);
+    bar.appendChild(btn);
+  });
+  const allBtn = document.createElement('button');
+  allBtn.className = 'cat-btn' + (CATEGORIES.length === 0 ? ' active' : '');
+  allBtn.textContent = '📦 Todos';
+  allBtn.onclick = () => filterCat('all', allBtn);
+  bar.appendChild(allBtn);
+  currentCat = CATEGORIES.length > 0 ? CATEGORIES[0].id : 'all';
 }
 
 loadProducts();

@@ -63,15 +63,15 @@
     },
     {
       "id": 26,
-      "name": "Nuevo Producto",
+      "name": "Hibiscus en Flor",
       "emoji": "🥜",
-      "img": "",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1085/image_1024/Flor%20de%20Hibiscus%20-%205kg?unique=81dd19e",
       "cat": "frutos",
       "prices": {
-        "100g": 0,
-        "200g": 0,
-        "500g": 0,
-        "1kg": 0
+        "100g": 2500,
+        "200g": 4750,
+        "500g": 10700,
+        "1kg": 20000
       },
       "visible": true,
       "stock": "ok",

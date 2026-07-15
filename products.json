@@ -38,6 +38,23 @@
   ],
   "products": [
     {
+      "id": 30,
+      "name": "Almendra Carmel calibre 27/30",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
+      "cat": "frutos",
+      "prices": {
+        "100g": 3220,
+        "200g": 6130,
+        "500g": 13850,
+        "1kg": 26000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 29,
       "name": "Oregano",
       "emoji": "🥜",

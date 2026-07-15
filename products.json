@@ -38,40 +38,6 @@
   ],
   "products": [
     {
-      "id": 30,
-      "name": "Almendra Carmel calibre 27/30",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
-      "cat": "frutos",
-      "prices": {
-        "100g": 3220,
-        "200g": 6130,
-        "500g": 13850,
-        "1kg": 26000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 29,
-      "name": "Oregano",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1372/image_1024/Or%C3%A9gano-%205kg?unique=9bb4bbe",
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "100g": 1300,
-        "200g": 2450,
-        "500g": 5450,
-        "1kg": 10000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🥜",
@@ -89,33 +55,16 @@
       "nutrition": ""
     },
     {
-      "id": 27,
-      "name": "Coco rallado High Fat",
+      "id": 30,
+      "name": "Almendra Carmel calibre 27/30",
       "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
-      "cat": "aceites-y-coco",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
+      "cat": "frutos",
       "prices": {
-        "100g": 2260,
-        "200g": 4290,
-        "500g": 9650,
-        "1kg": 18000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "Coco Rallado consulte precio por mayor",
-      "nutrition": ""
-    },
-    {
-      "id": 26,
-      "name": "Hibiscus en Flor (Flor de jamaica)",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1085/image_1024/Flor%20de%20Hibiscus%20-%205kg?unique=81dd19e",
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "100g": 2500,
-        "200g": 4750,
-        "500g": 10700,
-        "1kg": 20000
+        "100g": 3100,
+        "200g": 5900,
+        "500g": 13330,
+        "1kg": 25000
       },
       "visible": true,
       "stock": "ok",
@@ -124,17 +73,34 @@
     },
     {
       "id": 20,
-      "name": "Almendra Non Pareil (Cal. Exportación)",
+      "name": "Almendra Non Pareil Chile",
       "emoji": "🤍",
       "img": "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400&q=80&fit=crop",
       "cat": "frutos",
       "prices": {
-        "200g": 6200,
-        "500g": 13680,
-        "1kg": 25000
+        "200g": 6130,
+        "500g": 13850,
+        "1kg": 26000
       },
       "visible": true,
-      "stock": "out",
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 31,
+      "name": "Almendra Non Pareil Chile",
+      "emoji": "🥜",
+      "img": "",
+      "cat": "frutos",
+      "prices": {
+        "100g": 100,
+        "200g": 160,
+        "500g": 210,
+        "1kg": 25
+      },
+      "visible": true,
+      "stock": "ok",
       "description": "",
       "nutrition": ""
     },
@@ -152,6 +118,23 @@
       "visible": true,
       "stock": "low",
       "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 27,
+      "name": "Coco rallado High Fat",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
+      "cat": "aceites-y-coco",
+      "prices": {
+        "100g": 2260,
+        "200g": 4290,
+        "500g": 9650,
+        "1kg": 18000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "Coco Rallado consulte precio por mayor",
       "nutrition": ""
     },
     {
@@ -196,6 +179,23 @@
         "200g": 1530,
         "500g": 3350,
         "1kg": 6000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 26,
+      "name": "Hibiscus en Flor (Flor de jamaica)",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1085/image_1024/Flor%20de%20Hibiscus%20-%205kg?unique=81dd19e",
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "100g": 2500,
+        "200g": 4750,
+        "500g": 10700,
+        "1kg": 20000
       },
       "visible": true,
       "stock": "ok",
@@ -276,6 +276,23 @@
         "200g": 7030,
         "500g": 15570,
         "1kg": 28600
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 29,
+      "name": "Oregano",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1372/image_1024/Or%C3%A9gano-%205kg?unique=9bb4bbe",
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "100g": 1300,
+        "200g": 2450,
+        "500g": 5450,
+        "1kg": 10000
       },
       "visible": true,
       "stock": "ok",

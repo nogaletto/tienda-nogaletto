@@ -89,22 +89,6 @@
       "nutrition": ""
     },
     {
-      "id": 20,
-      "name": "Almendra Non Pareil Chile",
-      "emoji": "🤍",
-      "img": "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400&q=80&fit=crop",
-      "cat": "frutos",
-      "prices": {
-        "200g": 6130,
-        "500g": 13850,
-        "1kg": 26000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 31,
       "name": "Almendra Non Pareil Chile",
       "emoji": "🥜",

@@ -19,6 +19,11 @@
       "id": "por-mayor",
       "name": "Por Mayor",
       "emoji": "🏷️"
+    },
+    {
+      "id": "especias-y-aceites",
+      "name": "Especias y Aceites",
+      "emoji": "🏷️"
     }
   ],
   "products": [
@@ -27,7 +32,7 @@
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/879/image_1024/Aceite%20de%20Coco%20Cosaco%20360Ml%20-%206%20unidades?unique=60e4e56",
-      "cat": "frutos",
+      "cat": "especias-y-aceites",
       "prices": {
         "100g": 820,
         "200g": 1530,
@@ -44,7 +49,7 @@
       "name": "Coco rallado High Fat",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
-      "cat": "frutos",
+      "cat": "especias-y-aceites",
       "prices": {
         "100g": 2260,
         "200g": 4290,

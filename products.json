@@ -94,10 +94,10 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/745/image_1024/Almendra%20Non%20Pareil%20Chile%2025-27%20-%2010kg?unique=a67f0e6",
       "cat": "frutos",
       "prices": {
-        "100g": 100,
-        "200g": 160,
-        "500g": 210,
-        "1kg": 25
+        "100g": 3220,
+        "200g": 6130,
+        "500g": 13850,
+        "1kg": 26000
       },
       "visible": true,
       "stock": "ok",

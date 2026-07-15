@@ -38,6 +38,23 @@
   ],
   "products": [
     {
+      "id": 32,
+      "name": "Nuez Mariposa Extra Light",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
+      "cat": "frutos",
+      "prices": {
+        "100g": 2380,
+        "200g": 4520,
+        "500g": 10180,
+        "1kg": 19000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🥜",

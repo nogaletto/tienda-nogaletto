@@ -24,15 +24,42 @@
       "id": "especias-y-aceites",
       "name": "Especias y Aceites",
       "emoji": "🏷️"
+    },
+    {
+      "id": "hierbas-y-especies",
+      "name": "Hierbas y especies",
+      "emoji": "🏷️"
+    },
+    {
+      "id": "aceites-y-coco",
+      "name": "Aceites y Coco",
+      "emoji": "🏷️"
     }
   ],
   "products": [
+    {
+      "id": 29,
+      "name": "Oregano",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1372/image_1024/Or%C3%A9gano-%205kg?unique=9bb4bbe",
+      "cat": "frutos",
+      "prices": {
+        "100g": 1300,
+        "200g": 2450,
+        "500g": 5450,
+        "1kg": 10000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
     {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/879/image_1024/Aceite%20de%20Coco%20Cosaco%20360Ml%20-%206%20unidades?unique=60e4e56",
-      "cat": "especias-y-aceites",
+      "cat": "aceites-y-coco",
       "prices": {
         "100g": 820,
         "200g": 1530,
@@ -49,7 +76,7 @@
       "name": "Coco rallado High Fat",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
-      "cat": "especias-y-aceites",
+      "cat": "aceites-y-coco",
       "prices": {
         "100g": 2260,
         "200g": 4290,
@@ -63,10 +90,10 @@
     },
     {
       "id": 26,
-      "name": "Hibiscus en Flor",
+      "name": "Hibiscus en Flor (Flor de jamaica)",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/1085/image_1024/Flor%20de%20Hibiscus%20-%205kg?unique=81dd19e",
-      "cat": "frutos",
+      "cat": "hierbas-y-especies",
       "prices": {
         "100g": 2500,
         "200g": 4750,

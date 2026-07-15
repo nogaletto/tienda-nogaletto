@@ -61,10 +61,10 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/879/image_1024/Aceite%20de%20Coco%20Cosaco%20360Ml%20-%206%20unidades?unique=60e4e56",
       "cat": "aceites-y-coco",
       "prices": {
-        "100g": 820,
-        "200g": 1530,
-        "500g": 3350,
-        "1kg": 6000
+        "100g": 940,
+        "200g": 1760,
+        "500g": 3880,
+        "1kg": 7000
       },
       "visible": true,
       "stock": "ok",

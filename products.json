@@ -31,9 +31,9 @@
       "id": 34,
       "name": "Pimienta Blanca Molida",
       "emoji": "🥜",
-      "img": "",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1326/image_1024/Pimienta%20Molida%20Blanca%20-%2030kg?unique=7bc7987",
       "images": [
-        "",
+        "https://lbs1.odoo.com/web/image/product.product/1326/image_1024/Pimienta%20Molida%20Blanca%20-%2030kg?unique=7bc7987",
         "",
         ""
       ],
@@ -43,7 +43,7 @@
         "200g": 0,
         "500g": 0,
         "1kg": 0,
-        "50gr": 500
+        "50gr": 350
       },
       "visible": true,
       "stock": "ok",

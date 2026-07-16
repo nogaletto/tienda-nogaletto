@@ -371,26 +371,9 @@
         "200g": 0,
         "500g": 0,
         "1kg": 0,
-        "50gr": 350
+        "50gr": 3500
       },
       "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 22,
-      "name": "Piñones Araucanos Naturales",
-      "emoji": "🌲",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782265032/efd111c3-4eeb-44bc-a7be-8ff159b3cfa1.png",
-      "cat": "frutos",
-      "prices": {
-        "100g": 1710,
-        "200g": 2870,
-        "500g": 6060,
-        "1kg": 10500
-      },
-      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""

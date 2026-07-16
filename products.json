@@ -111,10 +111,10 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
       "cat": "frutos",
       "prices": {
-        "100g": 330,
-        "200g": 590,
-        "500g": 1200,
-        "1kg": 1900
+        "100g": 2380,
+        "200g": 4520,
+        "500g": 10180,
+        "1kg": 19000
       },
       "visible": true,
       "stock": "ok",

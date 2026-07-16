@@ -28,6 +28,29 @@
   ],
   "products": [
     {
+      "id": 34,
+      "name": "Pimienta Blanca Molida",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "100g": 0,
+        "200g": 0,
+        "500g": 0,
+        "1kg": 0,
+        "50gr": 500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🥜",

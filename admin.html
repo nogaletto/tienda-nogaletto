@@ -175,8 +175,14 @@
     <button class="btn cloud-save" onclick="saveDirectToGitHub()">🚀 Guardar Cambios en la Web</button>
     <button class="btn" onclick="generateCode()">📋 Ver código generado</button>
     <button class="btn whatsapp" onclick="generateWhatsAppList()">📱 Generar Lista WhatsApp</button>
-    <button class="btn secondary" onclick="sortAZ()">🔤 Ordenar A-Z</button>
-    <button class="btn secondary" onclick="sortZA()">🔤 Ordenar Z-A</button>
+    <select id="sortSelect" class="btn secondary" onchange="sortProducts(this.value)" style="cursor:pointer;">
+      <option value="">🔤 Ordenar...</option>
+      <option value="name-asc">Nombre (A-Z)</option>
+      <option value="name-desc">Nombre (Z-A)</option>
+      <option value="price-asc">Precio 1kg (menor a mayor)</option>
+      <option value="price-desc">Precio 1kg (mayor a menor)</option>
+      <option value="cat">Categoría</option>
+    </select>
     <button class="btn secondary" onclick="addProduct()">➕ Agregar producto</button>
     <button class="btn secondary" onclick="resetAll()">↺ Restaurar original</button>
 
@@ -185,6 +191,8 @@
       <button class="btn secondary" onclick="createCategory()">➕ Crear categoría</button>
     </div>
   </div>
+
+  <div class="category-manager" id="categoryManager" style="display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;"></div>
 
   <div class="copy-msg" id="globalMsg"></div>
 
@@ -322,7 +330,7 @@ function initGitHubInputs() {
 function addProduct() {
   const newId = state.length > 0 ? Math.max(...state.map(p => p.id)) + 1 : 1;
   const newP = {
-    id: newId, name: "Nuevo Producto", emoji: "🥜", img: "", cat: (categories[0] && categories[0].id) || "frutos",
+    id: newId, name: "Nuevo Producto", emoji: "🥜", img: "", images: ["", "", ""], cat: (categories[0] && categories[0].id) || "frutos",
     prices: { "100g": 0, "200g": 0, "500g": 0, "1kg": 0 }, visible: true, stock: "ok", description: "", nutrition: ""
   };
   state.unshift(newP); saveState(); renderTable();
@@ -338,6 +346,34 @@ function slugify(str) {
   return str.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // saca tildes
     .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function renderCategoryManager() {
+  const box = document.getElementById('categoryManager');
+  if (!box) return;
+  box.innerHTML = categories.map(c => `
+    <span style="display:inline-flex; align-items:center; gap:6px; background:#eee; border-radius:16px; padding:4px 10px; font-size:13px;">
+      ${c.emoji || '🏷️'} ${c.name}
+      <button onclick="deleteCategory('${c.id}')" style="border:none; background:none; cursor:pointer; color:#C0392B; font-weight:bold;" title="Eliminar categoría">✕</button>
+    </span>
+  `).join('');
+}
+
+function deleteCategory(id) {
+  const cat = categories.find(c => c.id === id);
+  if (!cat) return;
+  if (categories.length <= 1) { alert('No podés eliminar la última categoría que queda.'); return; }
+  const productsInCat = state.filter(p => p.cat === id);
+  let msg = `¿Eliminar la categoría "${cat.name}"?`;
+  if (productsInCat.length > 0) msg += `\n\n${productsInCat.length} producto(s) usan esta categoría y se moverán a la primera categoría disponible.`;
+  if (!confirm(msg)) return;
+  categories = categories.filter(c => c.id !== id);
+  const fallbackCat = categories[0].id;
+  productsInCat.forEach(p => p.cat = fallbackCat);
+  rebuildCatNames();
+  saveCategories();
+  renderTable();
+  showGlobalMessage(`✅ Categoría "${cat.name}" eliminada. No olvides "Guardar Cambios en la Web".`);
 }
 
 function createCategory(){
@@ -374,8 +410,18 @@ function autoRecalculateAll() {
   state.forEach(p => { if (p.prices["1kg"] && p.prices["1kg"] > 0) { autoCalculateRow(p, p.prices["1kg"]); } });
 }
 
-function sortAZ() { state.sort((a, b) => a.name.localeCompare(b.name)); saveState(); renderTable(); }
-function sortZA() { state.sort((a, b) => b.name.localeCompare(a.name)); saveState(); renderTable(); }
+function sortProducts(criterion) {
+  if (!criterion) return;
+  if (criterion === 'name-asc') state.sort((a, b) => a.name.localeCompare(b.name));
+  else if (criterion === 'name-desc') state.sort((a, b) => b.name.localeCompare(a.name));
+  else if (criterion === 'price-asc') state.sort((a, b) => (a.prices['1kg'] || 0) - (b.prices['1kg'] || 0));
+  else if (criterion === 'price-desc') state.sort((a, b) => (b.prices['1kg'] || 0) - (a.prices['1kg'] || 0));
+  else if (criterion === 'cat') state.sort((a, b) => a.cat.localeCompare(b.cat));
+  saveState();
+  renderTable();
+  document.getElementById('sortSelect').value = '';
+  showGlobalMessage('✅ Orden actualizado. Recordá tocar "Guardar Cambios en la Web" para que se vea también en la tienda.');
+}
 
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
@@ -388,6 +434,7 @@ function escapeHtml(str) {
 }
 
 function renderTable() {
+  renderCategoryManager();
   const filter = document.getElementById('search').value.toLowerCase();
   const tbody = document.getElementById('tableBody'); tbody.innerHTML = '';
   const ALL_SIZES = ["100g", "200g", "500g", "1kg"];
@@ -408,6 +455,19 @@ function renderTable() {
         </div>`;
     }).join('');
 
+    // Presentaciones personalizadas: para productos que se venden por unidad, bidón, kilaje especial, etc.
+    const customKeys = Object.keys(p.prices).filter(k => !ALL_SIZES.includes(k));
+    const customHtml = customKeys.map(key => {
+      const safeKey = key.replace(/'/g, "\\'");
+      return `
+        <div class="price-group custom-price" style="display:flex; align-items:center; gap:3px;">
+          <input class="small-input" type="text" value="${escapeHtml(key)}" style="width:80px;" onchange="renameCustomPrice(${p.id}, '${safeKey}', this.value)">
+          <input class="price-input" type="number" value="${p.prices[key] || ''}" onchange="updatePriceField(${p.id}, '${safeKey}', this.value)">
+          <button onclick="removeCustomPrice(${p.id}, '${safeKey}')" style="border:none;background:none;color:#C0392B;cursor:pointer;font-weight:bold;" title="Quitar">✕</button>
+        </div>`;
+    }).join('');
+    const addCustomBtn = `<button class="btn secondary" style="padding:2px 8px;font-size:11px;" onclick="addCustomPrice(${p.id})">+ presentación</button>`;
+
     const catOptions = categories.map(c => `<option value="${c.id}" ${c.id===p.cat ? 'selected' : ''}>${c.name}</option>`).join('');
     const stockClass = p.stock === 'out' ? 'stock-out' : (p.stock === 'low' ? 'stock-low' : 'stock-ok');
     const stockLabel = p.stock === 'out' ? 'Sin stock' : (p.stock === 'low' ? 'Últimas' : 'Disponible');
@@ -422,8 +482,14 @@ function renderTable() {
       <td><select class="small-input" onchange="updateCategory(${p.id}, this.value)">${catOptions}</select></td>
       <td><label class="toggle"><input type="checkbox" ${p.visible ? 'checked' : ''} onchange="toggleVisible(${p.id})"><span class="slider"></span></label></td>
       <td><span class="stock-badge ${stockClass}" onclick="cycleStock(${p.id})">${stockLabel}</span></td>
-      <td><div class="prices-cell">${pricesHtml}</div></td>
-      <td><input class="small-input" type="text" value="${escapeHtml(p.img || '')}" onchange="updateImg(${p.id}, this.value)"></td>
+      <td><div class="prices-cell">${pricesHtml}${customHtml}${addCustomBtn}</div></td>
+      <td>
+        <div style="display:flex; flex-direction:column; gap:3px; min-width:140px;">
+          <input class="small-input" type="text" placeholder="Portada" value="${escapeHtml((p.images && p.images[0]) || p.img || '')}" onchange="updateImageSlot(${p.id}, 0, this.value)">
+          <input class="small-input" type="text" placeholder="En contexto" value="${escapeHtml((p.images && p.images[1]) || '')}" onchange="updateImageSlot(${p.id}, 1, this.value)">
+          <input class="small-input" type="text" placeholder="Caja / detalle" value="${escapeHtml((p.images && p.images[2]) || '')}" onchange="updateImageSlot(${p.id}, 2, this.value)">
+        </div>
+      </td>
       <td><textarea class="small-input" rows="2" onchange="updateDescription(${p.id}, this.value)">${escapeHtml(p.description || '')}</textarea></td>
       <td><textarea class="small-input" rows="2" onchange="updateNutrition(${p.id}, this.value)">${escapeHtml(p.nutrition || '')}</textarea></td>
       <td><button class="btn danger" onclick="deleteProduct(${p.id})">❌</button></td>
@@ -437,9 +503,46 @@ function updateEmoji(id, val) { const p = state.find(p => p.id === id); if (p) {
 function toggleVisible(id) { const p = state.find(p => p.id === id); if (p) { p.visible = !p.visible; saveState(); renderTable(); } }
 function cycleStock(id) { const p = state.find(p => p.id === id); if (p) { const seq = ['ok','low','out']; p.stock = seq[(seq.indexOf(p.stock || 'ok') + 1) % seq.length]; saveState(); renderTable(); } }
 function updateCategory(id, val) { const p = state.find(p => p.id === id); if (p) { p.cat = val; saveState(); renderTable(); } }
-function updateImg(id, val) { const p = state.find(p => p.id === id); if (p) { p.img = val.trim(); saveState(); } }
+function updateImageSlot(id, index, val) {
+  const p = state.find(p => p.id === id); if (!p) return;
+  if (!p.images) p.images = ['', '', ''];
+  p.images[index] = val.trim();
+  p.img = p.images[0]; // se mantiene por compatibilidad hacia atrás
+  saveState();
+}
 function updateDescription(id, val) { const p = state.find(p => p.id === id); if (p) { p.description = val.trim(); saveState(); } }
 function updateNutrition(id, val) { const p = state.find(p => p.id === id); if (p) { p.nutrition = val.trim(); saveState(); } }
+
+function addCustomPrice(id) {
+  const p = state.find(p => p.id === id); if (!p) return;
+  let label = prompt('Nombre de la presentación (ej: "1 unidad", "22.26 kg", "Bidón 5L"):');
+  if (!label) return;
+  label = label.trim();
+  if (!label || p.prices.hasOwnProperty(label)) { alert('El nombre está vacío o ya existe para este producto.'); return; }
+  const priceStr = prompt(`Precio para "${label}":`, '0');
+  p.prices[label] = priceStr ? Number(priceStr) : 0;
+  saveState();
+  renderTable();
+}
+
+function removeCustomPrice(id, key) {
+  const p = state.find(p => p.id === id); if (!p) return;
+  if (!confirm(`¿Quitar la presentación "${key}"?`)) return;
+  delete p.prices[key];
+  saveState();
+  renderTable();
+}
+
+function renameCustomPrice(id, oldKey, newKey) {
+  const p = state.find(p => p.id === id); if (!p) return;
+  newKey = newKey.trim();
+  if (!newKey || newKey === oldKey) { renderTable(); return; }
+  if (p.prices.hasOwnProperty(newKey)) { alert('Ya existe una presentación con ese nombre en este producto.'); renderTable(); return; }
+  p.prices[newKey] = p.prices[oldKey];
+  delete p.prices[oldKey];
+  saveState();
+  renderTable();
+}
 
 function updatePriceField(id, size, value) {
   const p = state.find(p => p.id === id); if (!p) return;

@@ -179,6 +179,49 @@
     font-size: 3rem;
     z-index: 1;
   }
+  .img-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-nav-prev { left: 6px; }
+  .img-nav-next { right: 6px; }
+  .img-nav-btn:hover { background: rgba(0,0,0,0.65); }
+  .img-dots {
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  .img-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+  .img-dot.active {
+    background: #fff;
+    border-color: rgba(0,0,0,0.4);
+  }
   .card-body { padding: 12px; }
   .card-name {
     font-family: 'Playfair Display', serif;
@@ -518,9 +561,35 @@
   <p>Frutos Secos · Semillas · Deshidratados · Neuquén</p>
 </section>
 
+<section class="how-to-buy" style="max-width:900px; margin:0 auto 24px; padding:16px; text-align:center;">
+  <p class="section-title" style="margin-bottom:14px;">¿Cómo se hace el pedido en esta web?</p>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:18px;">
+    <div style="flex:1; min-width:150px; max-width:220px;">
+      <div style="font-size:32px;">🛒</div>
+      <strong>1. Elegí tus productos</strong>
+      <p style="font-size:13px; opacity:0.85;">Seleccioná la presentación y la cantidad de cada producto que quieras.</p>
+    </div>
+    <div style="flex:1; min-width:150px; max-width:220px;">
+      <div style="font-size:32px;">📝</div>
+      <strong>2. Revisá tu carrito</strong>
+      <p style="font-size:13px; opacity:0.85;">Completá tu nombre y el punto de retiro más cercano.</p>
+    </div>
+    <div style="flex:1; min-width:150px; max-width:220px;">
+      <div style="font-size:32px;">📲</div>
+      <strong>3. Enviá por WhatsApp</strong>
+      <p style="font-size:13px; opacity:0.85;">Tu pedido se arma solo y te lleva directo a WhatsApp para confirmarlo.</p>
+    </div>
+  </div>
+</section>
+
 <div class="categories" id="categoriesBar"></div>
 
 <p class="section-title">Catálogo</p>
+
+<div style="max-width:500px; margin:0 auto 18px; padding:0 16px;">
+  <input id="storeSearch" type="text" placeholder="🔍 Buscar producto..." oninput="renderProducts()"
+    style="width:100%; padding:12px 16px; border-radius:24px; border:1px solid #ddd; font-size:15px; box-sizing:border-box;">
+</div>
 
 <div class="products" id="productsGrid"></div>
 
@@ -588,32 +657,58 @@ const SIZES = ["100g","200g","500g","1kg"];
 let selectedSize = {};
 // Carrito: { "productId_200g": { product, size, qty } }
 let cart = {};
-let currentCat = 'frutos';
+let currentCat = 'all';
+let currentImgIndex = {}; // { productId: 0 } — foto actualmente mostrada en el carrusel de cada card
+
+function getProductImages(p) {
+  const imgs = (p.images || []).filter(Boolean);
+  if (imgs.length > 0) return imgs;
+  return p.img ? [p.img] : [];
+}
 
 function getDefaultSize(p) {
-  return SIZES.find(s => p.prices[s] !== null && p.prices[s] !== undefined) || "200g";
+  const standard = SIZES.find(s => p.prices[s] !== null && p.prices[s] !== undefined);
+  if (standard) return standard;
+  const anyKey = Object.keys(p.prices)[0]; // presentación personalizada (ej: "1 unidad", "22.26 kg")
+  return anyKey || "1kg";
 }
 
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   grid.innerHTML = '';
-  PRODUCTS.filter(p => p.visible !== false).forEach(p => {
+  const searchTerm = (document.getElementById('storeSearch')?.value || '').trim().toLowerCase();
+  PRODUCTS.filter(p => p.visible !== false).filter(p => {
+    if (!searchTerm) return true;
+    return p.name.toLowerCase().includes(searchTerm) || (p.description || '').toLowerCase().includes(searchTerm);
+  }).forEach(p => {
     const size = selectedSize[p.id] || getDefaultSize(p);
     const price = p.prices[size];
     const cartKey = `${p.id}_${size}`;
     const qty = cart[cartKey]?.qty || 0;
-    const availableSizes = SIZES.filter(s => p.prices[s] !== null && p.prices[s] !== undefined);
+    const standardSizes = SIZES.filter(s => p.prices[s] !== null && p.prices[s] !== undefined);
+    const customSizes = Object.keys(p.prices).filter(k => !SIZES.includes(k) && p.prices[k] !== null && p.prices[k] !== undefined);
+    const availableSizes = [...standardSizes, ...customSizes];
+
+    const images = getProductImages(p);
+    const imgIdx = currentImgIndex[p.id] || 0;
+    const safeIdx = imgIdx < images.length ? imgIdx : 0;
 
     const div = document.createElement('div');
     div.className = 'card' + (currentCat !== 'all' && p.cat !== currentCat ? ' hidden' : '');
     div.innerHTML = `
       <div class="card-img-wrap">
-        <div class="card-img-fallback" id="fallback-${p.id}">${p.emoji}</div>
-        ${p.img
-          ? `<img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy"
-              onload="document.getElementById('fallback-${p.id}').style.display='none'"
-              onerror="this.style.display='none'" />`
-          : ''}
+        <div class="card-img-fallback" id="fallback-${p.id}" style="${images.length ? 'display:none;' : ''}">${p.emoji}</div>
+        ${images.length ? `
+          <img class="card-img" id="img-${p.id}" src="${images[safeIdx]}" alt="${p.name}" loading="lazy"
+              onerror="this.style.display='none'; document.getElementById('fallback-${p.id}').style.display='flex';" />
+        ` : ''}
+        ${images.length > 1 ? `
+          <button class="img-nav-btn img-nav-prev" onclick="prevImg(event, ${p.id}, ${images.length})" aria-label="Foto anterior">‹</button>
+          <button class="img-nav-btn img-nav-next" onclick="nextImg(event, ${p.id}, ${images.length})" aria-label="Foto siguiente">›</button>
+          <div class="img-dots">
+            ${images.map((_, i) => `<span class="img-dot ${i === safeIdx ? 'active' : ''}" onclick="goToImg(event, ${p.id}, ${i})"></span>`).join('')}
+          </div>
+        ` : ''}
       </div>
       <div class="card-body">
         <div class="card-name">${p.name}</div>
@@ -638,6 +733,24 @@ function renderProducts() {
       </div>`;
     grid.appendChild(div);
   });
+}
+
+function prevImg(event, id, total) {
+  event.stopPropagation();
+  const cur = currentImgIndex[id] || 0;
+  currentImgIndex[id] = (cur - 1 + total) % total;
+  renderProducts();
+}
+function nextImg(event, id, total) {
+  event.stopPropagation();
+  const cur = currentImgIndex[id] || 0;
+  currentImgIndex[id] = (cur + 1) % total;
+  renderProducts();
+}
+function goToImg(event, id, index) {
+  event.stopPropagation();
+  currentImgIndex[id] = index;
+  renderProducts();
 }
 
 function selectSize(id, size) {
@@ -794,23 +907,29 @@ async function loadProducts() {
 function renderCategoryButtons() {
   const bar = document.getElementById('categoriesBar');
   bar.innerHTML = '';
-  CATEGORIES.forEach((cat, i) => {
+  const allBtn = document.createElement('button');
+  allBtn.className = 'cat-btn active';
+  allBtn.textContent = '📦 Todos';
+  allBtn.onclick = () => filterCat('all', allBtn);
+  bar.appendChild(allBtn);
+  CATEGORIES.forEach((cat) => {
     const btn = document.createElement('button');
-    btn.className = 'cat-btn' + (i === 0 ? ' active' : '');
+    btn.className = 'cat-btn';
     btn.textContent = `${cat.emoji || '🏷️'} ${cat.name}`;
     btn.onclick = () => filterCat(cat.id, btn);
     bar.appendChild(btn);
   });
-  const allBtn = document.createElement('button');
-  allBtn.className = 'cat-btn' + (CATEGORIES.length === 0 ? ' active' : '');
-  allBtn.textContent = '📦 Todos';
-  allBtn.onclick = () => filterCat('all', allBtn);
-  bar.appendChild(allBtn);
-  currentCat = CATEGORIES.length > 0 ? CATEGORIES[0].id : 'all';
+  currentCat = 'all';
 }
 
 loadProducts();
 initLocalCode();
 </script>
+<a href="https://wa.me/5492994159772?text=Hola%20Nogaletto!%20Tengo%20una%20consulta"
+   target="_blank" rel="noopener"
+   style="position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; width:56px; height:56px;
+          border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:999; text-decoration:none;"
+   title="Escribinos por WhatsApp">💬</a>
 </body>
 </html>

@@ -38,7 +38,7 @@
       },
       "visible": true,
       "stock": "ok",
-      "description": "El precio corresponde a 1 frasco de 360ml $6000",
+      "description": "",
       "nutrition": ""
     },
     {
@@ -517,7 +517,7 @@
         "500g": 2650,
         "1kg": 4000
       },
-      "visible": true,
+      "visible": false,
       "stock": "out",
       "description": "",
       "nutrition": ""

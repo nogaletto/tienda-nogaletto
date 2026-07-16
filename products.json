@@ -38,23 +38,6 @@
   ],
   "products": [
     {
-      "id": 33,
-      "name": "Castaña de Caju Brasil",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
-      "cat": "frutos",
-      "prices": {
-        "100g": 330,
-        "200g": 590,
-        "500g": 1200,
-        "1kg": 1900
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🥜",
@@ -118,6 +101,23 @@
       },
       "visible": true,
       "stock": "low",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 33,
+      "name": "Castaña de Caju Brasil",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
+      "cat": "frutos",
+      "prices": {
+        "100g": 330,
+        "200g": 590,
+        "500g": 1200,
+        "1kg": 1900
+      },
+      "visible": true,
+      "stock": "ok",
       "description": "",
       "nutrition": ""
     },

@@ -559,7 +559,7 @@
       "id": 4,
       "name": "Tomate seco premium",
       "emoji": "🍅",
-      "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2231/image_1024/Tomate%20Mendoza%201ra%20-%205kg?unique=d42b2f2",
       "cat": "frutas",
       "prices": {
         "100g": 1950,
@@ -568,9 +568,14 @@
         "1kg": 12500
       },
       "visible": true,
-      "stock": "out",
+      "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2231/image_1024/Tomate%20Mendoza%201ra%20-%205kg?unique=d42b2f2",
+        "",
+        ""
+      ]
     }
   ]
 }

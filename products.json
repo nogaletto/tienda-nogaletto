@@ -142,22 +142,6 @@
       "nutrition": ""
     },
     {
-      "id": 7,
-      "name": "Garbanzo 8mm",
-      "emoji": "🟡",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg",
-      "cat": "semillas",
-      "prices": {
-        "200g": 1030,
-        "500g": 1860,
-        "1kg": 2500
-      },
-      "visible": false,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 8,
       "name": "Girasol pelado",
       "emoji": "🌻",

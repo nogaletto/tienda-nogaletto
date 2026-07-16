@@ -38,16 +38,16 @@
   ],
   "products": [
     {
-      "id": 32,
-      "name": "Nuez Mariposa Extra Light",
+      "id": 33,
+      "name": "Castaña de Caju Brasil",
       "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
       "cat": "frutos",
       "prices": {
-        "100g": 2380,
-        "200g": 4520,
-        "500g": 10180,
-        "1kg": 19000
+        "100g": 330,
+        "200g": 590,
+        "500g": 1200,
+        "1kg": 1900
       },
       "visible": true,
       "stock": "ok",
@@ -268,6 +268,23 @@
       "nutrition": ""
     },
     {
+      "id": 32,
+      "name": "Nuez Mariposa Extra Light",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
+      "cat": "frutos",
+      "prices": {
+        "100g": 2380,
+        "200g": 4520,
+        "500g": 10180,
+        "1kg": 19000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 21,
       "name": "Nuez Pecan premium (Cal. Exportación)",
       "emoji": "🌰",
@@ -363,7 +380,7 @@
         "500g": 6060,
         "1kg": 10500
       },
-      "visible": true,
+      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""

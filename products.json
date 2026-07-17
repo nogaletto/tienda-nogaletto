@@ -1,42 +1,544 @@
 {
   "categories": [
-    { "id": "frutos", "name": "Frutos secos", "emoji": "🌰" },
-    { "id": "frutas", "name": "Frutas deshidratadas", "emoji": "🍇" },
-    { "id": "semillas", "name": "Semillas y legumbres", "emoji": "🌱" },
-    { "id": "hierbas-y-especies", "name": "Hierbas y especies", "emoji": "🏷️" },
-    { "id": "aceites-y-coco", "name": "Aceites y Coco", "emoji": "🏷️" }
+    {
+      "id": "frutos",
+      "name": "Frutos secos",
+      "emoji": "🌰"
+    },
+    {
+      "id": "frutas",
+      "name": "Frutas deshidratadas",
+      "emoji": "🍇"
+    },
+    {
+      "id": "semillas",
+      "name": "Semillas y legumbres",
+      "emoji": "🌱"
+    },
+    {
+      "id": "hierbas-y-especies",
+      "name": "Hierbas y especies",
+      "emoji": "🏷️"
+    },
+    {
+      "id": "aceites-y-coco",
+      "name": "Aceites y Coco",
+      "emoji": "🏷️"
+    }
   ],
   "products": [
-    { "id": 28, "name": "Aceite de coco frasco 360cc", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/879/image_1024/Aceite%20de%20Coco%20Cosaco%20360Ml%20-%206%20unidades?unique=60e4e56", "cat": "aceites-y-coco", "prices": {"1 frasco 360cc": 7000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 30, "name": "Almendra Carmel calibre 27/30", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1", "cat": "frutos", "prices": {"100g":3100,"200g":5900,"500g":13330,"1kg":25000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 31, "name": "Almendra Non Pareil Chile", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/745/image_1024/Almendra%20Non%20Pareil%20Chile%2025-27%20-%2010kg?unique=a67f0e6", "cat": "frutos", "prices": {"100g":3220,"200g":6130,"500g":13850,"1kg":26000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 5, "name": "Arveja partida", "emoji": "🟢", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261005/Arveja_partida_en_cuenco_hd0zsl.png", "cat": "semillas", "prices": {"200g":1440,"500g":2810,"1kg":4300}, "visible": true, "stock": "low", "description": "", "nutrition": "" },
-    { "id": 33, "name": "Castaña de Caju Brasil", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2", "cat": "frutos", "prices": {"100g":2380,"200g":4520,"500g":10180,"1kg":19000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 27, "name": "Coco rallado High Fat", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7", "cat": "aceites-y-coco", "prices": {"100g":2260,"200g":4290,"500g":9650,"1kg":18000}, "visible": true, "stock": "ok", "description": "Coco Rallado consulte precio por mayor", "nutrition": "" },
-    { "id": 6, "name": "Garbanzo", "emoji": "🟡", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg", "cat": "semillas", "prices": {"200g":1650,"500g":3280,"1kg":5200}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 8, "name": "Girasol pelado", "emoji": "🌻", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266078/Semillas_de_girasol_total_con_cuchara_de_madera_zeqogb.png", "cat": "semillas", "prices": {"200g":1530,"500g":3350,"1kg":6000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 26, "name": "Hibiscus en Flor (Flor de jamaica)", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/1085/image_1024/Flor%20de%20Hibiscus%20-%205kg?unique=81dd19e", "cat": "hierbas-y-especies", "prices": {"100g":2500,"200g":4750,"500g":10700,"1kg":20000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 9, "name": "Lenteja nacional", "emoji": "🟠", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261573/Lentejas_Nacionales_cuenco_de_madera_desde_arriba_vyydsg.png", "cat": "semillas", "prices": {"200g":1440,"500g":2910,"1kg":4500}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 10, "name": "Lino marrón", "emoji": "🌾", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316600/semillas-de-lino-kan-1200x630_abc_xjivky.jpg", "cat": "semillas", "prices": {"200g":1370,"500g":2650,"1kg":4000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 11, "name": "Maní tostado pelado natural", "emoji": "🥜", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png", "cat": "semillas", "prices": {"200g":1370,"500g":2650,"1kg":4000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 12, "name": "Maní tostado pelado y salado", "emoji": "🥜", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png", "cat": "semillas", "prices": {"200g":1370,"500g":2650,"1kg":4000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 32, "name": "Nuez Mariposa Extra Light", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a", "cat": "frutos", "prices": {"100g":2380,"200g":4520,"500g":10180,"1kg":19000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 21, "name": "Nuez Pecan premium (Cal. Exportación)", "emoji": "🌰", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316243/mesa-de-trabajo-4-bd321fca8a518e6f3717339361203494-1024-1024_kku9mn.webp", "cat": "frutos", "prices": {"200g":7030,"500g":15570,"1kg":28600}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 29, "name": "Oregano", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/1372/image_1024/Or%C3%A9gano-%205kg?unique=9bb4bbe", "cat": "hierbas-y-especies", "prices": {"100g":1300,"200g":2450,"500g":5450,"1kg":10000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 1, "name": "Pasas de uva Jumbo grande", "emoji": "🍇", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/Pasa_de_uva_Jumbo_hdq3bz.jpg", "cat": "frutas", "prices": {"100g":1050,"200g":1600,"500g":3180,"1kg":5000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 2, "name": "Pasas de uva Jumbo mediana", "emoji": "🍇", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg", "cat": "frutas", "prices": {"100g":1050,"200g":1600,"500g":3180,"1kg":5000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 3, "name": "Pasas de uva ULT Flame", "emoji": "🍇", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/pasa_de_uva_flame_hje9xb.webp", "cat": "frutas", "prices": {"100g":990,"200g":1490,"500g":2910,"1kg":4500}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 34, "name": "Pimienta Blanca Molida", "emoji": "🥜", "img": "https://lbs1.odoo.com/web/image/product.product/1326/image_1024/Pimienta%20Molida%20Blanca%20-%2030kg?unique=7bc7987", "images": ["https://lbs1.odoo.com/web/image/product.product/1326/image_1024/Pimienta%20Molida%20Blanca%20-%2030kg?unique=7bc7987", "", ""], "cat": "hierbas-y-especies", "prices": {"50gr": 3500}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 23, "name": "Pistacho Natural c/Cáscara sin sal", "emoji": "💚", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp", "cat": "frutos", "prices": {"200g":8500,"500g":18930,"1kg":35000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 24, "name": "Pistacho Pelado Pulpa natural", "emoji": "💚", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg", "cat": "frutos", "prices": {"200g":14250,"500g":32050,"1kg":60000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 25, "name": "Pistacho Tostado y Salado c/Cáscara", "emoji": "💚", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp", "cat": "frutos", "prices": {"200g":8730,"500g":19450,"1kg":36000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 13, "name": "Poroto alubia", "emoji": "⚪", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/poroto-alubia1-665bb8987eb310b3ce15822293977835-1024-1024_pww65b.jpg", "cat": "semillas", "prices": {"200g":1370,"500g":2650,"1kg":4000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 14, "name": "Poroto colorado dark", "emoji": "🔴", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266110/Poroto_colorado_Dark_total_con_cuchara_de_madera_ygerdt.png", "cat": "semillas", "prices": {"200g":2010,"500g":4120,"1kg":6800}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 15, "name": "Poroto mung", "emoji": "🟢", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782267025/Poroto_mung_rl8r06.png", "cat": "semillas", "prices": {"200g":1370,"500g":2650,"1kg":4000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 16, "name": "Poroto negro", "emoji": "⚫", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319892/Poroto_Negro_r2yett.webp", "cat": "semillas", "prices": {"200g":1440,"500g":2810,"1kg":4300}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 17, "name": "Quinoa blanca real lavada", "emoji": "🌿", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266580/Quina_blanca_real_total_con_cuchara_de_madera_xbkpwr.png", "cat": "semillas", "prices": {"200g":3330,"500g":7110,"1kg":12500}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 18, "name": "Sésamo integral", "emoji": "🌾", "img": "https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop", "cat": "semillas", "prices": {"200g":1370,"500g":2650,"1kg":4000}, "visible": false, "stock": "out", "description": "", "nutrition": "" },
-    { "id": 19, "name": "Sésamo negro Paraguay", "emoji": "🖤", "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782265982/Sesamo_negro_total_con_cuchara_de_madera_dxgtba.png", "cat": "semillas", "prices": {"200g":1830,"500g":3700,"1kg":6000}, "visible": true, "stock": "ok", "description": "", "nutrition": "" },
-    { "id": 4, "name": "Tomate seco premium", "emoji": "🍅", "img": "https://lbs1.odoo.com/web/image/product.product/2231/image_1024/Tomate%20Mendoza%201ra%20-%205kg?unique=d42b2f2", "images": ["https://lbs1.odoo.com/web/image/product.product/2231/image_1024/Tomate%20Mendoza%201ra%20-%205kg?unique=d42b2f2", "", ""], "cat": "frutas", "prices": {"100g":1950,"200g":3330,"500g":7110,"1kg":12500}, "visible": true, "stock": "ok", "description": "", "nutrition": "" }
+    {
+      "id": 28,
+      "name": "Aceite de coco frasco 360cc",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/879/image_1024/Aceite%20de%20Coco%20Cosaco%20360Ml%20-%206%20unidades?unique=60e4e56",
+      "cat": "aceites-y-coco",
+      "prices": {
+        "1 frasco 360cc": 7000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 30,
+      "name": "Almendra Carmel calibre 27/30",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
+      "cat": "frutos",
+      "prices": {
+        "100g": 3100,
+        "200g": 5900,
+        "500g": 13330,
+        "1kg": 25000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 31,
+      "name": "Almendra Non Pareil Chile",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/745/image_1024/Almendra%20Non%20Pareil%20Chile%2025-27%20-%2010kg?unique=a67f0e6",
+      "cat": "frutos",
+      "prices": {
+        "100g": 3220,
+        "200g": 6130,
+        "500g": 13850,
+        "1kg": 26000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 5,
+      "name": "Arveja partida",
+      "emoji": "🟢",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261005/Arveja_partida_en_cuenco_hd0zsl.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1440,
+        "500g": 2810,
+        "1kg": 4300
+      },
+      "visible": true,
+      "stock": "low",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 33,
+      "name": "Castaña de Caju Brasil",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
+      "cat": "frutos",
+      "prices": {
+        "100g": 2380,
+        "200g": 4520,
+        "500g": 10180,
+        "1kg": 19000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 27,
+      "name": "Coco rallado High Fat",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
+      "cat": "aceites-y-coco",
+      "prices": {
+        "100g": 2260,
+        "200g": 4290,
+        "500g": 9650,
+        "1kg": 18000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "Coco Rallado consulte precio por mayor",
+      "nutrition": ""
+    },
+    {
+      "id": 6,
+      "name": "Garbanzo",
+      "emoji": "🟡",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1650,
+        "500g": 3280,
+        "1kg": 5200
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 8,
+      "name": "Girasol pelado",
+      "emoji": "🌻",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266078/Semillas_de_girasol_total_con_cuchara_de_madera_zeqogb.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1530,
+        "500g": 3350,
+        "1kg": 6000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 26,
+      "name": "Hibiscus en Flor (Flor de jamaica)",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1085/image_1024/Flor%20de%20Hibiscus%20-%205kg?unique=81dd19e",
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "100g": 2500,
+        "200g": 4750,
+        "500g": 10700,
+        "1kg": 20000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 9,
+      "name": "Lenteja nacional",
+      "emoji": "🟠",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261573/Lentejas_Nacionales_cuenco_de_madera_desde_arriba_vyydsg.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1440,
+        "500g": 2910,
+        "1kg": 4500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 10,
+      "name": "Lino marrón",
+      "emoji": "🌾",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316600/semillas-de-lino-kan-1200x630_abc_xjivky.jpg",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1370,
+        "500g": 2650,
+        "1kg": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 11,
+      "name": "Maní tostado pelado natural",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1370,
+        "500g": 2650,
+        "1kg": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 12,
+      "name": "Maní tostado pelado y salado",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1370,
+        "500g": 2650,
+        "1kg": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 32,
+      "name": "Nuez Mariposa Extra Light",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
+      "cat": "frutos",
+      "prices": {
+        "100g": 2380,
+        "200g": 4520,
+        "500g": 10180,
+        "1kg": 19000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 21,
+      "name": "Nuez Pecan premium (Cal. Exportación)",
+      "emoji": "🌰",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316243/mesa-de-trabajo-4-bd321fca8a518e6f3717339361203494-1024-1024_kku9mn.webp",
+      "cat": "frutos",
+      "prices": {
+        "200g": 7030,
+        "500g": 15570,
+        "1kg": 28600
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 29,
+      "name": "Oregano",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1372/image_1024/Or%C3%A9gano-%205kg?unique=9bb4bbe",
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "100g": 1300,
+        "200g": 2450,
+        "500g": 5450,
+        "1kg": 10000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 1,
+      "name": "Pasas de uva Jumbo grande",
+      "emoji": "🍇",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/Pasa_de_uva_Jumbo_hdq3bz.jpg",
+      "cat": "frutas",
+      "prices": {
+        "100g": 1050,
+        "200g": 1600,
+        "500g": 3180,
+        "1kg": 5000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 2,
+      "name": "Pasas de uva Jumbo mediana",
+      "emoji": "🍇",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg",
+      "cat": "frutas",
+      "prices": {
+        "100g": 1050,
+        "200g": 1600,
+        "500g": 3180,
+        "1kg": 5000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 3,
+      "name": "Pasas de uva ULT Flame",
+      "emoji": "🍇",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/pasa_de_uva_flame_hje9xb.webp",
+      "cat": "frutas",
+      "prices": {
+        "100g": 990,
+        "200g": 1490,
+        "500g": 2910,
+        "1kg": 4500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 34,
+      "name": "Pimienta Blanca Molida",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1326/image_1024/Pimienta%20Molida%20Blanca%20-%2030kg?unique=7bc7987",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1326/image_1024/Pimienta%20Molida%20Blanca%20-%2030kg?unique=7bc7987",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "50gr": 3500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 23,
+      "name": "Pistacho Natural c/Cáscara sin sal",
+      "emoji": "💚",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+      "cat": "frutos",
+      "prices": {
+        "200g": 8500,
+        "500g": 18930,
+        "1kg": 35000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 24,
+      "name": "Pistacho Pelado Pulpa natural",
+      "emoji": "💚",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+      "cat": "frutos",
+      "prices": {
+        "200g": 14250,
+        "500g": 32050,
+        "1kg": 60000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 25,
+      "name": "Pistacho Tostado y Salado c/Cáscara",
+      "emoji": "💚",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+      "cat": "frutos",
+      "prices": {
+        "200g": 8730,
+        "500g": 19450,
+        "1kg": 36000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 13,
+      "name": "Poroto alubia",
+      "emoji": "⚪",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/poroto-alubia1-665bb8987eb310b3ce15822293977835-1024-1024_pww65b.jpg",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1370,
+        "500g": 2650,
+        "1kg": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 14,
+      "name": "Poroto colorado dark",
+      "emoji": "🔴",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266110/Poroto_colorado_Dark_total_con_cuchara_de_madera_ygerdt.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 2010,
+        "500g": 4120,
+        "1kg": 6800
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 15,
+      "name": "Poroto mung",
+      "emoji": "🟢",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782267025/Poroto_mung_rl8r06.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1370,
+        "500g": 2650,
+        "1kg": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 16,
+      "name": "Poroto negro",
+      "emoji": "⚫",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319892/Poroto_Negro_r2yett.webp",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1440,
+        "500g": 2810,
+        "1kg": 4300
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 17,
+      "name": "Quinoa blanca real lavada",
+      "emoji": "🌿",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266580/Quina_blanca_real_total_con_cuchara_de_madera_xbkpwr.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 3330,
+        "500g": 7110,
+        "1kg": 12500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 18,
+      "name": "Sésamo integral",
+      "emoji": "🌾",
+      "img": "https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1370,
+        "500g": 2650,
+        "1kg": 4000
+      },
+      "visible": false,
+      "stock": "out",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 19,
+      "name": "Sésamo negro Paraguay",
+      "emoji": "🖤",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782265982/Sesamo_negro_total_con_cuchara_de_madera_dxgtba.png",
+      "cat": "semillas",
+      "prices": {
+        "200g": 1830,
+        "500g": 3700,
+        "1kg": 6000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 4,
+      "name": "Tomate seco premium",
+      "emoji": "🍅",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2231/image_1024/Tomate%20Mendoza%201ra%20-%205kg?unique=d42b2f2",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2231/image_1024/Tomate%20Mendoza%201ra%20-%205kg?unique=d42b2f2",
+        "",
+        ""
+      ],
+      "cat": "frutas",
+      "prices": {
+        "100g": 1950,
+        "200g": 3330,
+        "500g": 7110,
+        "1kg": 12500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    }
   ]
 }

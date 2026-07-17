@@ -33,9 +33,28 @@
   ],
   "products": [
     {
+      "id": 37,
+      "name": "Semillas de Zapallo tipo A",
+      "emoji": "🌰",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1073/image_1024/Zapallo%20Tipo%20%22A%22%20-%205kg?unique=5d41fbd",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1073/image_1024/Zapallo%20Tipo%20%22A%22%20-%205kg?unique=5d41fbd",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 15000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
-      "emoji": "🥜",
+      "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/879/image_1024/Aceite%20de%20Coco%20Cosaco%20360Ml%20-%206%20unidades?unique=60e4e56",
       "cat": "aceites-y-coco",
       "prices": {
@@ -49,7 +68,7 @@
     {
       "id": 30,
       "name": "Almendra Carmel calibre 27/30",
-      "emoji": "🥜",
+      "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
       "cat": "frutos",
       "prices": {
@@ -66,7 +85,7 @@
     {
       "id": 31,
       "name": "Almendra Non Pareil Chile",
-      "emoji": "🥜",
+      "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/745/image_1024/Almendra%20Non%20Pareil%20Chile%2025-27%20-%2010kg?unique=a67f0e6",
       "cat": "frutos",
       "prices": {
@@ -99,7 +118,7 @@
     {
       "id": 33,
       "name": "Castaña de Caju Brasil",
-      "emoji": "🥜",
+      "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
       "cat": "frutos",
       "prices": {
@@ -128,7 +147,7 @@
         "50gr": 3900,
         "100gr": 7400
       },
-      "visible": true,
+      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""
@@ -194,7 +213,7 @@
         "500g": 10700,
         "1kg": 20000
       },
-      "visible": true,
+      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""

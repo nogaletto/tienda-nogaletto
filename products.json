@@ -33,45 +33,6 @@
   ],
   "products": [
     {
-      "id": 36,
-      "name": "Yerba Organica Roapipó  500gr",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1767/image_1024/Yerba%20ROAPIPO%20Tradicional%20500gr%20-%2012%20Unidades%20?unique=ec15f3d",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/1767/image_1024/Yerba%20ROAPIPO%20Tradicional%20500gr%20-%2012%20Unidades%20?unique=ec15f3d",
-        "",
-        ""
-      ],
-      "cat": "yerbas",
-      "prices": {
-        "500gr": 5250
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 35,
-      "name": "Clavos de Olor",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/2102/image_1024/Clavo%20de%20Olor%20grano%20-%201%20kg%20?unique=da36a47",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2102/image_1024/Clavo%20de%20Olor%20grano%20-%201%20kg%20?unique=da36a47",
-        "",
-        ""
-      ],
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "50gr": 3900,
-        "100gr": 7400
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🥜",
@@ -146,6 +107,26 @@
         "200g": 4520,
         "500g": 10180,
         "1kg": 19000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 35,
+      "name": "Clavos de Olor",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2102/image_1024/Clavo%20de%20Olor%20grano%20-%201%20kg%20?unique=da36a47",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2102/image_1024/Clavo%20de%20Olor%20grano%20-%201%20kg%20?unique=da36a47",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "50gr": 3900,
+        "100gr": 7400
       },
       "visible": true,
       "stock": "ok",
@@ -578,6 +559,25 @@
         "200g": 3330,
         "500g": 7110,
         "1kg": 12500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 36,
+      "name": "Yerba Organica Roapipó  500gr",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1767/image_1024/Yerba%20ROAPIPO%20Tradicional%20500gr%20-%2012%20Unidades%20?unique=ec15f3d",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1767/image_1024/Yerba%20ROAPIPO%20Tradicional%20500gr%20-%2012%20Unidades%20?unique=ec15f3d",
+        "",
+        ""
+      ],
+      "cat": "yerbas",
+      "prices": {
+        "500gr": 5250
       },
       "visible": true,
       "stock": "ok",

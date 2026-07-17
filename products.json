@@ -33,6 +33,27 @@
   ],
   "products": [
     {
+      "id": 38,
+      "name": "Pimenton Dulce",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "25gr": 2900,
+        "50gr": 5500,
+        "100gr": 7900
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 37,
       "name": "Semillas de Zapallo tipo A",
       "emoji": "🌰",
@@ -397,7 +418,7 @@
       "prices": {
         "50gr": 3500
       },
-      "visible": true,
+      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""

@@ -24,9 +24,33 @@
       "id": "aceites-y-coco",
       "name": "Aceites y Coco",
       "emoji": "🏷️"
+    },
+    {
+      "id": "yerbas",
+      "name": "Yerbas",
+      "emoji": "🏷️"
     }
   ],
   "products": [
+    {
+      "id": 36,
+      "name": "Yerba Organica Roapipó  500gr",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1767/image_1024/Yerba%20ROAPIPO%20Tradicional%20500gr%20-%2012%20Unidades%20?unique=ec15f3d",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1767/image_1024/Yerba%20ROAPIPO%20Tradicional%20500gr%20-%2012%20Unidades%20?unique=ec15f3d",
+        "",
+        ""
+      ],
+      "cat": "yerbas",
+      "prices": {
+        "500gr": 5250
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
     {
       "id": 35,
       "name": "Clavos de Olor",
@@ -37,7 +61,7 @@
         "",
         ""
       ],
-      "cat": "frutos",
+      "cat": "hierbas-y-especies",
       "prices": {
         "50gr": 3900,
         "100gr": 7400

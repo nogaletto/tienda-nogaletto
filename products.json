@@ -44,9 +44,9 @@
       ],
       "cat": "hierbas-y-especies",
       "prices": {
-        "25gr": 2900,
-        "50gr": 5500,
-        "100gr": 7900
+        "25gr": 1000,
+        "50gr": 1900,
+        "100gr": 3700
       },
       "visible": true,
       "stock": "ok",

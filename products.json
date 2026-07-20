@@ -33,6 +33,25 @@
   ],
   "products": [
     {
+      "id": 39,
+      "name": "Yerba Organica Roapipó Suave 500gr",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1455/image_1024/Yerba%20ROAPIPO%20Suave%20500gr%20-%2012%20Unidades?unique=0c989d4",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1455/image_1024/Yerba%20ROAPIPO%20Suave%20500gr%20-%2012%20Unidades?unique=0c989d4",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "500gr": 5000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 38,
       "name": "Pimenton Dulce",
       "emoji": "🥜",

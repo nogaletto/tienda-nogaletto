@@ -33,6 +33,23 @@
   ],
   "products": [
     {
+      "id": 40,
+      "name": "Curcuma",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {},
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",

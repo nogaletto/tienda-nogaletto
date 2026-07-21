@@ -127,7 +127,7 @@
       "id": 5,
       "name": "Arveja partida",
       "emoji": "🟢",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261005/Arveja_partida_en_cuenco_hd0zsl.png",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2179/image_1024/Arvejas%20verde%20partida%20-%2025kg?unique=51c0015",
       "cat": "semillas",
       "prices": {
         "200g": 1440,
@@ -137,7 +137,12 @@
       "visible": true,
       "stock": "low",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2179/image_1024/Arvejas%20verde%20partida%20-%2025kg?unique=51c0015",
+        "",
+        ""
+      ]
     },
     {
       "id": 33,

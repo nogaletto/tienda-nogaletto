@@ -33,6 +33,26 @@
   ],
   "products": [
     {
+      "id": 41,
+      "name": "Canela en Rama",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "50g": 4500,
+        "100g": 7500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 40,
       "name": "Curcuma",
       "emoji": "🥜",
@@ -42,7 +62,7 @@
         "",
         ""
       ],
-      "cat": "frutos",
+      "cat": "hierbas-y-especies",
       "prices": {
         "25g": 1000,
         "50g": 1200,

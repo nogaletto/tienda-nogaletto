@@ -36,17 +36,23 @@
       "id": 40,
       "name": "Curcuma",
       "emoji": "🥜",
-      "img": "",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
       "images": [
-        "",
+        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
         "",
         ""
       ],
       "cat": "frutos",
-      "prices": {},
+      "prices": {
+        "25g": 1000,
+        "50g": 1200,
+        "100g": 1500,
+        "200g": 2000,
+        "500g": 4000
+      },
       "visible": true,
       "stock": "ok",
-      "description": "",
+      "description": "Curcuma en Polvo",
       "nutrition": ""
     },
     {

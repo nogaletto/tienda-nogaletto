@@ -125,7 +125,7 @@
       "id": 33,
       "name": "Castaña de Caju Tostada Salada W4 Brasil",
       "emoji": "🌰",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2059/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20Tostada%20y%20Salada%20-%2022%2C680kg?unique=0151a62",
       "cat": "frutos",
       "prices": {
         "100g": 2380,
@@ -136,7 +136,12 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2059/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20Tostada%20y%20Salada%20-%2022%2C680kg?unique=0151a62",
+        "",
+        ""
+      ]
     },
     {
       "id": 35,

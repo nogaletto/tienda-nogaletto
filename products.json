@@ -33,6 +33,49 @@
   ],
   "products": [
     {
+      "id": 41,
+      "name": "Canela en Rama",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "50g": 4500,
+        "100g": 7500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 40,
+      "name": "Curcuma",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "25g": 1000,
+        "50g": 1200,
+        "100g": 1500,
+        "200g": 2000,
+        "500g": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "Curcuma en Polvo",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -102,26 +145,6 @@
       ]
     },
     {
-      "id": 41,
-      "name": "Canela en Rama",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
-        "",
-        ""
-      ],
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "50g": 4500,
-        "100g": 7500
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 33,
       "name": "Castaña de Caju Brasil",
       "emoji": "🌰",
@@ -173,29 +196,6 @@
       "visible": true,
       "stock": "ok",
       "description": "Coco Rallado consulte precio por mayor",
-      "nutrition": ""
-    },
-    {
-      "id": 40,
-      "name": "Curcuma",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-        "",
-        ""
-      ],
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "25g": 1000,
-        "50g": 1200,
-        "100g": 1500,
-        "200g": 2000,
-        "500g": 4000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "Curcuma en Polvo",
       "nutrition": ""
     },
     {
@@ -283,7 +283,7 @@
       "id": 11,
       "name": "Maní tostado pelado natural",
       "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/2065/image_1024/Man%C3%AD%20Repelado%20Con%20Sal%20S2%20-%205kg?unique=fb04970",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png",
       "cat": "semillas",
       "prices": {
         "200g": 1370,
@@ -293,18 +293,13 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": "",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2065/image_1024/Man%C3%AD%20Repelado%20Con%20Sal%20S2%20-%205kg?unique=fb04970",
-        "",
-        ""
-      ]
+      "nutrition": ""
     },
     {
       "id": 12,
       "name": "Maní tostado pelado y salado",
       "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/2065/image_1024/Man%C3%AD%20Repelado%20Con%20Sal%20S2%20-%205kg?unique=fb04970",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png",
       "cat": "semillas",
       "prices": {
         "200g": 1370,
@@ -314,12 +309,7 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": "",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2065/image_1024/Man%C3%AD%20Repelado%20Con%20Sal%20S2%20-%205kg?unique=fb04970",
-        "",
-        ""
-      ]
+      "nutrition": ""
     },
     {
       "id": 32,
@@ -457,7 +447,7 @@
       "prices": {
         "50gr": 3500
       },
-      "visible": false,
+      "visible": true,
       "stock": "ok",
       "description": "",
       "nutrition": ""

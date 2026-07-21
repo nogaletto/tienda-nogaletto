@@ -33,49 +33,6 @@
   ],
   "products": [
     {
-      "id": 41,
-      "name": "Canela en Rama",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
-        "",
-        ""
-      ],
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "50g": 4500,
-        "100g": 7500
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 40,
-      "name": "Curcuma",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-        "",
-        ""
-      ],
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "25g": 1000,
-        "50g": 1200,
-        "100g": 1500,
-        "200g": 2000,
-        "500g": 4000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "Curcuma en Polvo",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -145,8 +102,28 @@
       ]
     },
     {
+      "id": 41,
+      "name": "Canela en Rama",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2125/image_1024/Canela%20Rama%20-%201kg?unique=2edc24d",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "50g": 4500,
+        "100g": 7500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 33,
-      "name": "Castaña de Caju Brasil",
+      "name": "Castaña de Caju Tostada Salada W4 Brasil",
       "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/1360/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20-%201kg?unique=926f1b2",
       "cat": "frutos",
@@ -196,6 +173,29 @@
       "visible": true,
       "stock": "ok",
       "description": "Coco Rallado consulte precio por mayor",
+      "nutrition": ""
+    },
+    {
+      "id": 40,
+      "name": "Curcuma",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "25g": 1000,
+        "50g": 1200,
+        "100g": 1500,
+        "200g": 2000,
+        "500g": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "Curcuma en Polvo",
       "nutrition": ""
     },
     {

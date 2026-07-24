@@ -33,6 +33,25 @@
   ],
   "products": [
     {
+      "id": 42,
+      "name": "Pistachio Pelado Tostado cons sal",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 75000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -459,7 +478,7 @@
     },
     {
       "id": 23,
-      "name": "Pistacho Natural c/Cáscara sin sal",
+      "name": "Pistach c/Cáscara Natural sin sal",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
@@ -474,15 +493,15 @@
       "nutrition": ""
     },
     {
-      "id": 24,
-      "name": "Pistacho Pelado Pulpa natural",
+      "id": 25,
+      "name": "Pistacho C/Cascara Tostado y Salado",
       "emoji": "💚",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
       "prices": {
-        "200g": 14250,
-        "500g": 32050,
-        "1kg": 60000
+        "200g": 10500,
+        "500g": 23830,
+        "1kg": 45000
       },
       "visible": true,
       "stock": "ok",
@@ -490,15 +509,15 @@
       "nutrition": ""
     },
     {
-      "id": 25,
-      "name": "Pistacho Tostado y Salado c/Cáscara",
+      "id": 24,
+      "name": "Pistacho Pelado Natural Pepas",
       "emoji": "💚",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "cat": "frutos",
       "prices": {
-        "200g": 8730,
-        "500g": 19450,
-        "1kg": 36000
+        "200g": 14250,
+        "500g": 32050,
+        "1kg": 60000
       },
       "visible": true,
       "stock": "ok",

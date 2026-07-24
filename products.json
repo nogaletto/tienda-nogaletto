@@ -33,25 +33,6 @@
   ],
   "products": [
     {
-      "id": 42,
-      "name": "Pistachio Pelado Tostado cons sal",
-      "emoji": "🥜",
-      "img": "",
-      "images": [
-        "",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "1kg": 75000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -486,6 +467,25 @@
         "200g": 8500,
         "500g": 18930,
         "1kg": 35000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 42,
+      "name": "Pistachio Pelado Tostado cons sal",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 75000
       },
       "visible": true,
       "stock": "ok",

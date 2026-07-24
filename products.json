@@ -29,9 +29,33 @@
       "id": "yerbas",
       "name": "Yerbas",
       "emoji": "🏷️"
+    },
+    {
+      "id": "vitaminas-y-suplementos",
+      "name": "Vitaminas y Suplementos",
+      "emoji": "🏷️"
     }
   ],
   "products": [
+    {
+      "id": 43,
+      "name": "Vitamina C en polvo",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "100gr": 3000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
     {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
@@ -170,10 +194,10 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
       "cat": "aceites-y-coco",
       "prices": {
-        "100g": 2260,
-        "200g": 4290,
-        "500g": 9650,
-        "1kg": 18000
+        "100g": 1900,
+        "200g": 3600,
+        "500g": 8080,
+        "1kg": 15000
       },
       "visible": true,
       "stock": "ok",

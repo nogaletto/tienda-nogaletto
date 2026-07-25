@@ -43,6 +43,26 @@
   ],
   "products": [
     {
+      "id": 48,
+      "name": "Bicarbonato de Sodio",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "250gr": 3000,
+        "100gr": 1900
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",

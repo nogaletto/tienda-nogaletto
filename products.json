@@ -38,6 +38,25 @@
   ],
   "products": [
     {
+      "id": 44,
+      "name": "Clavo de Olor",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_795743-MLA97117960983_112025-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_795743-MLA97117960983_112025-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_830555-MLA96663502476_112025-F.webp",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "50gr": 4550
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 43,
       "name": "Vitamina C en polvo",
       "emoji": "🥜",

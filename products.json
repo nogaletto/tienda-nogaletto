@@ -43,6 +43,25 @@
   ],
   "products": [
     {
+      "id": 47,
+      "name": "Romero",
+      "emoji": "🌰",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_622958-MLA109083593353_032026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_622958-MLA109083593353_032026-F.webp",
+        "https://http2.mlstatic.com/D_Q_NP_2X_867555-MLA108296279966_032026-F.webp",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "100gr": 4000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 46,
       "name": "Cacao Amargo sin Tacc",
       "emoji": "🥜",

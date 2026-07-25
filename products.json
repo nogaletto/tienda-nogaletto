@@ -38,45 +38,6 @@
   ],
   "products": [
     {
-      "id": 44,
-      "name": "Clavo de Olor",
-      "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_795743-MLA97117960983_112025-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_795743-MLA97117960983_112025-F.webp",
-        "https://http2.mlstatic.com/D_NQ_NP_2X_830555-MLA96663502476_112025-F.webp",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "50gr": 4550,
-        "100gr": 8000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 43,
-      "name": "Vitamina C en polvo",
-      "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_666970-MLA99501140694_112025-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_666970-MLA99501140694_112025-F.webp",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "100gr": 3000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -186,6 +147,26 @@
         "",
         ""
       ]
+    },
+    {
+      "id": 44,
+      "name": "Clavo de Olor",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_795743-MLA97117960983_112025-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_795743-MLA97117960983_112025-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_830555-MLA96663502476_112025-F.webp",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "50gr": 4550,
+        "100gr": 8000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
     },
     {
       "id": 35,
@@ -518,25 +499,6 @@
       "nutrition": ""
     },
     {
-      "id": 42,
-      "name": "Pistachio Pelado Tostado y Salado",
-      "emoji": "💚",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
-      "images": [
-        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "1kg": 75000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 25,
       "name": "Pistachio C/Cascara Tostado y Salado",
       "emoji": "💚",
@@ -562,6 +524,25 @@
         "200g": 14250,
         "500g": 32050,
         "1kg": 60000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 42,
+      "name": "Pistachio Pelado Tostado y Salado",
+      "emoji": "💚",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 75000
       },
       "visible": true,
       "stock": "ok",
@@ -715,6 +696,25 @@
         "200g": 4640,
         "500g": 10440,
         "1kg": 19500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 43,
+      "name": "Vitamina C en polvo",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_666970-MLA99501140694_112025-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_666970-MLA99501140694_112025-F.webp",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "100gr": 3000
       },
       "visible": true,
       "stock": "ok",

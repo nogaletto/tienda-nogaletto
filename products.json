@@ -182,32 +182,12 @@
         "https://http2.mlstatic.com/D_NQ_NP_2X_830555-MLA96663502476_112025-F.webp",
         ""
       ],
-      "cat": "frutos",
+      "cat": "hierbas-y-especies",
       "prices": {
         "50gr": 4550,
         "100gr": 8000
       },
       "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 35,
-      "name": "Clavos de Olor",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/2102/image_1024/Clavo%20de%20Olor%20grano%20-%201%20kg%20?unique=da36a47",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2102/image_1024/Clavo%20de%20Olor%20grano%20-%201%20kg%20?unique=da36a47",
-        "",
-        ""
-      ],
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "50gr": 3900,
-        "100gr": 7400
-      },
-      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""
@@ -755,7 +735,7 @@
         "",
         ""
       ],
-      "cat": "frutos",
+      "cat": "vitaminas-y-suplementos",
       "prices": {
         "100gr": 4500
       },

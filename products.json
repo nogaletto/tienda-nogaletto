@@ -145,7 +145,8 @@
       "cat": "vitaminas-y-suplementos",
       "prices": {
         "250gr": 3000,
-        "100gr": 1900
+        "100gr": 1900,
+        "1kg": 6500
       },
       "visible": true,
       "stock": "ok",

@@ -43,25 +43,6 @@
   ],
   "products": [
     {
-      "id": 50,
-      "name": "Nuez Extra Light 2026 Premium",
-      "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_725102-MLA112268125395_052026-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_725102-MLA112268125395_052026-F.webp",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "1kg": 25000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "Pelada y seleccionada a mano",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -423,6 +404,25 @@
       "visible": true,
       "stock": "ok",
       "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 50,
+      "name": "Nuez Extra Light 2026 Premium",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_725102-MLA112268125395_052026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_725102-MLA112268125395_052026-F.webp",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 25000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "Pelada y seleccionada a mano",
       "nutrition": ""
     },
     {

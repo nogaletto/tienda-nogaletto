@@ -43,6 +43,25 @@
   ],
   "products": [
     {
+      "id": 51,
+      "name": "Pistacho c/cascara tostado sin sal",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 40000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -573,9 +592,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
       "prices": {
-        "200g": 8500,
-        "500g": 18930,
-        "1kg": 35000
+        "200g": 7510,
+        "500g": 17000,
+        "1kg": 32000
       },
       "visible": true,
       "stock": "ok",
@@ -589,9 +608,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
       "prices": {
-        "200g": 10500,
-        "500g": 23830,
-        "1kg": 45000
+        "200g": 9810,
+        "500g": 22250,
+        "1kg": 42000
       },
       "visible": true,
       "stock": "ok",

@@ -43,6 +43,25 @@
   ],
   "products": [
     {
+      "id": 52,
+      "name": "Pistacho Pelado Natural tostado sin sal",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 70000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 51,
       "name": "Pistacho c/cascara tostado sin sal",
       "emoji": "🥜",

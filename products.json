@@ -432,10 +432,10 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
       "cat": "frutos",
       "prices": {
-        "100g": 2260,
-        "200g": 4290,
-        "500g": 9650,
-        "1kg": 18000
+        "100g": 2020,
+        "200g": 3830,
+        "500g": 8600,
+        "1kg": 16000
       },
       "visible": true,
       "stock": "ok",

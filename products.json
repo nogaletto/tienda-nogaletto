@@ -43,44 +43,6 @@
   ],
   "products": [
     {
-      "id": 52,
-      "name": "Pistacho Pelado Natural tostado sin sal",
-      "emoji": "🥜",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
-      "images": [
-        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "1kg": 70000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 51,
-      "name": "Pistacho c/cascara tostado sin sal",
-      "emoji": "🥜",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
-      "images": [
-        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "1kg": 40000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -465,19 +427,19 @@
     },
     {
       "id": 32,
-      "name": "Nuez Mariposa Extra Light",
+      "name": "Nuez Mariposa Extra Light partida",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
       "cat": "frutos",
       "prices": {
-        "100g": 2380,
-        "200g": 4520,
-        "500g": 10180,
-        "1kg": 19000
+        "100g": 2260,
+        "200g": 4290,
+        "500g": 9650,
+        "1kg": 18000
       },
       "visible": true,
       "stock": "ok",
-      "description": "",
+      "description": "Pelada a maquina a maquina contiene raspadas enteras y raspadas partidas. Cual es la diferencia entre una entera? Basicamente la piel las recubre de la oxidacion y en este caso la nuez sigue conteniendo las mismas proteinas pero el omega 3 pierde calidad.",
       "nutrition": ""
     },
     {
@@ -665,6 +627,44 @@
       "cat": "frutos",
       "prices": {
         "1kg": 75000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 51,
+      "name": "Pistacho c/cascara tostado sin sal",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 40000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 52,
+      "name": "Pistacho Pelado Natural tostado sin sal",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 70000
       },
       "visible": true,
       "stock": "ok",

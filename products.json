@@ -168,7 +168,7 @@
         "100g": 3000
       },
       "visible": true,
-      "stock": "low",
+      "stock": "out",
       "description": "",
       "nutrition": ""
     },

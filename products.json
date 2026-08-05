@@ -449,9 +449,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316243/mesa-de-trabajo-4-bd321fca8a518e6f3717339361203494-1024-1024_kku9mn.webp",
       "cat": "frutos",
       "prices": {
-        "200g": 5440,
-        "500g": 12280,
-        "1kg": 23000
+        "200g": 4750,
+        "500g": 10700,
+        "1kg": 20000
       },
       "visible": true,
       "stock": "ok",

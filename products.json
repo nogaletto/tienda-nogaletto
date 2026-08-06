@@ -43,6 +43,25 @@
   ],
   "products": [
     {
+      "id": 53,
+      "name": "Curcuma en Polvo",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "150g": 3200
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -155,7 +174,7 @@
     },
     {
       "id": 46,
-      "name": "Cacao Amargo sin Tacc",
+      "name": "",
       "emoji": "🥜",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_674325-MLA46032229440_052021-F.webp",
       "images": [
@@ -263,8 +282,6 @@
       ],
       "cat": "hierbas-y-especies",
       "prices": {
-        "25g": 1000,
-        "50g": 1200,
         "100g": 1500,
         "200g": 2000,
         "500g": 4000

@@ -43,25 +43,6 @@
   ],
   "products": [
     {
-      "id": 46,
-      "name": "Curcuma en Polvo",
-      "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_674325-MLA46032229440_052021-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_674325-MLA46032229440_052021-F.webp",
-        "",
-        ""
-      ],
-      "cat": "hierbas-y-especies",
-      "prices": {
-        "100g": 3000
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -249,6 +230,25 @@
       "visible": true,
       "stock": "ok",
       "description": "Coco Rallado consulte precio por mayor",
+      "nutrition": ""
+    },
+    {
+      "id": 46,
+      "name": "Curcuma en Polvo",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_674325-MLA46032229440_052021-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_674325-MLA46032229440_052021-F.webp",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especies",
+      "prices": {
+        "100g": 3000
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
       "nutrition": ""
     },
     {

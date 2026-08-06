@@ -234,7 +234,7 @@
     },
     {
       "id": 46,
-      "name": "Curcuma en Polvo",
+      "name": "Cacao Mayana",
       "emoji": "🥜",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_674325-MLA46032229440_052021-F.webp",
       "images": [
@@ -247,7 +247,7 @@
         "100g": 3000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": "out",
       "description": "",
       "nutrition": ""
     },

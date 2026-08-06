@@ -52,12 +52,12 @@
         "",
         ""
       ],
-      "cat": "reposteria",
+      "cat": "hierbas-y-especies",
       "prices": {
         "100g": 3000
       },
       "visible": true,
-      "stock": "out",
+      "stock": "ok",
       "description": "",
       "nutrition": ""
     },

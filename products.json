@@ -186,7 +186,7 @@
         "1kg": 19000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": "out",
       "description": "",
       "nutrition": "",
       "images": [
@@ -234,7 +234,7 @@
     },
     {
       "id": 46,
-      "name": "Cacao Mayana",
+      "name": "Curcuma en Polvo",
       "emoji": "🥜",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_674325-MLA46032229440_052021-F.webp",
       "images": [
@@ -242,12 +242,12 @@
         "",
         ""
       ],
-      "cat": "reposteria",
+      "cat": "hierbas-y-especies",
       "prices": {
         "100g": 3000
       },
       "visible": true,
-      "stock": "out",
+      "stock": "ok",
       "description": "",
       "nutrition": ""
     },

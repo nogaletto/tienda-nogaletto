@@ -534,9 +534,7 @@
       ],
       "cat": "hierbas-y-especies",
       "prices": {
-        "25gr": 1000,
-        "50gr": 1900,
-        "100gr": 3700
+        "150gr": 4200
       },
       "visible": true,
       "stock": "ok",
@@ -555,7 +553,7 @@
       ],
       "cat": "hierbas-y-especies",
       "prices": {
-        "50gr": 3500
+        "150gr": 4300
       },
       "visible": true,
       "stock": "ok",
@@ -569,9 +567,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
       "prices": {
-        "200g": 7510,
-        "500g": 17000,
-        "1kg": 32000
+        "200g": 7050,
+        "500g": 15950,
+        "1kg": 30000
       },
       "visible": true,
       "stock": "ok",
@@ -601,9 +599,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "cat": "frutos",
       "prices": {
-        "200g": 14250,
-        "500g": 32050,
-        "1kg": 60000
+        "200g": 15100,
+        "500g": 34330,
+        "1kg": 65000
       },
       "visible": true,
       "stock": "ok",

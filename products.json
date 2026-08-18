@@ -222,10 +222,12 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
       "cat": "aceites-y-coco",
       "prices": {
-        "100g": 1900,
-        "200g": 3600,
+        "100g": null,
+        "200g": null,
         "500g": 8080,
-        "1kg": 15000
+        "1kg": 15000,
+        "2Kg": 28000,
+        "3kg": 40500
       },
       "visible": true,
       "stock": "ok",
@@ -245,7 +247,9 @@
       "cat": "hierbas-y-especies",
       "prices": {
         "100g": null,
-        "150g": 4000
+        "150g": 4000,
+        "150g*2 (300G)": 7800,
+        "4x150gr (600g)": 14000
       },
       "visible": true,
       "stock": "ok",

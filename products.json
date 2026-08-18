@@ -185,7 +185,7 @@
         "500g": 10180,
         "1kg": 19000
       },
-      "visible": false,
+      "visible": true,
       "stock": "out",
       "description": "",
       "nutrition": "",

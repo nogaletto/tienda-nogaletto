@@ -270,7 +270,7 @@
       "prices": {
         "150g": 3200
       },
-      "visible": true,
+      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""

@@ -247,9 +247,7 @@
       "cat": "hierbas-y-especies",
       "prices": {
         "100g": null,
-        "150g": 4000,
-        "300g": 7800,
-        "600g": 14000
+        "150g": 4000
       },
       "visible": true,
       "stock": "ok",

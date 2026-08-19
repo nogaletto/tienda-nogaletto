@@ -257,25 +257,6 @@
       "nutrition": ""
     },
     {
-      "id": 53,
-      "name": "Curcuma en Polvo",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "150g": 3200
-      },
-      "visible": false,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 6,
       "name": "Garbanzo 7mm",
       "emoji": "🟡",

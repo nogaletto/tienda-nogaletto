@@ -130,6 +130,47 @@
     border-color: var(--amber);
   }
 
+  /* MINI CAROUSELS: próximo ingreso / oferta del día */
+  .mini-carousel-inner {
+    position: relative;
+    height: 110px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--sand);
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .mini-carousel-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.05) 60%);
+  }
+  .mini-carousel-tag {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(255,255,255,0.92);
+    color: #333;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    z-index: 2;
+  }
+  .mini-carousel-name {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 8px 10px;
+    line-height: 1.2;
+  }
+
   /* PRODUCTS GRID */
   .section-title {
     font-family: 'Playfair Display', serif;
@@ -561,26 +602,31 @@
   <p>Frutos Secos · Semillas · Deshidratados · Neuquén</p>
 </section>
 
-<section class="how-to-buy" style="max-width:900px; margin:0 auto 24px; padding:16px; text-align:center;">
-  <p class="section-title" style="margin-bottom:14px;">¿Cómo se hace el pedido en esta web?</p>
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:18px;">
-    <div style="flex:1; min-width:150px; max-width:220px;">
+<div class="mini-carousels" style="display:flex; gap:10px; max-width:900px; margin:0 auto 14px; padding:0 16px;">
+  <div class="mini-carousel" id="incomingCarousel" style="flex:1; display:none;"></div>
+  <div class="mini-carousel" id="offerCarousel" style="flex:1; display:none;"></div>
+</div>
+
+<details class="how-to-buy" style="max-width:900px; margin:0 auto 18px; padding:0 16px;">
+  <summary style="cursor:pointer; text-align:center; font-weight:600; color:var(--brown, #5c3a21); list-style:none;">¿Cómo se hace el pedido en esta web? ▾</summary>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:14px;">
+    <div style="flex:1; min-width:150px; max-width:220px; text-align:center;">
       <div style="font-size:32px;">🛒</div>
       <strong>1. Elegí tus productos</strong>
       <p style="font-size:13px; opacity:0.85;">Seleccioná la presentación y la cantidad de cada producto que quieras.</p>
     </div>
-    <div style="flex:1; min-width:150px; max-width:220px;">
+    <div style="flex:1; min-width:150px; max-width:220px; text-align:center;">
       <div style="font-size:32px;">📝</div>
       <strong>2. Revisá tu carrito</strong>
       <p style="font-size:13px; opacity:0.85;">Completá tu nombre y el punto de retiro más cercano.</p>
     </div>
-    <div style="flex:1; min-width:150px; max-width:220px;">
+    <div style="flex:1; min-width:150px; max-width:220px; text-align:center;">
       <div style="font-size:32px;">📲</div>
       <strong>3. Enviá por WhatsApp</strong>
       <p style="font-size:13px; opacity:0.85;">Tu pedido se arma solo y te lleva directo a WhatsApp para confirmarlo.</p>
     </div>
   </div>
-</section>
+</details>
 
 <div class="categories" id="categoriesBar"></div>
 
@@ -614,6 +660,8 @@
     </div>
   </div>
   <div class="drawer-footer">
+    <div id="shippingBanner" style="display:none; background:#fff4e0; color:#8a5a00; font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:10px; text-align:center;"></div>
+    <div id="qtyDiscountBanner" style="display:none; background:#e3f2e1; color:#2c6b1f; font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:10px; text-align:center;"></div>
     <div class="customer-section">
       <h3>Tus datos</h3>
       <input class="input-field" id="custName" type="text" placeholder="Tu nombre *" />
@@ -625,6 +673,16 @@
       <input class="input-field" id="localCode" type="text" placeholder="Ej: ROBERTO" maxlength="20" />
       <div class="local-code-hint">Si hay un código en el flyer del local, escribilo acá</div>
     </div>
+    <div class="payment-section" style="margin:12px 0;">
+      <h3 style="margin-bottom:6px;">Forma de pago</h3>
+      <label style="display:flex; align-items:center; gap:6px; font-size:14px; margin-bottom:4px;">
+        <input type="radio" name="payMethod" value="efectivo" checked onchange="updatePaymentInfo()"> Efectivo al retirar
+      </label>
+      <label style="display:flex; align-items:center; gap:6px; font-size:14px;">
+        <input type="radio" name="payMethod" value="transferencia" onchange="updatePaymentInfo()"> Transferencia
+      </label>
+      <div id="aliasBox" style="display:none; font-size:13px; background:var(--sand,#f5ede1); padding:8px 10px; border-radius:8px; margin-top:6px;"></div>
+    </div>
     <div class="total-row">
       <span class="total-label">Total del pedido</span>
       <span class="total-amount" id="totalAmount">$0</span>
@@ -633,6 +691,10 @@
       <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.822.76 5.467 2.09 7.742L2 30l6.44-2.06A13.9 13.9 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="#fff"/><path d="M22.5 19.5c-.3-.15-1.77-.873-2.044-.972-.274-.1-.473-.15-.672.15-.2.3-.772.972-.947 1.172-.174.2-.348.225-.647.075-.3-.15-1.267-.467-2.413-1.487-.892-.794-1.494-1.775-1.669-2.075-.175-.3-.018-.462.131-.611.134-.134.3-.35.45-.524.15-.175.2-.3.3-.5.1-.2.05-.374-.025-.524-.075-.15-.672-1.62-.92-2.22-.243-.583-.49-.504-.672-.513l-.573-.01c-.2 0-.523.075-.796.374-.274.3-1.045 1.02-1.045 2.49s1.07 2.889 1.22 3.089c.15.2 2.106 3.214 5.103 4.508.714.308 1.27.491 1.704.629.716.228 1.368.196 1.883.119.574-.086 1.77-.724 2.02-1.422.249-.698.249-1.296.174-1.422-.074-.125-.274-.2-.573-.35z" fill="#25D366"/></svg>
       Enviar pedido por WhatsApp
     </button>
+    <p style="font-size:11px; opacity:0.7; text-align:center; margin-top:10px; line-height:1.5;">
+      Envío gratis a partir de <span id="termsShipping"></span>. Descuentos por cantidad aplicados automáticamente sobre el total.<br>
+      El pedido se confirma por WhatsApp; el pago se coordina según la opción elegida arriba.
+    </p>
   </div>
 </div>
 
@@ -666,10 +728,20 @@ function getProductImages(p) {
   return p.img ? [p.img] : [];
 }
 
+function getOfferPrice(p, basePrice) {
+  if (!p.onOffer || !p.offerPercent) return basePrice;
+  return Math.round((basePrice * (1 - p.offerPercent / 100)) / 10) * 10;
+}
+function getItemPrice(item) {
+  const base = item.product.prices[item.size];
+  return getOfferPrice(item.product, base);
+}
+
 function getDefaultSize(p) {
   const standard = SIZES.find(s => p.prices[s] !== null && p.prices[s] !== undefined);
   if (standard) return standard;
-  const anyKey = Object.keys(p.prices)[0]; // presentación personalizada (ej: "1 unidad", "22.26 kg")
+  // presentación personalizada (ej: "1 unidad", "150g") — nunca devolver una que esté vacía (null)
+  const anyKey = Object.keys(p.prices).find(k => p.prices[k] !== null && p.prices[k] !== undefined);
   return anyKey || "1kg";
 }
 
@@ -681,6 +753,7 @@ function renderProducts() {
     if (!searchTerm) return true;
     return p.name.toLowerCase().includes(searchTerm) || (p.description || '').toLowerCase().includes(searchTerm);
   }).forEach(p => {
+   try {
     const size = selectedSize[p.id] || getDefaultSize(p);
     const price = p.prices[size];
     const cartKey = `${p.id}_${size}`;
@@ -712,7 +785,7 @@ function renderProducts() {
       </div>
       <div class="card-body">
         <div class="card-name">${p.name}</div>
-<div class="stock-badge stock-${p.stock || "ok"}">${(p.stock==="low"?"🟠 Últimas unidades":p.stock==="out"?"🔴 Sin stock":"🟢 Disponible")}</div>
+<div class="stock-badge stock-${p.stock || "ok"}">${(p.stock==="low"?"🟠 Últimas unidades":p.stock==="out"?"🔴 Sin stock":p.stock==="incoming"?"🚚 En camino":"🟢 Disponible")}</div>
 <div class="card-desc">${p.description || ""}</div>
 <details class="nutrition-box"><summary>ⓘ Información nutricional</summary><p>${p.nutrition || "Consultar información nutricional."}</p></details>
         <div class="size-selector">
@@ -721,7 +794,10 @@ function renderProducts() {
               onclick="selectSize(${p.id}, '${s}')">${s}</button>
           `).join('')}
         </div>
-        <div class="card-price">${CURRENCY}${price.toLocaleString('es-AR')}</div>
+        <div class="card-price">${p.onOffer
+            ? `<span style="text-decoration:line-through; opacity:0.55; font-size:0.8em; margin-right:6px;">${CURRENCY}${price.toLocaleString('es-AR')}</span><span style="color:#C0392B;">${CURRENCY}${getOfferPrice(p, price).toLocaleString('es-AR')}</span> <span style="font-size:0.65em; background:#C0392B; color:#fff; padding:2px 6px; border-radius:8px; vertical-align:middle;">-${p.offerPercent}%</span>`
+            : `${CURRENCY}${price.toLocaleString('es-AR')}`
+        }</div>
         ${qty === 0
           ? `<button class="add-btn" onclick="addItem(${p.id})">+ Agregar</button>`
           : `<div class="qty-control">
@@ -732,6 +808,9 @@ function renderProducts() {
         }
       </div>`;
     grid.appendChild(div);
+   } catch (err) {
+    console.error(`Error mostrando el producto "${p.name}" (id ${p.id}):`, err);
+   }
   });
 }
 
@@ -785,12 +864,68 @@ function update() {
   document.getElementById('fabTotal').textContent = CURRENCY + total.toLocaleString('es-AR');
   const fab = document.getElementById('fab');
   if (count > 0) fab.classList.add('visible'); else fab.classList.remove('visible');
+  updateBanners(total);
+}
+
+// Convierte cada presentación a su equivalente en kg, para aplicar el descuento por cantidad
+const KG_EQUIVALENTS = { "100g":0.1, "200g":0.2, "500g":0.5, "1kg":1, "25g":0.025, "50g":0.05, "100gr":0.1, "50gr":0.05, "25gr":0.025, "500gr":0.5 };
+function getTotalKg() {
+  return Object.values(cart).reduce((acc, item) => acc + ((KG_EQUIVALENTS[item.size] || 0) * item.qty), 0);
+}
+function getQuantityDiscountPercent() {
+  const totalKg = getTotalKg();
+  let percent = 0;
+  (SITE_CONFIG.quantityDiscounts || []).forEach(d => { if (totalKg >= d.minKg && d.percent > percent) percent = d.percent; });
+  return percent;
+}
+
+function updateBanners(total) {
+  const shipBox = document.getElementById('shippingBanner');
+  const threshold = SITE_CONFIG.freeShippingThreshold || 0;
+  if (threshold > 0 && total > 0) {
+    shipBox.style.display = 'block';
+    if (total >= threshold) {
+      shipBox.style.background = '#e3f2e1'; shipBox.style.color = '#2c6b1f';
+      shipBox.textContent = '🎉 ¡Tenés envío gratis!';
+    } else {
+      shipBox.style.background = '#fff4e0'; shipBox.style.color = '#8a5a00';
+      shipBox.textContent = `🚚 Agregá ${CURRENCY}${(threshold - total).toLocaleString('es-AR')} más y tenés envío gratis`;
+    }
+  } else {
+    shipBox.style.display = 'none';
+  }
+
+  const qtyBox = document.getElementById('qtyDiscountBanner');
+  const discPercent = getQuantityDiscountPercent();
+  if (discPercent > 0) {
+    qtyBox.style.display = 'block';
+    qtyBox.textContent = `✅ Descuento por cantidad aplicado: -${discPercent}%`;
+  } else {
+    qtyBox.style.display = 'none';
+  }
+
+  const termsEl = document.getElementById('termsShipping');
+  if (termsEl) termsEl.textContent = threshold ? (CURRENCY + threshold.toLocaleString('es-AR')) : '—';
+}
+
+function updatePaymentInfo() {
+  const checked = document.querySelector('input[name="payMethod"]:checked');
+  const method = checked ? checked.value : 'efectivo';
+  const box = document.getElementById('aliasBox');
+  if (method === 'transferencia' && SITE_CONFIG.transferAlias) {
+    box.style.display = 'block';
+    box.innerHTML = `Alias para transferir: <strong>${SITE_CONFIG.transferAlias}</strong>`;
+  } else {
+    box.style.display = 'none';
+  }
 }
 
 function getTotal() {
-  return Object.values(cart).reduce((acc, item) => {
-    return acc + (item.product.prices[item.size] * item.qty);
+  const subtotal = Object.values(cart).reduce((acc, item) => {
+    return acc + (getItemPrice(item) * item.qty);
   }, 0);
+  const discPercent = getQuantityDiscountPercent();
+  return Math.round(subtotal * (1 - discPercent / 100));
 }
 
 function renderDrawer() {
@@ -801,7 +936,7 @@ function renderDrawer() {
     return;
   }
   el.innerHTML = items.map(item => {
-    const subtotal = item.product.prices[item.size] * item.qty;
+    const subtotal = getItemPrice(item) * item.qty;
     return `<div class="cart-item">
       <div style="width:48px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">
         <img src="${item.product.img}" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
@@ -861,11 +996,17 @@ function sendWhatsApp() {
   msg += `\n📦 *Productos:*\n`;
 
   items.forEach(item => {
-    const subtotal = item.product.prices[item.size] * item.qty;
+    const subtotal = getItemPrice(item) * item.qty;
     msg += `• ${item.product.emoji} ${item.product.name} — ${item.size} × ${item.qty} = ${CURRENCY}${subtotal.toLocaleString('es-AR')}\n`;
   });
 
+  const discPercent = getQuantityDiscountPercent();
+  const subtotalSinDesc = items.reduce((acc, item) => acc + (getItemPrice(item) * item.qty), 0);
+  if (discPercent > 0) msg += `\n🏷️ _Subtotal: ${CURRENCY}${subtotalSinDesc.toLocaleString('es-AR')} — Descuento por cantidad: -${discPercent}%_`;
   msg += `\n💰 *Total: ${CURRENCY}${getTotal().toLocaleString('es-AR')}*`;
+  const payChecked = document.querySelector('input[name="payMethod"]:checked');
+  const payMethod = payChecked ? payChecked.value : 'efectivo';
+  msg += `\n💳 *Forma de pago:* ${payMethod === 'transferencia' ? `Transferencia (alias: ${SITE_CONFIG.transferAlias})` : 'Efectivo al retirar'}`;
   if (localCode) msg += `\n🤝 _Comisión a registrar: ${localCode}_`;
   msg += `\n\n¡Gracias por tu pedido! 🙏`;
 
@@ -886,15 +1027,18 @@ function initLocalCode() {
 }
 
 // Init: carga el catálogo desde products.json (misma fuente que edita el panel admin)
+let SITE_CONFIG = { freeShippingThreshold: 0, quantityDiscounts: [], transferAlias: "" };
+
 async function loadProducts() {
   const grid = document.getElementById('productsGrid');
   try {
     const res = await fetch('/products.json?t=' + Date.now()); // evita cache vieja
     if (!res.ok) throw new Error('No se pudo leer products.json');
     const data = await res.json();
-    // Compatibilidad: acepta tanto el formato viejo (array plano) como el nuevo ({categories, products})
+    // Compatibilidad: acepta tanto el formato viejo (array plano) como el nuevo ({categories, products, config})
     PRODUCTS = Array.isArray(data) ? data : (data.products || []);
     CATEGORIES = Array.isArray(data) ? [] : (data.categories || []);
+    SITE_CONFIG = Array.isArray(data) ? SITE_CONFIG : (data.config || SITE_CONFIG);
   } catch (err) {
     console.error('Error cargando catálogo:', err);
     grid.innerHTML = '<div style="padding:40px;text-align:center;color:#C0392B;">No pudimos cargar el catálogo. Recargá la página en unos minutos.</div>';
@@ -902,6 +1046,29 @@ async function loadProducts() {
   }
   renderCategoryButtons();
   renderProducts();
+  renderMiniCarousels();
+  updatePaymentInfo();
+  setInterval(() => { incomingIdx++; offerIdx++; renderMiniCarousels(); }, 3500);
+}
+
+let incomingIdx = 0, offerIdx = 0;
+function renderMiniCarouselBox(boxId, list, idx, label, emoji) {
+  const box = document.getElementById(boxId);
+  if (!list.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  box.style.display = 'block';
+  const p = list[idx % list.length];
+  const img = getProductImages(p)[0] || '';
+  box.innerHTML = `
+    <div class="mini-carousel-inner" style="background-image:url('${img}')">
+      <div class="mini-carousel-tag">${emoji} ${label}</div>
+      <div class="mini-carousel-name">${p.name}</div>
+    </div>`;
+}
+function renderMiniCarousels() {
+  const incoming = PRODUCTS.filter(p => p.visible !== false && p.stock === 'incoming');
+  const offers = PRODUCTS.filter(p => p.visible !== false && p.onOffer);
+  renderMiniCarouselBox('incomingCarousel', incoming, incomingIdx, 'Próximo ingreso', '🚚');
+  renderMiniCarouselBox('offerCarousel', offers, offerIdx, 'Oferta del día', '🔥');
 }
 
 function renderCategoryButtons() {

@@ -107,6 +107,7 @@
   .stock-ok { background:#e3f2e1; color:var(--green); }
   .stock-low { background:#fff4e0; color:#d9850a; }
   .stock-out { background:#fbe3e1; color:var(--red); }
+  .stock-incoming { background:#e3ecfb; color:#2a5db0; }
 
   .code-output { background:var(--bark); color:#f0e8d8; padding:16px; border-radius:10px; font-family:monospace; font-size:0.75rem; white-space:pre-wrap; word-break:break-all; max-height:300px; overflow-y:auto; margin-top:10px; display:none; }
   .code-output.visible { display:block; }
@@ -153,19 +154,25 @@
 
   <div class="config-panel">
     <h3>📦 Configuración del Costo de Envase/Packaging (Modificable)</h3>
+    <div class="config-grid" id="pkgConfigGrid"></div>
+  </div>
+
+  <div class="config-panel">
+    <h3>🚚 Configuración General de la Tienda</h3>
     <div class="config-grid">
       <div class="config-group">
-        <label>Envase 100g ($)</label>
-        <input type="number" id="pkg100" class="config-input">
+        <label>Envío gratis a partir de ($)</label>
+        <input type="number" id="cfgFreeShipping" class="config-input">
       </div>
       <div class="config-group">
-        <label>Envase 200g ($)</label>
-        <input type="number" id="pkg200" class="config-input">
+        <label>Alias para transferencia</label>
+        <input type="text" id="cfgAlias" class="config-input">
       </div>
-      <div class="config-group">
-        <label>Envase 500g ($)</label>
-        <input type="number" id="pkg500" class="config-input">
-      </div>
+    </div>
+    <div style="margin-top:12px;">
+      <label style="font-weight:600; display:block; margin-bottom:6px;">Descuentos por cantidad (kg totales del pedido)</label>
+      <div id="qtyDiscountsGrid" style="display:flex; flex-direction:column; gap:6px;"></div>
+      <button class="btn secondary" style="margin-top:8px; padding:4px 10px; font-size:12px;" onclick="addQtyDiscount()">+ agregar escalón</button>
     </div>
   </div>
 
@@ -203,7 +210,8 @@
         <th style="width: 11%;">Categoría</th>
         <th style="width: 6%;">Visible</th>
         <th style="width: 10%;">Stock</th>
-        <th style="width: 24%;">Precios por presentación (Editar 1kg)</th>
+        <th style="width: 8%;">Oferta del día</th>
+        <th style="width: 22%;">Precios por presentación (Editar 1kg)</th>
         <th style="width: 9%;">Imagen (URL)</th>
         <th style="width: 9%;">Descripción</th>
         <th style="width: 9%;">Nutrición</th>
@@ -224,10 +232,20 @@ function rebuildCatNames() {
   CAT_NAMES = {};
   categories.forEach(c => { CAT_NAMES[c.id] = c.name; });
 }
+const STANDARD_TEMPLATE = [
+  { label: "200g", ratio: 0.2, markup: 1.15 },
+  { label: "500g", ratio: 0.5, markup: 1.05 },
+  { label: "1kg", ratio: 1.0, markup: 1.0 }
+];
+const SPICE_TEMPLATE = [
+  { label: "25g", ratio: 0.025, markup: 1.35 },
+  { label: "50g", ratio: 0.05, markup: 1.25 },
+  { label: "100g", ratio: 0.10, markup: 1.15 }
+];
 const DEFAULT_CATEGORIES = [
-  { id: "frutos", name: "Frutos secos", emoji: "🌰" },
-  { id: "frutas", name: "Frutas deshidratadas", emoji: "🍇" },
-  { id: "semillas", name: "Semillas y legumbres", emoji: "🌱" }
+  { id: "frutos", name: "Frutos secos", emoji: "🌰", sizeTemplate: STANDARD_TEMPLATE },
+  { id: "frutas", name: "Frutas deshidratadas", emoji: "🍇", sizeTemplate: STANDARD_TEMPLATE },
+  { id: "semillas", name: "Semillas y legumbres", emoji: "🌱", sizeTemplate: STANDARD_TEMPLATE }
 ];
 
 const DEFAULT_PRODUCTS = [{"id":20,"name":"Almendra Non Pareil (Cal. Exportación)","emoji":"🤍","img":"https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400&q=80&fit=crop","cat":"frutos","prices":{"200g":6200,"500g":13680,"1kg":25000},"visible":false,"stock":"ok","description":"","nutrition":""},{"id":5,"name":"Arveja partida","emoji":"🟢","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261005/Arveja_partida_en_cuenco_hd0zsl.png","cat":"semillas","prices":{"200g":1440,"500g":2810,"1kg":4300},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":6,"name":"Garbanzo","emoji":"🟡","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg","cat":"semillas","prices":{"200g":1650,"500g":3280,"1kg":5200},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":7,"name":"Garbanzo 8mm","emoji":"🟡","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg","cat":"semillas","prices":{"200g":1030,"500g":1860,"1kg":2500},"visible":false,"stock":"ok","description":"","nutrition":""},{"id":8,"name":"Girasol pelado","emoji":"🌻","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266078/Semillas_de_girasol_total_con_cuchara_de_madera_zeqogb.png","cat":"semillas","prices":{"200g":2060,"500g":4230,"1kg":7000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":9,"name":"Lenteja nacional","emoji":"🟠","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261573/Lentejas_Nacionales_cuenco_de_madera_desde_arriba_vyydsg.png","cat":"semillas","prices":{"200g":1440,"500g":2910,"1kg":4500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":10,"name":"Lino marrón","emoji":"🌾","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316600/semillas-de-lino-kan-1200x630_abc_xjivky.jpg","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":11,"name":"Maní tostado pelado natural","emoji":"🥜","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":12,"name":"Maní tostado pelado y salado","emoji":"🥜","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":21,"name":"Nuez Pecan premium (Cal. Exportación)","emoji":"🌰","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316243/mesa-de-trabajo-4-bd321fca8a518e6f3717339361203494-1024-1024_kku9mn.webp","cat":"frutos","prices":{"200g":7030,"500g":15570,"1kg":28600},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":1,"name":"Pasas de uva Jumbo grande","emoji":"🍇","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/Pasa_de_uva_Jumbo_hdq3bz.jpg","cat":"frutas","prices":{"100g":1050,"200g":1600,"500g":3180,"1kg":5000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":2,"name":"Pasas de uva Jumbo mediana","emoji":"🍇","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg","cat":"frutas","prices":{"100g":1050,"200g":1600,"500g":3180,"1kg":5000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":3,"name":"Pasas de uva ULT Flame","emoji":"🍇","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/pasa_de_uva_flame_hje9xb.webp","cat":"frutas","prices":{"100g":990,"200g":1490,"500g":2910,"1kg":4500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":22,"name":"Piñones Araucanos Naturales","emoji":"🌲","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782265032/efd111c3-4eeb-44bc-a7be-8ff159b3cfa1.png","cat":"frutos","prices":{"100g":1710,"200g":2870,"500g":6060,"1kg":10500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":23,"name":"Pistacho Natural c/Cáscara sin sal","emoji":"💚","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp","cat":"frutos","prices":{"200g":8500,"500g":18930,"1kg":35000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":24,"name":"Pistacho Pelado Pulpa natural","emoji":"💚","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg","cat":"frutos","prices":{"200g":14250,"500g":32050,"1kg":60000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":25,"name":"Pistacho Tostado y Salado c/Cáscara","emoji":"💚","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp","cat":"frutos","prices":{"200g":8730,"500g":19450,"1kg":36000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":13,"name":"Poroto alubia","emoji":"⚪","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/poroto-alubia1-665bb8987eb310b3ce15822293977835-1024-1024_pww65b.jpg","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":14,"name":"Poroto colorado dark","emoji":"🔴","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266110/Poroto_colorado_Dark_total_con_cuchara_de_madera_ygerdt.png","cat":"semillas","prices":{"200g":2010,"500g":4120,"1kg":6800},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":15,"name":"Poroto mung","emoji":"🟢","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782267025/Poroto_mung_rl8r06.png","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":16,"name":"Poroto negro","emoji":"⚫","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319892/Poroto_Negro_r2yett.webp","cat":"semillas","prices":{"200g":1440,"500g":2810,"1kg":4300},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":17,"name":"Quinoa blanca real lavada","emoji":"🌿","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266580/Quina_blanca_real_total_con_cuchara_de_madera_xbkpwr.png","cat":"semillas","prices":{"200g":3330,"500g":7110,"1kg":12500},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":18,"name":"Sésamo integral","emoji":"🌾","img":"https://images.unsplash.com/photo-1612257416648-8c4bb7e35cd4?w=400&q=80&fit=crop","cat":"semillas","prices":{"200g":1370,"500g":2650,"1kg":4000},"visible":false,"stock":"ok","description":"","nutrition":""},{"id":19,"name":"Sésamo negro Paraguay","emoji":"🖤","img":"https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782265982/Sesamo_negro_total_con_cuchara_de_madera_dxgtba.png","cat":"semillas","prices":{"200g":1830,"500g":3700,"1kg":6000},"visible":true,"stock":"ok","description":"","nutrition":""},{"id":4,"name":"Tomate seco premium","emoji":"🍅","img":"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop","cat":"frutas","prices":{"100g":1950,"200g":3330,"500g":7110,"1kg":12500},"visible":false,"stock":"ok","description":"","nutrition":""}];
@@ -237,7 +255,7 @@ const DEFAULT_PRODUCTS = [{"id":20,"name":"Almendra Non Pareil (Cal. Exportació
 // localStorage se usa solo como borrador de seguridad por si cerrás la pestaña sin publicar.
 function saveDraftLocal() {
   try {
-    localStorage.setItem('nogaletto_admin_draft', JSON.stringify({ state, categories, savedAt: Date.now() }));
+    localStorage.setItem('nogaletto_admin_draft', JSON.stringify({ state, categories, siteConfig, savedAt: Date.now() }));
   } catch (e) { /* si falla, no es crítico */ }
 }
 function saveState() {
@@ -256,6 +274,14 @@ function savePkgCosts() {
 }
 
 let state = [];
+let siteConfig = {
+  freeShippingThreshold: 7500,
+  quantityDiscounts: [
+    { minKg: 3, percent: 5 },
+    { minKg: 5, percent: 10 }
+  ],
+  transferAlias: "nogaletto"
+};
 let categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
 let pkgCosts = loadPkgCosts();
 
@@ -268,6 +294,7 @@ async function loadProductsFromRepo() {
     // Compatibilidad: products.json puede ser el formato viejo (array plano) o el nuevo ({categories, products})
     const remoteProducts = Array.isArray(remote) ? remote : (remote.products || []);
     const remoteCategories = Array.isArray(remote) ? DEFAULT_CATEGORIES : (remote.categories || DEFAULT_CATEGORIES);
+    const remoteConfig = Array.isArray(remote) ? siteConfig : (remote.config || siteConfig);
 
     // Si hay un borrador local sin publicar, ofrecer recuperarlo en vez del catálogo publicado
     const draftRaw = localStorage.getItem('nogaletto_admin_draft');
@@ -278,7 +305,10 @@ async function loadProductsFromRepo() {
       if (usarBorrador) {
         state = draft.state;
         categories = draft.categories || DEFAULT_CATEGORIES;
+        siteConfig = draft.siteConfig || siteConfig;
         rebuildCatNames();
+        initPkgInputs();
+        initSiteConfigInputs();
         renderTable();
         showGlobalMessage('📝 Recuperamos tu borrador. No olvides "Guardar Cambios en la Web" para publicarlo.');
         return;
@@ -286,7 +316,10 @@ async function loadProductsFromRepo() {
     }
     state = remoteProducts;
     categories = remoteCategories;
+    siteConfig = remoteConfig;
     rebuildCatNames();
+    initPkgInputs();
+    initSiteConfigInputs();
     renderTable();
   } catch (err) {
     console.error('Error cargando products.json:', err);
@@ -294,19 +327,76 @@ async function loadProductsFromRepo() {
     state = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
     categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
     rebuildCatNames();
+    initPkgInputs();
+    initSiteConfigInputs();
     renderTable();
   }
 }
 
-function initPkgInputs() {
-  document.getElementById('pkg100').value = pkgCosts['100g'] || 0;
-  document.getElementById('pkg200').value = pkgCosts['200g'] || 0;
-  document.getElementById('pkg500').value = pkgCosts['500g'] || 0;
+function getTemplateLabels() {
+  const set = new Set();
+  categories.forEach(c => (c.sizeTemplate || []).forEach(t => { if (t.ratio < 1) set.add(t.label); })); // el de ratio 1 (ej 1kg) es la base, no lleva envase propio
+  return [...set];
+}
 
-  ['pkg100', 'pkg200', 'pkg500'].forEach(id => {
-    document.getElementById(id).onchange = function() {
-      const size = id.replace('pkg', '') + 'g';
-      pkgCosts[size] = Number(this.value) || 0;
+function initSiteConfigInputs() {
+  document.getElementById('cfgFreeShipping').value = siteConfig.freeShippingThreshold || 0;
+  document.getElementById('cfgAlias').value = siteConfig.transferAlias || '';
+  document.getElementById('cfgFreeShipping').onchange = function() {
+    siteConfig.freeShippingThreshold = Number(this.value) || 0;
+    saveState();
+  };
+  document.getElementById('cfgAlias').onchange = function() {
+    siteConfig.transferAlias = this.value.trim();
+    saveState();
+  };
+  renderQtyDiscounts();
+}
+
+function renderQtyDiscounts() {
+  const box = document.getElementById('qtyDiscountsGrid');
+  box.innerHTML = siteConfig.quantityDiscounts.map((d, i) => `
+    <div style="display:flex; align-items:center; gap:6px;">
+      <span>Desde</span>
+      <input type="number" class="small-input" style="width:60px;" value="${d.minKg}" onchange="updateQtyDiscount(${i}, 'minKg', this.value)"> kg
+      <span>→</span>
+      <input type="number" class="small-input" style="width:60px;" value="${d.percent}" onchange="updateQtyDiscount(${i}, 'percent', this.value)"> % desc.
+      <button onclick="removeQtyDiscount(${i})" style="border:none;background:none;color:#C0392B;cursor:pointer;font-weight:bold;">✕</button>
+    </div>
+  `).join('');
+}
+
+function addQtyDiscount() {
+  siteConfig.quantityDiscounts.push({ minKg: 1, percent: 5 });
+  saveState();
+  renderQtyDiscounts();
+}
+
+function updateQtyDiscount(i, field, val) {
+  siteConfig.quantityDiscounts[i][field] = Number(val) || 0;
+  siteConfig.quantityDiscounts.sort((a, b) => a.minKg - b.minKg);
+  saveState();
+  renderQtyDiscounts();
+}
+
+function removeQtyDiscount(i) {
+  siteConfig.quantityDiscounts.splice(i, 1);
+  saveState();
+  renderQtyDiscounts();
+}
+
+function initPkgInputs() {
+  const grid = document.getElementById('pkgConfigGrid');
+  const labels = getTemplateLabels();
+  grid.innerHTML = labels.map(label => `
+    <div class="config-group">
+      <label>Envase ${label} ($)</label>
+      <input type="number" class="config-input pkg-input" data-label="${label}" value="${pkgCosts[label] || 0}">
+    </div>
+  `).join('');
+  grid.querySelectorAll('.pkg-input').forEach(input => {
+    input.onchange = function() {
+      pkgCosts[this.dataset.label] = Number(this.value) || 0;
       savePkgCosts();
       autoRecalculateAll();
       renderTable();
@@ -331,7 +421,7 @@ function addProduct() {
   const newId = state.length > 0 ? Math.max(...state.map(p => p.id)) + 1 : 1;
   const newP = {
     id: newId, name: "Nuevo Producto", emoji: "🥜", img: "", images: ["", "", ""], cat: (categories[0] && categories[0].id) || "frutos",
-    prices: {}, visible: true, stock: "ok", description: "", nutrition: ""
+    prices: {}, basePricePerKg: null, visible: true, stock: "ok", description: "", nutrition: ""
   };
   state.unshift(newP); saveState(); renderTable();
 }
@@ -382,32 +472,46 @@ function createCategory(){
   if (!name) return;
   const id = slugify(name);
   if (!id || categories.some(c => c.id === id)) { alert('Esa categoría ya existe o el nombre no es válido.'); return; }
-  categories.push({ id, name, emoji: '🏷️' });
+  const chico = confirm(`¿Qué fraccionamiento usa "${name}"?\n\nAceptar = presentaciones chicas (25g / 50g / 100g) — para especias, hierbas, etc.\nCancelar = presentaciones estándar (200g / 500g / 1kg) — para frutos secos, semillas, etc.`);
+  categories.push({ id, name, emoji: '🏷️', sizeTemplate: chico ? SPICE_TEMPLATE : STANDARD_TEMPLATE });
   saveCategories();
+  initPkgInputs();
   input.value = '';
   renderTable();
   showGlobalMessage(`✅ Categoría "${name}" creada. No olvides "Guardar Cambios en la Web" para que aparezca en la tienda.`);
 }
 
+function getTemplateForProduct(product) {
+  const cat = categories.find(c => c.id === product.cat);
+  return (cat && cat.sizeTemplate && cat.sizeTemplate.length) ? cat.sizeTemplate : STANDARD_TEMPLATE;
+}
+
 function autoCalculateRow(product, basePrice) {
   if (!basePrice || basePrice <= 0) return;
-  const matrix = {
-    "100g": { ratio: 0.10, markup: 1.20 }, 
-    "200g": { ratio: 0.20, markup: 1.15 }, 
-    "500g": { ratio: 0.50, markup: 1.05 }  
-  };
-  Object.keys(matrix).forEach(size => {
-    if (product.prices[size] !== undefined) {
-      let costPkg = pkgCosts[size] || 0;
-      let rawCalculated = ((basePrice * matrix[size].ratio) * matrix[size].markup) + costPkg;
-      product.prices[size] = Math.round(rawCalculated / 10) * 10;
-    }
+  product.basePricePerKg = basePrice;
+  const template = getTemplateForProduct(product);
+  template.forEach(entry => {
+    const costPkg = pkgCosts[entry.label] || 0;
+    const raw = (basePrice * entry.ratio * entry.markup) + costPkg;
+    product.prices[entry.label] = Math.round(raw / 10) * 10;
   });
   saveState();
 }
 
+function updateBasePrice(id, value) {
+  const p = state.find(p => p.id === id); if (!p) return;
+  const val = Number(value) || 0;
+  if (val > 0) {
+    autoCalculateRow(p, val);
+  } else {
+    p.basePricePerKg = null;
+    saveState();
+  }
+  renderTable();
+}
+
 function autoRecalculateAll() {
-  state.forEach(p => { if (p.prices["1kg"] && p.prices["1kg"] > 0) { autoCalculateRow(p, p.prices["1kg"]); } });
+  state.forEach(p => { if (p.basePricePerKg && p.basePricePerKg > 0) { autoCalculateRow(p, p.basePricePerKg); } });
 }
 
 function sortProducts(criterion) {
@@ -437,26 +541,32 @@ function renderTable() {
   renderCategoryManager();
   const filter = document.getElementById('search').value.toLowerCase();
   const tbody = document.getElementById('tableBody'); tbody.innerHTML = '';
-  const ALL_SIZES = ["100g", "200g", "500g", "1kg"];
 
   state.forEach((p) => {
     if (filter && !(p.name.toLowerCase().includes(filter) || (p.description && p.description.toLowerCase().includes(filter)))) return;
     const tr = document.createElement('tr');
     if (!p.visible) tr.className = 'hidden-row';
 
-    const pricesHtml = ALL_SIZES.map(size => {
-      const val = p.prices[size];
-      if (val === undefined && size !== "1kg") return ''; 
-      const isKg = size === "1kg";
+    const template = getTemplateForProduct(p);
+    const templateLabels = template.map(t => t.label);
+
+    const baseHtml = `
+      <div class="price-group">
+        <label>Precio base $/Kg ⭐</label>
+        <input class="price-input kg-master" type="number" value="${p.basePricePerKg || ''}" onchange="updateBasePrice(${p.id}, this.value)">
+      </div>`;
+
+    const pricesHtml = template.map(entry => {
+      const val = p.prices[entry.label];
       return `
         <div class="price-group">
-          <label>${size}${isKg ? ' ⭐' : ''}</label>
-          <input class="price-input ${isKg ? 'kg-master' : ''}" type="number" value="${val || ''}" onchange="updatePriceField(${p.id}, '${size}', this.value)">
+          <label>${entry.label}</label>
+          <input class="price-input" type="number" value="${val || ''}" onchange="updatePriceField(${p.id}, '${entry.label}', this.value)">
         </div>`;
     }).join('');
 
     // Presentaciones personalizadas: para productos que se venden por unidad, bidón, kilaje especial, etc.
-    const customKeys = Object.keys(p.prices).filter(k => !ALL_SIZES.includes(k));
+    const customKeys = Object.keys(p.prices).filter(k => !templateLabels.includes(k));
     const customHtml = customKeys.map(key => {
       const safeKey = key.replace(/'/g, "\\'");
       return `
@@ -469,8 +579,12 @@ function renderTable() {
     const addCustomBtn = `<button class="btn secondary" style="padding:2px 8px;font-size:11px;" onclick="addCustomPrice(${p.id})">+ presentación</button>`;
 
     const catOptions = categories.map(c => `<option value="${c.id}" ${c.id===p.cat ? 'selected' : ''}>${c.name}</option>`).join('');
-    const stockClass = p.stock === 'out' ? 'stock-out' : (p.stock === 'low' ? 'stock-low' : 'stock-ok');
-    const stockLabel = p.stock === 'out' ? 'Sin stock' : (p.stock === 'low' ? 'Últimas' : 'Disponible');
+    const stockClass = p.stock === 'out' ? 'stock-out' : (p.stock === 'low' ? 'stock-low' : (p.stock === 'incoming' ? 'stock-incoming' : 'stock-ok'));
+    const stockLabel = p.stock === 'out' ? 'Sin stock' : (p.stock === 'low' ? 'Últimas' : (p.stock === 'incoming' ? 'En camino' : 'Disponible'));
+    const offerHtml = p.onOffer
+      ? `<label class="toggle"><input type="checkbox" checked onchange="toggleOffer(${p.id})"><span class="slider"></span></label>
+         <input type="number" class="small-input" style="width:55px; margin-left:4px;" value="${p.offerPercent || 10}" min="1" max="90" onchange="updateOfferPercent(${p.id}, this.value)">%`
+      : `<label class="toggle"><input type="checkbox" onchange="toggleOffer(${p.id})"><span class="slider"></span></label>`;
 
     tr.innerHTML = `
       <td>
@@ -482,7 +596,8 @@ function renderTable() {
       <td><select class="small-input" onchange="updateCategory(${p.id}, this.value)">${catOptions}</select></td>
       <td><label class="toggle"><input type="checkbox" ${p.visible ? 'checked' : ''} onchange="toggleVisible(${p.id})"><span class="slider"></span></label></td>
       <td><span class="stock-badge ${stockClass}" onclick="cycleStock(${p.id})">${stockLabel}</span></td>
-      <td><div class="prices-cell">${pricesHtml}${customHtml}${addCustomBtn}</div></td>
+      <td>${offerHtml}</td>
+      <td><div class="prices-cell">${baseHtml}${pricesHtml}${customHtml}${addCustomBtn}</div></td>
       <td>
         <div style="display:flex; flex-direction:column; gap:3px; min-width:140px;">
           <input class="small-input" type="text" placeholder="Portada" value="${escapeHtml((p.images && p.images[0]) || p.img || '')}" onchange="updateImageSlot(${p.id}, 0, this.value)">
@@ -501,7 +616,20 @@ function renderTable() {
 function updateName(id, val) { const p = state.find(p => p.id === id); if (p) { p.name = val.trim(); saveState(); } }
 function updateEmoji(id, val) { const p = state.find(p => p.id === id); if (p) { p.emoji = val.trim() || '🌰'; saveState(); renderTable(); } }
 function toggleVisible(id) { const p = state.find(p => p.id === id); if (p) { p.visible = !p.visible; saveState(); renderTable(); } }
-function cycleStock(id) { const p = state.find(p => p.id === id); if (p) { const seq = ['ok','low','out']; p.stock = seq[(seq.indexOf(p.stock || 'ok') + 1) % seq.length]; saveState(); renderTable(); } }
+function cycleStock(id) { const p = state.find(p => p.id === id); if (p) { const seq = ['ok','low','out','incoming']; p.stock = seq[(seq.indexOf(p.stock || 'ok') + 1) % seq.length]; saveState(); renderTable(); } }
+function toggleOffer(id) {
+  const p = state.find(p => p.id === id); if (!p) return;
+  p.onOffer = !p.onOffer;
+  if (p.onOffer && !p.offerPercent) p.offerPercent = 10;
+  saveState();
+  renderTable();
+}
+function updateOfferPercent(id, val) {
+  const p = state.find(p => p.id === id); if (!p) return;
+  p.offerPercent = Math.max(1, Math.min(90, Number(val) || 0));
+  saveState();
+  renderTable();
+}
 function updateCategory(id, val) { const p = state.find(p => p.id === id); if (p) { p.cat = val; saveState(); renderTable(); } }
 function updateImageSlot(id, index, val) {
   const p = state.find(p => p.id === id); if (!p) return;
@@ -548,7 +676,7 @@ function updatePriceField(id, size, value) {
   const p = state.find(p => p.id === id); if (!p) return;
   const numVal = value ? Number(value) : null;
   p.prices[size] = numVal;
-  if (size === "1kg") { autoCalculateRow(p, numVal); } else { saveState(); }
+  saveState();
   renderTable();
 }
 
@@ -564,7 +692,7 @@ function generateCode() {
   // Muestra el products.json tal cual quedaría — útil como respaldo manual (pegarlo en GitHub)
   // si por algún motivo no querés usar el botón de guardado automático.
   document.getElementById('copyBtn').style.display = 'inline-block';
-  const code = JSON.stringify({ categories, products: state }, null, 2);
+  const code = JSON.stringify({ categories, products: state, config: siteConfig }, null, 2);
   const out = document.getElementById('codeOutput'); out.className = "code-output visible"; out.textContent = code;
 }
 
@@ -591,7 +719,7 @@ async function saveDirectToGitHub() {
 
   showGlobalMessage("⏳ Sincronizando catálogo seguro en GitHub...");
   try {
-    const content = JSON.stringify({ categories, products: state }, null, 2);
+    const content = JSON.stringify({ categories, products: state, config: siteConfig }, null, 2);
     const path = 'products.json';
     const url = `https://api.github.com/repos/${user}/${repo}/contents/${path}`;
 
@@ -659,7 +787,7 @@ function generateWhatsAppList() {
     if (items.length === 0) return;
     msg += `*${cat.name.toUpperCase()}*\n`;
     items.forEach(p => {
-      const sizesText = ["100g", "200g", "500g", "1kg"]
+      const sizesText = Object.keys(p.prices)
         .filter(s => p.prices[s] !== undefined && p.prices[s] !== null)
         .map(s => `${s}: $${Number(p.prices[s]).toLocaleString('es-AR')}`)
         .join(' | ');

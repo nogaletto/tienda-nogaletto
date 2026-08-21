@@ -43,25 +43,6 @@
   ],
   "products": [
     {
-      "id": 53,
-      "name": "Curcuma",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=fdb6c19",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=fdb6c19",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "150g": 3500
-      },
-      "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -251,6 +232,25 @@
       "visible": true,
       "stock": "ok",
       "description": "Coco Rallado consulte precio por mayor",
+      "nutrition": ""
+    },
+    {
+      "id": 53,
+      "name": "Curcuma",
+      "emoji": "🥜",
+      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=fdb6c19",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=fdb6c19",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "150g": 3500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
       "nutrition": ""
     },
     {

@@ -3,181 +3,64 @@
     {
       "id": "frutos",
       "name": "Frutos secos",
-      "emoji": "🌰",
-      "sizeTemplate": [
-        {
-          "label": "200g",
-          "ratio": 0.2,
-          "markup": 1.15
-        },
-        {
-          "label": "500g",
-          "ratio": 0.5,
-          "markup": 1.05
-        },
-        {
-          "label": "1kg",
-          "ratio": 1.0,
-          "markup": 1.0
-        }
-      ]
+      "emoji": "🌰"
     },
     {
       "id": "frutas",
       "name": "Frutas deshidratadas",
-      "emoji": "🍇",
-      "sizeTemplate": [
-        {
-          "label": "200g",
-          "ratio": 0.2,
-          "markup": 1.15
-        },
-        {
-          "label": "500g",
-          "ratio": 0.5,
-          "markup": 1.05
-        },
-        {
-          "label": "1kg",
-          "ratio": 1.0,
-          "markup": 1.0
-        }
-      ]
+      "emoji": "🍇"
     },
     {
       "id": "semillas",
       "name": "Semillas y legumbres",
-      "emoji": "🌱",
-      "sizeTemplate": [
-        {
-          "label": "200g",
-          "ratio": 0.2,
-          "markup": 1.15
-        },
-        {
-          "label": "500g",
-          "ratio": 0.5,
-          "markup": 1.05
-        },
-        {
-          "label": "1kg",
-          "ratio": 1.0,
-          "markup": 1.0
-        }
-      ]
+      "emoji": "🌱"
     },
     {
       "id": "hierbas-y-especies",
       "name": "Hierbas y especies",
-      "emoji": "🏷️",
-      "sizeTemplate": [
-        {
-          "label": "25gr",
-          "ratio": 0.025,
-          "markup": 1.35
-        },
-        {
-          "label": "50gr",
-          "ratio": 0.05,
-          "markup": 1.25
-        },
-        {
-          "label": "100gr",
-          "ratio": 0.1,
-          "markup": 1.15
-        }
-      ]
+      "emoji": "🏷️"
     },
     {
       "id": "aceites-y-coco",
       "name": "Aceites y Coco",
-      "emoji": "🏷️",
-      "sizeTemplate": [
-        {
-          "label": "200g",
-          "ratio": 0.2,
-          "markup": 1.15
-        },
-        {
-          "label": "500g",
-          "ratio": 0.5,
-          "markup": 1.05
-        },
-        {
-          "label": "1kg",
-          "ratio": 1.0,
-          "markup": 1.0
-        }
-      ]
+      "emoji": "🏷️"
     },
     {
       "id": "yerbas",
       "name": "Yerbas",
-      "emoji": "🏷️",
-      "sizeTemplate": [
-        {
-          "label": "200g",
-          "ratio": 0.2,
-          "markup": 1.15
-        },
-        {
-          "label": "500g",
-          "ratio": 0.5,
-          "markup": 1.05
-        },
-        {
-          "label": "1kg",
-          "ratio": 1.0,
-          "markup": 1.0
-        }
-      ]
+      "emoji": "🏷️"
     },
     {
       "id": "vitaminas-y-suplementos",
       "name": "Vitaminas y Suplementos",
-      "emoji": "🏷️",
-      "sizeTemplate": [
-        {
-          "label": "200g",
-          "ratio": 0.2,
-          "markup": 1.15
-        },
-        {
-          "label": "500g",
-          "ratio": 0.5,
-          "markup": 1.05
-        },
-        {
-          "label": "1kg",
-          "ratio": 1.0,
-          "markup": 1.0
-        }
-      ]
+      "emoji": "🏷️"
     },
     {
       "id": "reposteria",
       "name": "Reposteria",
-      "emoji": "🏷️",
-      "sizeTemplate": [
-        {
-          "label": "200g",
-          "ratio": 0.2,
-          "markup": 1.15
-        },
-        {
-          "label": "500g",
-          "ratio": 0.5,
-          "markup": 1.05
-        },
-        {
-          "label": "1kg",
-          "ratio": 1.0,
-          "markup": 1.0
-        }
-      ]
+      "emoji": "🏷️"
     }
   ],
   "products": [
+    {
+      "id": 53,
+      "name": "Curcuma",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "150g": 3500
+      },
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
     {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
@@ -231,11 +114,6 @@
       "name": "Arveja partida",
       "emoji": "🟢",
       "img": "https://lbs1.odoo.com/web/image/product.product/2179/image_1024/Arvejas%20verde%20partida%20-%2025kg?unique=51c0015",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2179/image_1024/Arvejas%20verde%20partida%20-%2025kg?unique=51c0015",
-        "",
-        ""
-      ],
       "cat": "semillas",
       "prices": {
         "200g": 1440,
@@ -245,7 +123,12 @@
       "visible": true,
       "stock": "low",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2179/image_1024/Arvejas%20verde%20partida%20-%2025kg?unique=51c0015",
+        "",
+        ""
+      ]
     },
     {
       "id": 49,
@@ -314,11 +197,6 @@
       "name": "Castaña de Caju Tostada Salada W4 Brasil",
       "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/2059/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20Tostada%20y%20Salada%20-%2022%2C680kg?unique=0151a62",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/2059/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20Tostada%20y%20Salada%20-%2022%2C680kg?unique=0151a62",
-        "",
-        ""
-      ],
       "cat": "frutos",
       "prices": {
         "100g": 2380,
@@ -326,10 +204,15 @@
         "500g": 10180,
         "1kg": 19000
       },
-      "visible": true,
+      "visible": false,
       "stock": "out",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "images": [
+        "https://lbs1.odoo.com/web/image/product.product/2059/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20Tostada%20y%20Salada%20-%2022%2C680kg?unique=0151a62",
+        "",
+        ""
+      ]
     },
     {
       "id": 44,
@@ -358,10 +241,12 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/851/image_1024/Coco%20Rallado%20High%20Fat%20-%2025kg?unique=b9f27c7",
       "cat": "aceites-y-coco",
       "prices": {
+        "100g": null,
+        "200g": null,
         "500g": 8080,
         "1kg": 15000,
-        "2Kg": 28000,
-        "3kg": 40500
+        "3kg": 40500,
+        "2kg": 28000
       },
       "visible": true,
       "stock": "ok",
@@ -380,30 +265,10 @@
       ],
       "cat": "hierbas-y-especies",
       "prices": {
-        "150g": 4000,
-        "300g": 7800,
-        "600g": 14000
+        "100g": null,
+        "150g": 4000
       },
       "visible": true,
-      "stock": "ok",
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 53,
-      "name": "Curcuma en Polvo",
-      "emoji": "🥜",
-      "img": "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-      "images": [
-        "https://lbs1.odoo.com/web/image/product.product/1368/image_1024/C%C3%BArcuma%20-%205kg%20?unique=a157115",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "150g": 3200
-      },
-      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""
@@ -415,6 +280,7 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316617/Garbanzo_zrhmzj.jpg",
       "cat": "semillas",
       "prices": {
+        "200g": null,
         "500g": 3280,
         "1kg": 5200
       },
@@ -430,6 +296,7 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782266078/Semillas_de_girasol_total_con_cuchara_de_madera_zeqogb.png",
       "cat": "semillas",
       "prices": {
+        "200g": null,
         "500g": 3350,
         "1kg": 6000,
         "2kg": 11000
@@ -482,6 +349,7 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782261573/Lentejas_Nacionales_cuenco_de_madera_desde_arriba_vyydsg.png",
       "cat": "semillas",
       "prices": {
+        "200g": null,
         "500g": 2910,
         "1kg": 4500,
         "2kg": 8700
@@ -564,7 +432,7 @@
     },
     {
       "id": 32,
-      "name": "Nuez Mariposa Extra Light partida",
+      "name": "Nuez Extra Light Mariposa + partida",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
       "cat": "frutos",
@@ -576,8 +444,8 @@
       },
       "visible": true,
       "stock": "ok",
-      "description": "Pelada a maquina a maquina contiene raspadas enteras y raspadas partidas. Cual es la diferencia entre una entera? Basicamente la piel las recubre de la oxidacion y en este caso la nuez sigue conteniendo las mismas proteinas pero el omega 3 pierde calidad.",
-      "nutrition": ""
+      "description": "Pelada a maquina",
+      "nutrition": "Fuente de omega 3"
     },
     {
       "id": 21,
@@ -1038,7 +906,7 @@
     }
   ],
   "config": {
-    "freeShippingThreshold": 7500,
+    "freeShippingThreshold": 6000,
     "quantityDiscounts": [
       {
         "minKg": 3,

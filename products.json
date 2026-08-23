@@ -272,10 +272,12 @@
         "100g": null,
         "150g": 4000
       },
-      "visible": true,
+      "visible": false,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": false,
+      "offerPercent": 10
     },
     {
       "id": 6,
@@ -433,9 +435,11 @@
         "1kg": 25000
       },
       "visible": true,
-      "stock": "out",
+      "stock": "ok",
       "description": "Pelada y seleccionada a mano",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": false,
+      "offerPercent": 10
     },
     {
       "id": 32,
@@ -589,7 +593,7 @@
         "1kg": 30000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": "out",
       "description": "",
       "nutrition": ""
     },
@@ -621,7 +625,7 @@
         "1kg": 65000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": "out",
       "description": "",
       "nutrition": ""
     },
@@ -696,7 +700,9 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 14,
@@ -728,7 +734,9 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 16,
@@ -744,7 +752,9 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 17,
@@ -834,7 +844,7 @@
     },
     {
       "id": 4,
-      "name": "Tomate Mendoza 1era Calidad",
+      "name": "Tomate Deshidratado Mendoza 1era Calidad",
       "emoji": "🍅",
       "img": "https://lbs1.odoo.com/web/image/product.product/2231/image_1024/Tomate%20Mendoza%201ra%20-%205kg?unique=d42b2f2",
       "images": [
@@ -845,7 +855,7 @@
       "cat": "frutas",
       "prices": {
         "100g": 2440,
-        "200g": 4640,
+        "200g": null,
         "500g": 10440,
         "1kg": 19500
       },
@@ -871,7 +881,9 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 39,
@@ -890,7 +902,9 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 36,
@@ -909,7 +923,9 @@
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 10
     }
   ],
   "config": {

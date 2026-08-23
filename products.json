@@ -417,10 +417,12 @@
         "2kg": 8500,
         "3kg": 16000
       },
-      "visible": true,
-      "stock": "ok",
+      "visible": false,
+      "stock": "out",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": false,
+      "offerPercent": 10
     },
     {
       "id": 50,

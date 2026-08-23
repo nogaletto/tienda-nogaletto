@@ -426,7 +426,7 @@
     },
     {
       "id": 50,
-      "name": "Nuez Extra Light 2026 Premium",
+      "name": "Nuez Chandler MariposaExtra Light 2026 Premium",
       "emoji": "🥜",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_725102-MLA112268125395_052026-F.webp",
       "images": [
@@ -436,14 +436,17 @@
       ],
       "cat": "frutos",
       "prices": {
-        "1kg": 25000
+        "1kg": 25000,
+        "500g": 13330,
+        "200g": 5900
       },
       "visible": true,
       "stock": "ok",
       "description": "Pelada y seleccionada a mano",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "basePricePerKg": 25000
     },
     {
       "id": 32,

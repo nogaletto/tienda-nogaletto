@@ -60,7 +60,7 @@
     },
     {
       "id": 30,
-      "name": "Almendra Carmel calibre 27/30",
+      "name": "Almendra Carmel entera con partida",
       "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
       "cat": "frutos",
@@ -71,10 +71,12 @@
         "1kg": 25000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": "low",
       "description": "",
       "nutrition": "",
-      "basePricePerKg": 25000
+      "basePricePerKg": 25000,
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 31,

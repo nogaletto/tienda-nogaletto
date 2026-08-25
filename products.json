@@ -60,7 +60,7 @@
     },
     {
       "id": 30,
-      "name": "Almendra Carmel entera con partida",
+      "name": "Almendra Carmel raspada con partida",
       "emoji": "🌰",
       "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
       "cat": "frutos",
@@ -75,7 +75,7 @@
       "description": "",
       "nutrition": "",
       "basePricePerKg": 25000,
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {
@@ -940,16 +940,7 @@
   ],
   "config": {
     "freeShippingThreshold": 6000,
-    "quantityDiscounts": [
-      {
-        "minKg": 3,
-        "percent": 5
-      },
-      {
-        "minKg": 5,
-        "percent": 10
-      }
-    ],
+    "quantityDiscounts": [],
     "transferAlias": "nogaletto"
   }
 }

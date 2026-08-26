@@ -66,15 +66,15 @@
       "cat": "frutos",
       "prices": {
         "100g": 3100,
-        "200g": null,
-        "500g": 13330,
-        "1kg": 25000
+        "200g": 5670,
+        "500g": 12800,
+        "1kg": 24000
       },
       "visible": true,
       "stock": "low",
       "description": "",
       "nutrition": "",
-      "basePricePerKg": 25000,
+      "basePricePerKg": 24000,
       "onOffer": false,
       "offerPercent": 10
     },

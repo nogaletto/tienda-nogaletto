@@ -457,14 +457,15 @@
       "cat": "frutos",
       "prices": {
         "100g": 2020,
-        "200g": 3830,
-        "500g": 8600,
-        "1kg": 16000
+        "200g": 4060,
+        "500g": 9130,
+        "1kg": 17000
       },
       "visible": true,
       "stock": "ok",
       "description": "Pelada a maquina",
-      "nutrition": "Fuente de omega 3"
+      "nutrition": "Fuente de omega 3",
+      "basePricePerKg": 17000
     },
     {
       "id": 21,

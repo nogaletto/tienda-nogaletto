@@ -939,7 +939,7 @@
     }
   ],
   "config": {
-    "freeShippingThreshold": 6000,
+    "freeShippingThreshold": 60000,
     "quantityDiscounts": [],
     "transferAlias": "nogaletto"
   }

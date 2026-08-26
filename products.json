@@ -361,7 +361,7 @@
       "prices": {
         "200g": null,
         "500g": 2910,
-        "1kg": 4500,
+        "1kg": 4513,
         "2kg": 8700
       },
       "visible": true,
@@ -376,15 +376,16 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316600/semillas-de-lino-kan-1200x630_abc_xjivky.jpg",
       "cat": "semillas",
       "prices": {
-        "200g": 1300,
-        "500g": 2830,
-        "1kg": 5000,
-        "2kg": 9000
+        "200g": 1420,
+        "500g": 3090,
+        "1kg": 5500,
+        "2kg": 10000
       },
       "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "basePricePerKg": 5500
     },
     {
       "id": 11,
@@ -599,7 +600,7 @@
         "500g": 15950,
         "1kg": 30000
       },
-      "visible": true,
+      "visible": false,
       "stock": "out",
       "description": "",
       "nutrition": ""
@@ -711,7 +712,7 @@
       "stock": "ok",
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {
@@ -745,7 +746,7 @@
       "stock": "ok",
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {
@@ -763,7 +764,7 @@
       "stock": "ok",
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {
@@ -892,7 +893,7 @@
       "stock": "ok",
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {
@@ -913,7 +914,7 @@
       "stock": "ok",
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {
@@ -934,7 +935,7 @@
       "stock": "ok",
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     }
   ],

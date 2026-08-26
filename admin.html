@@ -120,8 +120,10 @@
   .product-name-input { font-weight: bold; color: var(--bark2); }
   .emoji-input { width: 45px; text-align: center; font-size: 1.1rem; }
 
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table-scroll table { min-width: 1000px; }
+
   @media (max-width: 1000px) {
-    th:nth-child(6), td:nth-child(6), th:nth-child(7), td:nth-child(7) { display:none; } 
     .container { padding:12px; }
     td, th { padding:8px 6px; font-size:0.78rem; }
   }
@@ -203,6 +205,7 @@
 
   <div class="copy-msg" id="globalMsg"></div>
 
+  <div class="table-scroll">
   <table>
     <thead>
       <tr>
@@ -220,6 +223,7 @@
     </thead>
     <tbody id="tableBody"></tbody>
   </table>
+  </div>
 
   <button class="btn copy-action" id="copyBtn" onclick="copyToClipboardBlock()">📋 Copiar al Portapapeles</button>
   <div class="code-output" id="codeOutput"></div>

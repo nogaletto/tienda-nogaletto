@@ -46,11 +46,11 @@
       "id": 54,
       "name": "Polvo de hornear Mayana",
       "emoji": "🥜",
-      "img": "",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_749131-MLA112454303505_052026-F.webp",
       "images": [
-        "",
-        "",
-        ""
+        "https://http2.mlstatic.com/D_NQ_NP_2X_749131-MLA112454303505_052026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_613614-MLA95500451802_102025-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_623130-MLA112455131107_052026-F.webp"
       ],
       "cat": "frutos",
       "prices": {

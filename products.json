@@ -946,8 +946,8 @@
     "freeShippingThreshold": 60000,
     "quantityDiscounts": [
       {
-        "minKg": 5,
-        "percent": 5
+        "minKg": 0,
+        "percent": 0
       }
     ],
     "transferAlias": "nogaletto"

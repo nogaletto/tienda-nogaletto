@@ -43,6 +43,26 @@
   ],
   "products": [
     {
+      "id": 54,
+      "name": "Polvo de hornear Mayana",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 7500
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": "ok",
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -330,10 +350,12 @@
         "500g": 10700,
         "1kg": 20000
       },
-      "visible": false,
+      "visible": true,
       "stock": "ok",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": false,
+      "offerPercent": 10
     },
     {
       "id": 45,
@@ -349,7 +371,7 @@
       "prices": {
         "100gr": 6400
       },
-      "visible": true,
+      "visible": false,
       "stock": "ok",
       "description": "",
       "nutrition": ""
@@ -946,7 +968,7 @@
     "freeShippingThreshold": 60000,
     "quantityDiscounts": [
       {
-        "minKg": 0,
+        "minKg": -2,
         "percent": 0
       }
     ],

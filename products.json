@@ -50,8 +50,7 @@
       "cat": "aceites-y-coco",
       "prices": {
         "1 frasco 360cc": 7500,
-        "2 x 360cc": 13500,
-        "3 x 360cc": 18000
+        "3 x 360cc": 18500
       },
       "visible": true,
       "stock": "ok",
@@ -70,7 +69,7 @@
         "500g": 12800,
         "1kg": 24000
       },
-      "visible": true,
+      "visible": false,
       "stock": "low",
       "description": "",
       "nutrition": "",
@@ -91,9 +90,11 @@
         "1kg": 26000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": "out",
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "onOffer": false,
+      "offerPercent": 10
     },
     {
       "id": 5,
@@ -131,7 +132,8 @@
       "prices": {
         "1kg": 35000,
         "500g": 18580,
-        "250g": 10500
+        "250g": 10500,
+        "5kg": 150000
       },
       "visible": true,
       "stock": "ok",
@@ -152,7 +154,7 @@
       "prices": {
         "250gr": 3000,
         "100gr": 1900,
-        "1kg": 6500
+        "1kg": 6000
       },
       "visible": true,
       "stock": "ok",

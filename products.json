@@ -66,16 +66,20 @@
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
-      "img": "https://lbs1.odoo.com/web/image/product.product/879/image_1024/Aceite%20de%20Coco%20Cosaco%20360Ml%20-%206%20unidades?unique=60e4e56",
+      "img": "",
       "cat": "aceites-y-coco",
       "prices": {
-        "1 frasco 360cc": 7500,
-        "3 x 360cc": 18500
+        "1 frasco 360cc": 7500
       },
       "visible": true,
       "stock": "ok",
       "description": "Virgen Neutro x 360cc.",
-      "nutrition": ""
+      "nutrition": "",
+      "images": [
+        "",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_686680-MLA107598260098_032026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_985749-MLA109738082841_032026-F.webp"
+      ]
     },
     {
       "id": 30,
@@ -968,7 +972,7 @@
     "freeShippingThreshold": 60000,
     "quantityDiscounts": [
       {
-        "minKg": -2,
+        "minKg": 0,
         "percent": 0
       }
     ],

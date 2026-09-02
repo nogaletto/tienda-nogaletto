@@ -58,28 +58,43 @@
       },
       "basePricePerKg": null,
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_655926-MLA108327406541_032026-F.webp",
+      "img": "",
       "cat": "aceites-y-coco",
       "prices": {
         "1 frasco 360cc": 7500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 4,
+          "unit": "un",
+          "label": "frasco 360cc"
+        }
+      ],
       "description": "Virgen Neutro x 360cc.",
       "nutrition": "",
       "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_655926-MLA108327406541_032026-F.webp",
+        "",
         "https://http2.mlstatic.com/D_NQ_NP_2X_686680-MLA107598260098_032026-F.webp",
         "https://http2.mlstatic.com/D_NQ_NP_2X_985749-MLA109738082841_032026-F.webp"
-      ]
+      ],
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 30,
@@ -88,18 +103,23 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/1785/image_1024/Almendra%20Carmel%2025-27%20-%2010kg?unique=efc6bc1",
       "cat": "frutos",
       "prices": {
-        "100g": 3100,
-        "200g": 5670,
         "500g": 12800,
         "1kg": 24000
       },
       "visible": false,
-      "stock": "low",
+      "stock": [
+        {
+          "qty": 6,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "basePricePerKg": 24000,
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 31,
@@ -108,17 +128,22 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/745/image_1024/Almendra%20Non%20Pareil%20Chile%2025-27%20-%2010kg?unique=a67f0e6",
       "cat": "frutos",
       "prices": {
-        "100g": 3220,
-        "200g": 6130,
         "500g": 13850,
         "1kg": 26000
       },
       "visible": true,
-      "stock": "out",
+      "stock": [
+        {
+          "qty": 6,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 5,
@@ -132,7 +157,12 @@
         "1kg": 4300
       },
       "visible": true,
-      "stock": "low",
+      "stock": [
+        {
+          "qty": 5,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "images": [
@@ -140,7 +170,9 @@
         "",
         ""
       ],
-      "basePricePerKg": 4300
+      "basePricePerKg": 4300,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 49,
@@ -160,9 +192,16 @@
         "5kg": 150000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 8,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 48,
@@ -181,9 +220,17 @@
         "1kg": 6000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 13,
+          "unit": "un",
+          "label": "paquete 150g"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 41,
@@ -201,9 +248,16 @@
         "100g": 7500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 0.8,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 33,
@@ -218,14 +272,21 @@
         "1kg": 19000
       },
       "visible": false,
-      "stock": "out",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "images": [
         "https://lbs1.odoo.com/web/image/product.product/2059/image_1024/Casta%C3%B1a%20de%20Caj%C3%BA%20Brasil%20W3%20Tostada%20y%20Salada%20-%2022%2C680kg?unique=0151a62",
         "",
         ""
-      ]
+      ],
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 44,
@@ -243,9 +304,17 @@
         "100gr": 8000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 17,
+          "unit": "un",
+          "label": "paquete 50g"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 27,
@@ -262,9 +331,16 @@
         "2kg": 28000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 18,
+          "unit": "kg"
+        }
+      ],
       "description": "Coco Rallado consulte precio por mayor",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 53,
@@ -281,9 +357,17 @@
         "150g": 3500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 30,
+          "unit": "un",
+          "label": "paquete 150g"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 46,
@@ -301,11 +385,18 @@
         "150g": 4000
       },
       "visible": false,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 6,
@@ -320,10 +411,17 @@
         "2kg": 10000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 5,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
-      "basePricePerKg": 5200
+      "basePricePerKg": 5200,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 8,
@@ -338,9 +436,16 @@
         "2kg": 11000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 5,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 26,
@@ -355,11 +460,18 @@
         "1kg": 20000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 0.5,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 45,
@@ -376,9 +488,16 @@
         "100gr": 6400
       },
       "visible": false,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 9,
@@ -393,9 +512,16 @@
         "2kg": 8700
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 7,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 10,
@@ -410,10 +536,17 @@
         "2kg": 10000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 5,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
-      "basePricePerKg": 5500
+      "basePricePerKg": 5500,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 11,
@@ -429,9 +562,16 @@
         "3kg": 12000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 25,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 12,
@@ -447,11 +587,18 @@
         "3kg": 16000
       },
       "visible": false,
-      "stock": "out",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 50,
@@ -466,16 +613,22 @@
       "cat": "frutos",
       "prices": {
         "1kg": 25000,
-        "500g": 13330,
-        "200g": 5900
+        "500g": 13330
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 8,
+          "unit": "kg"
+        }
+      ],
       "description": "Pelada y seleccionada a mano",
       "nutrition": "",
       "onOffer": false,
       "offerPercent": 10,
-      "basePricePerKg": 25000
+      "basePricePerKg": 25000,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 32,
@@ -484,16 +637,21 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/942/image_1024/Nuez%20Mariposa%20Extra%20Light%20-%2010kg?unique=f4f465a",
       "cat": "frutos",
       "prices": {
-        "100g": 2020,
-        "200g": 4060,
         "500g": 9130,
         "1kg": 17000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 6,
+          "unit": "kg"
+        }
+      ],
       "description": "Pelada a maquina",
       "nutrition": "Fuente de omega 3",
-      "basePricePerKg": 17000
+      "basePricePerKg": 17000,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 21,
@@ -507,9 +665,16 @@
         "1kg": 27000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 40,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 29,
@@ -524,9 +689,16 @@
         "1kg": 10000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 4.5,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 1,
@@ -542,9 +714,16 @@
         "2kg": 9500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 10,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 2,
@@ -559,9 +738,16 @@
         "1kg": 5000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 10,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 3,
@@ -576,9 +762,16 @@
         "1kg": 4500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 10,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 38,
@@ -595,9 +788,17 @@
         "150gr": 4200
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 30,
+          "unit": "un",
+          "label": "paquete 150g"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 34,
@@ -614,9 +815,17 @@
         "150gr": 4300
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 30,
+          "unit": "un",
+          "label": "paquete 150g"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 23,
@@ -630,9 +839,16 @@
         "1kg": 30000
       },
       "visible": false,
-      "stock": "out",
+      "stock": [
+        {
+          "qty": 40,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 25,
@@ -646,9 +862,16 @@
         "1kg": 42000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 1,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 24,
@@ -662,9 +885,16 @@
         "1kg": 65000
       },
       "visible": true,
-      "stock": "out",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 42,
@@ -681,9 +911,17 @@
         "1kg": 75000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 2,
+          "unit": "un",
+          "label": "paquete 500g"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 51,
@@ -700,9 +938,16 @@
         "1kg": 40000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 52,
@@ -721,10 +966,17 @@
         "500g": 34330
       },
       "visible": true,
-      "stock": "low",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
-      "basePricePerKg": 65000
+      "basePricePerKg": 65000,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 13,
@@ -738,11 +990,18 @@
         "1kg": 4000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 8,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 14,
@@ -756,9 +1015,16 @@
         "1kg": 6800
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 15,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 15,
@@ -772,11 +1038,18 @@
         "1kg": 4000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 20,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 16,
@@ -790,11 +1063,18 @@
         "1kg": 4300
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 20,
+          "unit": "kg"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 17,
@@ -808,9 +1088,16 @@
         "1kg": 12500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 4,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 47,
@@ -827,9 +1114,22 @@
         "100gr": 4000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 2,
+          "unit": "un",
+          "label": "paquete 250g"
+        },
+        {
+          "qty": 2,
+          "unit": "un",
+          "label": "paquete 100g"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 37,
@@ -846,9 +1146,16 @@
         "1kg": 15000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 3.5,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 18,
@@ -862,9 +1169,16 @@
         "1kg": 4000
       },
       "visible": false,
-      "stock": "out",
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 19,
@@ -878,9 +1192,16 @@
         "1kg": 6000
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 25,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 4,
@@ -900,9 +1221,16 @@
         "1kg": 19500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 4,
+          "unit": "kg"
+        }
+      ],
       "description": "",
-      "nutrition": ""
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 43,
@@ -919,11 +1247,19 @@
         "100gr": 4500
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 7,
+          "unit": "un",
+          "label": "paquete 150g"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 39,
@@ -940,11 +1276,19 @@
         "500gr": 5100
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 8,
+          "unit": "un",
+          "label": "paquete 500g"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     },
     {
       "id": 36,
@@ -961,21 +1305,25 @@
         "500gr": 5100
       },
       "visible": true,
-      "stock": "ok",
+      "stock": [
+        {
+          "qty": 8,
+          "unit": "un",
+          "label": "paquete 500g"
+        }
+      ],
       "description": "",
       "nutrition": "",
       "onOffer": false,
-      "offerPercent": 10
+      "offerPercent": 10,
+      "stockIncoming": false,
+      "trending": false
     }
   ],
   "config": {
     "freeShippingThreshold": 60000,
-    "quantityDiscounts": [
-      {
-        "minKg": 0,
-        "percent": 0
-      }
-    ],
-    "transferAlias": "nogaletto"
+    "transferAlias": "nogaletto",
+    "lowStockThresholdKg": 1,
+    "lowStockThresholdUn": 3
   }
 }

@@ -577,6 +577,14 @@
 
 .card-desc{font-size:.78rem;color:#777;line-height:1.3;margin:6px 0 8px;}
 .stock-badge{font-size:.72rem;font-weight:700;margin-bottom:6px;}
+.ship-progress-track{background:rgba(0,0,0,0.1);border-radius:6px;height:6px;margin-top:6px;overflow:hidden;}
+.ship-progress-fill{height:100%;border-radius:6px;background:currentColor;transition:width .3s ease;}
+.ship-note{font-size:.68rem;color:#8a5a00;margin-bottom:6px;}
+.ship-note-ok{color:#2c6b1f;}
+.category-section{margin-bottom:30px;}
+.category-section-title{font-size:1.15rem;font-weight:800;margin:0 0 12px;}
+.ver-mas-btn{display:block;margin:14px auto 0;background:none;border:1.5px solid rgba(0,0,0,0.15);border-radius:20px;padding:7px 20px;font-size:.85rem;cursor:pointer;font-family:inherit;color:inherit;}
+.ver-mas-btn:hover{background:rgba(0,0,0,0.04);}
 .stock-ok{color:#2e7d32;}
 .nutrition-box{font-size:.75rem;margin-bottom:8px;}
 .nutrition-box summary{cursor:pointer;color:var(--green);}
@@ -640,7 +648,7 @@
     style="width:100%; padding:12px 16px; border-radius:24px; border:1px solid #ddd; font-size:15px; box-sizing:border-box;">
 </div>
 
-<div class="products" id="productsGrid"></div>
+<div id="productsGrid"></div>
 
 <!-- FAB -->
 <button class="fab" id="fab" onclick="toggleDrawer()">
@@ -663,8 +671,10 @@
     </div>
   </div>
   <div class="drawer-footer">
-    <div id="shippingBanner" style="display:none; background:#fff4e0; color:#8a5a00; font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:10px; text-align:center;"></div>
-    <div id="qtyDiscountBanner" style="display:none; background:#e3f2e1; color:#2c6b1f; font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:10px; text-align:center;"></div>
+    <div id="shippingBanner" style="display:none; background:#fff4e0; color:#8a5a00; font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:10px; text-align:center;">
+      <div id="shippingBannerText"></div>
+      <div class="ship-progress-track"><div class="ship-progress-fill" id="shipProgressFill"></div></div>
+    </div>
     <div class="customer-section">
       <h3>Tus datos</h3>
       <input class="input-field" id="custName" type="text" placeholder="Tu nombre *" />
@@ -695,7 +705,7 @@
       Enviar pedido por WhatsApp
     </button>
     <p style="font-size:11px; opacity:0.7; text-align:center; margin-top:10px; line-height:1.5;">
-      Envío gratis a partir de <span id="termsShipping"></span>. Descuentos por cantidad aplicados automáticamente sobre el total.<br>
+      Envío gratis a partir de <span id="termsShipping"></span>.<br>
       El pedido se confirma por WhatsApp; el pago se coordina según la opción elegida arriba.
     </p>
   </div>
@@ -748,30 +758,43 @@ function getDefaultSize(p) {
   return anyKey || "1kg";
 }
 
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
-  const searchTerm = (document.getElementById('storeSearch')?.value || '').trim().toLowerCase();
-  PRODUCTS.filter(p => p.visible !== false).filter(p => {
-    if (!searchTerm) return true;
-    return p.name.toLowerCase().includes(searchTerm) || (p.description || '').toLowerCase().includes(searchTerm);
-  }).forEach(p => {
-   try {
-    const size = selectedSize[p.id] || getDefaultSize(p);
-    const price = p.prices[size];
-    const cartKey = `${p.id}_${size}`;
-    const qty = cart[cartKey]?.qty || 0;
-    const standardSizes = SIZES.filter(s => p.prices[s] !== null && p.prices[s] !== undefined);
-    const customSizes = Object.keys(p.prices).filter(k => !SIZES.includes(k) && p.prices[k] !== null && p.prices[k] !== undefined);
-    const availableSizes = [...standardSizes, ...customSizes];
+function getStockInfo(p) {
+  if (p.stockIncoming) return { cls: 'incoming', label: '🚚 En camino' };
+  const entries = p.stock || [];
+  const total = entries.reduce((a, s) => a + s.qty, 0);
+  const isKg = entries.length > 0 && entries[0].unit === 'kg';
+  const threshold = isKg ? (SITE_CONFIG.lowStockThresholdKg ?? 1) : (SITE_CONFIG.lowStockThresholdUn ?? 3);
+  const detail = entries.map(s => s.unit === 'kg' ? `${s.qty}kg` : `${s.qty} ${s.label || 'un.'}`).join(' + ');
+  if (total <= 0) return { cls: 'out', label: '🔴 Sin stock' };
+  if (total < threshold) return { cls: 'low', label: `🟠 Últimas — ${detail}` };
+  return { cls: 'ok', label: `🟢 Disponible — ${detail}` };
+}
 
-    const images = getProductImages(p);
-    const imgIdx = currentImgIndex[p.id] || 0;
-    const safeIdx = imgIdx < images.length ? imgIdx : 0;
+function buildCardHTML(p) {
+  const size = selectedSize[p.id] || getDefaultSize(p);
+  const price = p.prices[size];
+  const cartKey = `${p.id}_${size}`;
+  const qty = cart[cartKey]?.qty || 0;
+  const standardSizes = SIZES.filter(s => p.prices[s] !== null && p.prices[s] !== undefined);
+  const customSizes = Object.keys(p.prices).filter(k => !SIZES.includes(k) && p.prices[k] !== null && p.prices[k] !== undefined);
+  const availableSizes = [...standardSizes, ...customSizes];
 
-    const div = document.createElement('div');
-    div.className = 'card' + (currentCat !== 'all' && p.cat !== currentCat ? ' hidden' : '');
-    div.innerHTML = `
+  const images = getProductImages(p);
+  const imgIdx = currentImgIndex[p.id] || 0;
+  const safeIdx = imgIdx < images.length ? imgIdx : 0;
+
+  const stockInfo = getStockInfo(p);
+  const freeShipThreshold = SITE_CONFIG.freeShippingThreshold || 0;
+  const cartTotal = getTotal();
+  const shipNote = freeShipThreshold > 0
+    ? (cartTotal >= freeShipThreshold
+        ? '🎉 Envío gratis'
+        : `🚚 Envío gratis desde ${CURRENCY}${freeShipThreshold.toLocaleString('es-AR')}`)
+    : '';
+  const shipNoteCls = 'ship-note' + (cartTotal >= freeShipThreshold && freeShipThreshold > 0 ? ' ship-note-ok' : '');
+
+  return `
+    <div class="card">
       <div class="card-img-wrap">
         <div class="card-img-fallback" id="fallback-${p.id}" style="${images.length ? 'display:none;' : ''}">${p.emoji}</div>
         ${images.length ? `
@@ -788,7 +811,8 @@ function renderProducts() {
       </div>
       <div class="card-body">
         <div class="card-name">${p.name}</div>
-<div class="stock-badge stock-${p.stock || "ok"}">${(p.stock==="low"?"🟠 Últimas unidades":p.stock==="out"?"🔴 Sin stock":p.stock==="incoming"?"🚚 En camino":"🟢 Disponible")}</div>
+<div class="stock-badge stock-${stockInfo.cls}">${stockInfo.label}</div>
+${shipNote ? `<div class="${shipNoteCls}">${shipNote}</div>` : ''}
 <div class="card-desc">${p.description || ""}</div>
 <details class="nutrition-box"><summary>ⓘ Información nutricional</summary><p>${p.nutrition || "Consultar información nutricional."}</p></details>
         <div class="size-selector">
@@ -810,11 +834,53 @@ function renderProducts() {
              </div>`
         }
       </div>`;
-    grid.appendChild(div);
-   } catch (err) {
-    console.error(`Error mostrando el producto "${p.name}" (id ${p.id}):`, err);
-   }
+}
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  const searchTerm = (document.getElementById('storeSearch')?.value || '').trim().toLowerCase();
+  const visible = PRODUCTS.filter(p => p.visible !== false).filter(p => {
+    if (!searchTerm) return true;
+    return p.name.toLowerCase().includes(searchTerm) || (p.description || '').toLowerCase().includes(searchTerm);
   });
+
+  const cardHtmlSafe = (p) => {
+    try { return buildCardHTML(p); }
+    catch (err) { console.error(`Error mostrando el producto "${p.name}" (id ${p.id}):`, err); return ''; }
+  };
+
+  const showSections = currentCat === 'all' && !searchTerm;
+
+  if (showSections) {
+    grid.className = 'sections-wrap';
+    const isMobile = window.innerWidth < 768;
+    const limit = isMobile ? 3 : 6;
+    let html = '';
+    CATEGORIES.forEach(cat => {
+      const catProducts = visible.filter(p => p.cat === cat.id);
+      if (!catProducts.length) return;
+      const trending = catProducts.filter(p => p.trending);
+      const pool = trending.length ? trending : catProducts;
+      const toShow = pool.slice(0, limit);
+      html += `
+        <div class="category-section">
+          <h2 class="category-section-title">${cat.emoji || '🏷️'} ${cat.name}</h2>
+          <div class="products">${toShow.map(cardHtmlSafe).join('')}</div>
+          ${catProducts.length > toShow.length ? `<button class="ver-mas-btn" onclick="goToCategory('${cat.id}')">Ver todos (${catProducts.length}) ↓</button>` : ''}
+        </div>`;
+    });
+    grid.innerHTML = html;
+  } else {
+    grid.className = 'products';
+    const toShow = currentCat === 'all' ? visible : visible.filter(p => p.cat === currentCat);
+    grid.innerHTML = toShow.map(cardHtmlSafe).join('');
+  }
+}
+
+function goToCategory(catId) {
+  const btn = document.querySelector(`.cat-btn[data-cat="${catId}"]`);
+  if (btn) filterCat(catId, btn);
+  document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function prevImg(event, id, total) {
@@ -870,41 +936,24 @@ function update() {
   updateBanners(total);
 }
 
-// Convierte cada presentación a su equivalente en kg, para aplicar el descuento por cantidad
-const KG_EQUIVALENTS = { "100g":0.1, "200g":0.2, "500g":0.5, "1kg":1, "25g":0.025, "50g":0.05, "100gr":0.1, "50gr":0.05, "25gr":0.025, "500gr":0.5 };
-function getTotalKg() {
-  return Object.values(cart).reduce((acc, item) => acc + ((KG_EQUIVALENTS[item.size] || 0) * item.qty), 0);
-}
-function getQuantityDiscountPercent() {
-  const totalKg = getTotalKg();
-  let percent = 0;
-  (SITE_CONFIG.quantityDiscounts || []).forEach(d => { if (totalKg >= d.minKg && d.percent > percent) percent = d.percent; });
-  return percent;
-}
-
 function updateBanners(total) {
   const shipBox = document.getElementById('shippingBanner');
+  const shipText = document.getElementById('shippingBannerText');
+  const shipFill = document.getElementById('shipProgressFill');
   const threshold = SITE_CONFIG.freeShippingThreshold || 0;
   if (threshold > 0 && total > 0) {
     shipBox.style.display = 'block';
+    const pct = Math.min(100, Math.round((total / threshold) * 100));
     if (total >= threshold) {
       shipBox.style.background = '#e3f2e1'; shipBox.style.color = '#2c6b1f';
-      shipBox.textContent = '🎉 ¡Tenés envío gratis!';
+      shipText.textContent = '🎉 ¡Tenés envío gratis!';
     } else {
       shipBox.style.background = '#fff4e0'; shipBox.style.color = '#8a5a00';
-      shipBox.textContent = `🚚 Agregá ${CURRENCY}${(threshold - total).toLocaleString('es-AR')} más y tenés envío gratis`;
+      shipText.textContent = `🚚 Agregá ${CURRENCY}${(threshold - total).toLocaleString('es-AR')} más y tenés envío gratis`;
     }
+    if (shipFill) shipFill.style.width = pct + '%';
   } else {
     shipBox.style.display = 'none';
-  }
-
-  const qtyBox = document.getElementById('qtyDiscountBanner');
-  const discPercent = getQuantityDiscountPercent();
-  if (discPercent > 0) {
-    qtyBox.style.display = 'block';
-    qtyBox.textContent = `✅ Descuento por cantidad aplicado: -${discPercent}%`;
-  } else {
-    qtyBox.style.display = 'none';
   }
 
   const termsEl = document.getElementById('termsShipping');
@@ -924,11 +973,9 @@ function updatePaymentInfo() {
 }
 
 function getTotal() {
-  const subtotal = Object.values(cart).reduce((acc, item) => {
+  return Object.values(cart).reduce((acc, item) => {
     return acc + (getItemPrice(item) * item.qty);
   }, 0);
-  const discPercent = getQuantityDiscountPercent();
-  return Math.round(subtotal * (1 - discPercent / 100));
 }
 
 function renderDrawer() {
@@ -1003,9 +1050,6 @@ function sendWhatsApp() {
     msg += `• ${item.product.emoji} ${item.product.name} — ${item.size} × ${item.qty} = ${CURRENCY}${subtotal.toLocaleString('es-AR')}\n`;
   });
 
-  const discPercent = getQuantityDiscountPercent();
-  const subtotalSinDesc = items.reduce((acc, item) => acc + (getItemPrice(item) * item.qty), 0);
-  if (discPercent > 0) msg += `\n🏷️ _Subtotal: ${CURRENCY}${subtotalSinDesc.toLocaleString('es-AR')} — Descuento por cantidad: -${discPercent}%_`;
   msg += `\n💰 *Total: ${CURRENCY}${getTotal().toLocaleString('es-AR')}*`;
   const payChecked = document.querySelector('input[name="payMethod"]:checked');
   const payMethod = payChecked ? payChecked.value : 'efectivo';
@@ -1030,7 +1074,7 @@ function initLocalCode() {
 }
 
 // Init: carga el catálogo desde products.json (misma fuente que edita el panel admin)
-let SITE_CONFIG = { freeShippingThreshold: 0, quantityDiscounts: [], transferAlias: "" };
+let SITE_CONFIG = { freeShippingThreshold: 0, lowStockThresholdKg: 1, lowStockThresholdUn: 3, transferAlias: "" };
 
 async function loadProducts() {
   const grid = document.getElementById('productsGrid');
@@ -1079,12 +1123,14 @@ function renderCategoryButtons() {
   bar.innerHTML = '';
   const allBtn = document.createElement('button');
   allBtn.className = 'cat-btn active';
+  allBtn.dataset.cat = 'all';
   allBtn.textContent = '📦 Todos';
   allBtn.onclick = () => filterCat('all', allBtn);
   bar.appendChild(allBtn);
   CATEGORIES.forEach((cat) => {
     const btn = document.createElement('button');
     btn.className = 'cat-btn';
+    btn.dataset.cat = cat.id;
     btn.textContent = `${cat.emoji || '🏷️'} ${cat.name}`;
     btn.onclick = () => filterCat(cat.id, btn);
     bar.appendChild(btn);

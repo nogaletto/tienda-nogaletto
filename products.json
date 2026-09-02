@@ -66,7 +66,7 @@
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
-      "img": "",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_655926-MLA108327406541_032026-F.webp",
       "cat": "aceites-y-coco",
       "prices": {
         "1 frasco 360cc": 7500
@@ -76,7 +76,7 @@
       "description": "Virgen Neutro x 360cc.",
       "nutrition": "",
       "images": [
-        "",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_655926-MLA108327406541_032026-F.webp",
         "https://http2.mlstatic.com/D_NQ_NP_2X_686680-MLA107598260098_032026-F.webp",
         "https://http2.mlstatic.com/D_NQ_NP_2X_985749-MLA109738082841_032026-F.webp"
       ]

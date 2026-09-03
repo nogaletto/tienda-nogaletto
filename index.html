@@ -193,6 +193,7 @@
     box-shadow: 0 2px 12px rgba(59,42,26,0.08);
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
+    min-width: 0;
   }
   .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(59,42,26,0.15); }
   .card.hidden { display: none; }
@@ -571,7 +572,7 @@
   }
 
   @media (max-width: 480px) {
-    .products { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; padding-left: 14px; padding-right: 14px; }
+    .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-left: 14px; padding-right: 14px; }
     .hero { padding: 36px 20px 30px; }
   }
 
@@ -880,7 +881,6 @@ function renderProducts() {
 function goToCategory(catId) {
   const btn = document.querySelector(`.cat-btn[data-cat="${catId}"]`);
   if (btn) filterCat(catId, btn);
-  document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function prevImg(event, id, total) {

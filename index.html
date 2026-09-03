@@ -181,7 +181,7 @@
 
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
     padding: 12px 20px 100px;
   }
@@ -571,7 +571,7 @@
   }
 
   @media (max-width: 480px) {
-    .products { grid-template-columns: repeat(2, 1fr); gap: 12px; padding-left: 14px; padding-right: 14px; }
+    .products { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; padding-left: 14px; padding-right: 14px; }
     .hero { padding: 36px 20px 30px; }
   }
 

@@ -109,6 +109,7 @@
     padding: 20px 20px 0;
     overflow-x: auto;
     scrollbar-width: none;
+    justify-content: center;
   }
   .categories::-webkit-scrollbar { display: none; }
   .cat-btn {
@@ -177,13 +178,17 @@
     font-size: 1.3rem;
     padding: 20px 20px 4px;
     color: var(--bark2);
+    text-align: center;
   }
 
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, 230px);
+    justify-content: center;
+    gap: 20px;
     padding: 12px 20px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .card {
@@ -193,20 +198,22 @@
     box-shadow: 0 2px 12px rgba(59,42,26,0.08);
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
-    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
   .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(59,42,26,0.15); }
   .card.hidden { display: none; }
 
   .card-img-wrap {
     position: relative;
-    height: 130px;
+    height: 150px;
     background: var(--sand);
     overflow: hidden;
   }
   .card-img {
     width: 100%;
-    height: 130px;
+    height: 150px;
     object-fit: cover;
     display: block;
     position: relative;
@@ -264,12 +271,17 @@
     background: #fff;
     border-color: rgba(0,0,0,0.4);
   }
-  .card-body { padding: 12px; }
+  .card-body { 
+    padding: 14px; 
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
   .card-name {
     font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--bark);
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
   .card-weight {
     font-size: 0.75rem;
@@ -277,10 +289,11 @@
     margin-bottom: 8px;
   }
   .card-price {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--amber);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    margin-top: auto;
   }
   .add-btn {
     width: 100%;
@@ -288,7 +301,7 @@
     color: var(--amber2);
     border: none;
     border-radius: 8px;
-    padding: 8px;
+    padding: 10px;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 500;
@@ -495,13 +508,13 @@
     display: flex;
     gap: 4px;
     flex-wrap: wrap;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .size-btn {
     background: var(--sand);
     border: 1.5px solid var(--sand2);
     border-radius: 6px;
-    padding: 3px 8px;
+    padding: 4px 8px;
     font-size: 0.72rem;
     font-weight: 600;
     color: var(--bark2);
@@ -571,24 +584,37 @@
     margin-top: 4px;
   }
 
-  @media (max-width: 480px) {
-    .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-left: 14px; padding-right: 14px; }
-    .hero { padding: 36px 20px 30px; }
-  }
+  .card-desc{font-size:.78rem;color:#777;line-height:1.3;margin:6px 0 8px;}
+  .stock-badge{font-size:.72rem;font-weight:700;margin-bottom:6px;}
+  .ship-progress-track{background:rgba(0,0,0,0.1);border-radius:6px;height:6px;margin-top:6px;overflow:hidden;}
+  .ship-progress-fill{height:100%;border-radius:6px;background:currentColor;transition:width .3s ease;}
+  .ship-note{font-size:.68rem;color:#8a5a00;margin-bottom:6px;}
+  .ship-note-ok{color:#2c6b1f;}
+  .category-section{margin-bottom:30px;}
+  .category-section-title{font-size:1.15rem;font-weight:800;margin:0 0 12px;text-align:center;}
+  .ver-mas-btn{display:block;margin:14px auto 0;background:none;border:1.5px solid rgba(0,0,0,0.15);border-radius:20px;padding:7px 20px;font-size:.85rem;cursor:pointer;font-family:inherit;color:inherit;}
+  .ver-mas-btn:hover{background:rgba(0,0,0,0.04);}
+  .stock-ok{color:#2e7d32;}
+  .nutrition-box{font-size:.75rem;margin-bottom:8px;}
+  .nutrition-box summary{cursor:pointer;color:var(--green);}
 
-.card-desc{font-size:.78rem;color:#777;line-height:1.3;margin:6px 0 8px;}
-.stock-badge{font-size:.72rem;font-weight:700;margin-bottom:6px;}
-.ship-progress-track{background:rgba(0,0,0,0.1);border-radius:6px;height:6px;margin-top:6px;overflow:hidden;}
-.ship-progress-fill{height:100%;border-radius:6px;background:currentColor;transition:width .3s ease;}
-.ship-note{font-size:.68rem;color:#8a5a00;margin-bottom:6px;}
-.ship-note-ok{color:#2c6b1f;}
-.category-section{margin-bottom:30px;}
-.category-section-title{font-size:1.15rem;font-weight:800;margin:0 0 12px;}
-.ver-mas-btn{display:block;margin:14px auto 0;background:none;border:1.5px solid rgba(0,0,0,0.15);border-radius:20px;padding:7px 20px;font-size:.85rem;cursor:pointer;font-family:inherit;color:inherit;}
-.ver-mas-btn:hover{background:rgba(0,0,0,0.04);}
-.stock-ok{color:#2e7d32;}
-.nutrition-box{font-size:.75rem;margin-bottom:8px;}
-.nutrition-box summary{cursor:pointer;color:var(--green);}
+  /* RESPONSIVE OPTIMIZADO PARA DISPOSITIVOS MÓVILES (ANDROID/IOS) */
+  @media (max-width: 580px) {
+    .categories { justify-content: flex-start; }
+    .products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .card-img-wrap { height: 125px; }
+    .card-img { height: 125px; }
+    .card-body { padding: 10px; }
+    .card-name { font-size: 0.9rem; }
+    .card-price { font-size: 1rem; }
+    .add-btn { padding: 8px 4px; font-size: 0.8rem; }
+    .hero { padding: 36px 16px 30px; }
+  }
 
 </style>
 </head>
@@ -720,21 +746,14 @@ const WHATSAPP_NUMBER = "5492994159772"; // Nogaletto Neuquén
 const CURRENCY = "$";
 const STORE_NAME = "Nogaletto";
 
-// Precios: { "100g": precio, "200g": precio, "500g": precio, "1kg": precio }
-// null = no disponible en ese tamaño
 let PRODUCTS = [];
 let CATEGORIES = [];
-// Los productos se cargan dinámicamente desde products.json (misma fuente que usa el panel admin)
-// ============================================================
-// ============================================================
 
 const SIZES = ["100g","200g","500g","1kg"];
-// Tamaño seleccionado por producto: { productId: "200g" }
 let selectedSize = {};
-// Carrito: { "productId_200g": { product, size, qty } }
 let cart = {};
 let currentCat = 'all';
-let currentImgIndex = {}; // { productId: 0 } — foto actualmente mostrada en el carrusel de cada card
+let currentImgIndex = {};
 
 function getProductImages(p) {
   const imgs = (p.images || []).filter(Boolean);
@@ -754,7 +773,6 @@ function getItemPrice(item) {
 function getDefaultSize(p) {
   const standard = SIZES.find(s => p.prices[s] !== null && p.prices[s] !== undefined);
   if (standard) return standard;
-  // presentación personalizada (ej: "1 unidad", "150g") — nunca devolver una que esté vacía (null)
   const anyKey = Object.keys(p.prices).find(k => p.prices[k] !== null && p.prices[k] !== undefined);
   return anyKey || "1kg";
 }
@@ -812,10 +830,10 @@ function buildCardHTML(p) {
       </div>
       <div class="card-body">
         <div class="card-name">${p.name}</div>
-<div class="stock-badge stock-${stockInfo.cls}">${stockInfo.label}</div>
-${shipNote ? `<div class="${shipNoteCls}">${shipNote}</div>` : ''}
-<div class="card-desc">${p.description || ""}</div>
-<details class="nutrition-box"><summary>ⓘ Información nutricional</summary><p>${p.nutrition || "Consultar información nutricional."}</p></details>
+        <div class="stock-badge stock-${stockInfo.cls}">${stockInfo.label}</div>
+        ${shipNote ? `<div class="${shipNoteCls}">${shipNote}</div>` : ''}
+        <div class="card-desc">${p.description || ""}</div>
+        <details class="nutrition-box"><summary>ⓘ Info nutricional</summary><p>${p.nutrition || "Consultar información nutricional."}</p></details>
         <div class="size-selector">
           ${availableSizes.map(s => `
             <button class="size-btn ${s === size ? 'active' : ''}"
@@ -855,8 +873,8 @@ function renderProducts() {
 
   if (showSections) {
     grid.className = 'sections-wrap';
-    const isMobile = window.innerWidth < 768;
-    const limit = isMobile ? 3 : 6;
+    const isMobile = window.innerWidth < 580;
+    const limit = isMobile ? 4 : 8;
     let html = '';
     CATEGORIES.forEach(cat => {
       const catProducts = visible.filter(p => p.cat === cat.id);
@@ -1027,7 +1045,6 @@ function sendWhatsApp() {
   const address = document.getElementById('custAddress').value.trim();
   const localCode = document.getElementById('localCode').value.trim().toUpperCase();
 
-  // Validación
   let valid = true;
   ['custName','custPhone'].forEach(id => {
     const el = document.getElementById(id);
@@ -1039,30 +1056,43 @@ function sendWhatsApp() {
   const items = Object.values(cart);
   if (items.length === 0) { alert('Tu carrito está vacío.'); return; }
 
-  let msg = `🌰 *Nuevo pedido — ${STORE_NAME}*\n\n`;
-  if (localCode) msg += `🏪 *Local:* ${localCode}\n`;
-  msg += `👤 *Cliente:* ${name}\n`;
-  msg += `📱 *Teléfono:* ${phone}\n`;
-  if (address) msg += `📍 *Dirección:* ${address}\n`;
-  msg += `\n📦 *Productos:*\n`;
+  let msg = `🌰 *Nuevo pedido — ${STORE_NAME}*
+
+`;
+  if (localCode) msg += `🏪 *Local:* ${localCode}
+`;
+  msg += `👤 *Cliente:* ${name}
+`;
+  msg += `📱 *Teléfono:* ${phone}
+`;
+  if (address) msg += `📍 *Dirección:* ${address}
+`;
+  msg += `
+📦 *Productos:*
+`;
 
   items.forEach(item => {
     const subtotal = getItemPrice(item) * item.qty;
-    msg += `• ${item.product.emoji} ${item.product.name} — ${item.size} × ${item.qty} = ${CURRENCY}${subtotal.toLocaleString('es-AR')}\n`;
+    msg += `• ${item.product.emoji} ${item.product.name} — ${item.size} × ${item.qty} = ${CURRENCY}${subtotal.toLocaleString('es-AR')}
+`;
   });
 
-  msg += `\n💰 *Total: ${CURRENCY}${getTotal().toLocaleString('es-AR')}*`;
+  msg += `
+💰 *Total: ${CURRENCY}${getTotal().toLocaleString('es-AR')}*`;
   const payChecked = document.querySelector('input[name="payMethod"]:checked');
   const payMethod = payChecked ? payChecked.value : 'efectivo';
-  msg += `\n💳 *Forma de pago:* ${payMethod === 'transferencia' ? `Transferencia (alias: ${SITE_CONFIG.transferAlias})` : 'Efectivo al retirar'}`;
-  if (localCode) msg += `\n🤝 _Comisión a registrar: ${localCode}_`;
-  msg += `\n\n¡Gracias por tu pedido! 🙏`;
+  msg += `
+💳 *Forma de pago:* ${payMethod === 'transferencia' ? `Transferencia (alias: ${SITE_CONFIG.transferAlias})` : 'Efectivo al retirar'}`;
+  if (localCode) msg += `
+🤝 _Comisión a registrar: ${localCode}_`;
+  msg += `
+
+¡Gracias por tu pedido! 🙏`;
 
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
 
-// Leer código de local desde la URL (?local=ROBERTO)
 function initLocalCode() {
   const params = new URLSearchParams(window.location.search);
   const code = params.get('local');
@@ -1074,16 +1104,14 @@ function initLocalCode() {
   }
 }
 
-// Init: carga el catálogo desde products.json (misma fuente que edita el panel admin)
 let SITE_CONFIG = { freeShippingThreshold: 0, lowStockThresholdKg: 1, lowStockThresholdUn: 3, transferAlias: "" };
 
 async function loadProducts() {
   const grid = document.getElementById('productsGrid');
   try {
-    const res = await fetch('/products.json?t=' + Date.now()); // evita cache vieja
+    const res = await fetch('/products.json?t=' + Date.now());
     if (!res.ok) throw new Error('No se pudo leer products.json');
     const data = await res.json();
-    // Compatibilidad: acepta tanto el formato viejo (array plano) como el nuevo ({categories, products, config})
     PRODUCTS = Array.isArray(data) ? data : (data.products || []);
     CATEGORIES = Array.isArray(data) ? [] : (data.categories || []);
     SITE_CONFIG = Array.isArray(data) ? SITE_CONFIG : (data.config || SITE_CONFIG);

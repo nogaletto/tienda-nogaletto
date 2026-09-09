@@ -43,6 +43,34 @@
   ],
   "products": [
     {
+      "id": 55,
+      "name": "Miel cruda entera",
+      "emoji": "🌰",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_764801-MLA110505322791_042026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_764801-MLA110505322791_042026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_601014-MLA110510701679_042026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_762617-MLA110506217599_042026-F.webp"
+      ],
+      "cat": "frutos",
+      "prices": {
+        "470gr": 24600,
+        "310gr": 16400
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 2,
+          "unit": "un",
+          "label": "Cajas"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 54,
       "name": "Polvo de hornear Mayana",
       "emoji": "🥜",

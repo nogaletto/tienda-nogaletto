@@ -159,7 +159,7 @@
         "500g": 13850,
         "1kg": 26000
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 6,

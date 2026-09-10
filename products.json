@@ -60,9 +60,9 @@
       "visible": true,
       "stock": [
         {
-          "qty": 1.9,
+          "qty": 1,
           "unit": "un",
-          "label": "Cajas"
+          "label": "Caja"
         }
       ],
       "stockIncoming": false,

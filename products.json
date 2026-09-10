@@ -54,14 +54,13 @@
       ],
       "cat": "frutos",
       "prices": {
-        "470gr": 24600,
-        "310gr": 16400
+        "470gr": 24600
       },
       "basePricePerKg": null,
       "visible": true,
       "stock": [
         {
-          "qty": 2,
+          "qty": 1.9,
           "unit": "un",
           "label": "Cajas"
         }

@@ -81,14 +81,15 @@
       ],
       "cat": "reposteria",
       "prices": {
-        "1kg": 7500
+        "1kg": null
       },
       "basePricePerKg": null,
       "visible": true,
       "stock": [
         {
-          "qty": 8000,
-          "unit": "kg"
+          "qty": 10,
+          "unit": "un",
+          "label": "paquetes"
         }
       ],
       "description": "",
@@ -1193,7 +1194,9 @@
       "prices": {
         "200g": 2910,
         "500g": 6500,
-        "1kg": 12000
+        "1kg": 12000,
+        "2kg": 20000,
+        "3kg": 25000
       },
       "visible": true,
       "stock": [

@@ -737,10 +737,10 @@
         "100g": 1050,
         "200g": 1600,
         "500g": 3180,
-        "1kg": 5000,
+        "1kg": 7000,
         "2kg": 9500
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 10,
@@ -759,10 +759,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg",
       "cat": "frutas",
       "prices": {
-        "100g": 1050,
-        "200g": 1600,
-        "500g": 3180,
-        "1kg": 5000
+        "200g": 1760,
+        "500g": 3880,
+        "1kg": 7000
       },
       "visible": true,
       "stock": [
@@ -774,7 +773,8 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false
+      "trending": false,
+      "basePricePerKg": 7000
     },
     {
       "id": 3,
@@ -783,10 +783,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319776/pasa_de_uva_flame_hje9xb.webp",
       "cat": "frutas",
       "prices": {
-        "100g": 990,
-        "200g": 1490,
-        "500g": 2910,
-        "1kg": 4500
+        "200g": 1870,
+        "500g": 4140,
+        "1kg": 7500
       },
       "visible": true,
       "stock": [
@@ -798,7 +797,8 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false
+      "trending": false,
+      "basePricePerKg": 7500
     },
     {
       "id": 38,

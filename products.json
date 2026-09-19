@@ -908,9 +908,9 @@
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "cat": "frutos",
       "prices": {
-        "200g": 15100,
-        "500g": 34330,
-        "1kg": 65000
+        "200g": 19700,
+        "500g": 44830,
+        "1kg": 85000
       },
       "visible": true,
       "stock": [
@@ -922,7 +922,8 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false
+      "trending": false,
+      "basePricePerKg": 85000
     },
     {
       "id": 42,

@@ -1005,7 +1005,9 @@
       "nutrition": "",
       "basePricePerKg": 90000,
       "stockIncoming": false,
-      "trending": false
+      "trending": false,
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 13,

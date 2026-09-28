@@ -57,7 +57,7 @@
         "470gr": 24600
       },
       "basePricePerKg": null,
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 1,
@@ -81,7 +81,9 @@
       ],
       "cat": "reposteria",
       "prices": {
-        "1kg": null
+        "1kg": null,
+        "150G": 3000,
+        "250g": 4000
       },
       "basePricePerKg": null,
       "visible": true,
@@ -106,7 +108,7 @@
       "prices": {
         "1 frasco 360cc": 7500
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 1,
@@ -1207,7 +1209,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 24.8,
+          "qty": 20.8,
           "unit": "kg"
         }
       ],

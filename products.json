@@ -43,6 +43,34 @@
   ],
   "products": [
     {
+      "id": 56,
+      "name": "Almendra Guara calibre surtido",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_874904-MLA106665029848_022026-F.webp",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "200g": 5440,
+        "500g": 12280,
+        "1kg": 23000
+      },
+      "basePricePerKg": 23000,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 2,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 55,
       "name": "Miel cruda entera",
       "emoji": "🌰",

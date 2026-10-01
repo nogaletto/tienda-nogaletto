@@ -910,7 +910,7 @@
     },
     {
       "id": 25,
-      "name": "Pistachio C/Cascara Tostado y Salado",
+      "name": "Pistachio c/Cascara Tostado y Salado",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
@@ -933,19 +933,20 @@
     },
     {
       "id": 24,
-      "name": "Pistachio Pelado Natural Pepas",
+      "name": "Pistachio s/Cascara  Natural Pepas",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "cat": "frutos",
       "prices": {
-        "200g": 19700,
-        "500g": 44830,
-        "1kg": 85000
+        "200g": 18550,
+        "500g": 42200,
+        "1kg": 80000,
+        "2Kg": 140000
       },
       "visible": true,
       "stock": [
         {
-          "qty": 0,
+          "qty": 3,
           "unit": "kg"
         }
       ],
@@ -953,11 +954,11 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false,
-      "basePricePerKg": 85000
+      "basePricePerKg": 80000
     },
     {
       "id": 42,
-      "name": "Pistachio Pelado Tostado y Salado",
+      "name": "Pistachio s/CascaraTostado y Salado",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "images": [

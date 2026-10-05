@@ -43,26 +43,26 @@
   ],
   "products": [
     {
-      "id": 56,
-      "name": "Almendra Guara calibre surtido",
+      "id": 57,
+      "name": "Nuez Extralight Mariposa",
       "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
+      "img": "",
       "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
-        "https://http2.mlstatic.com/D_NQ_NP_2X_874904-MLA106665029848_022026-F.webp",
+        "",
+        "",
         ""
       ],
       "cat": "frutos",
       "prices": {
-        "200g": 5440,
-        "500g": 12280,
-        "1kg": 23000
+        "200g": 4750,
+        "500g": 10700,
+        "1kg": 20000
       },
-      "basePricePerKg": 23000,
+      "basePricePerKg": 20000,
       "visible": true,
       "stock": [
         {
-          "qty": 2,
+          "qty": 0,
           "unit": "kg"
         }
       ],
@@ -234,7 +234,7 @@
     },
     {
       "id": 49,
-      "name": "Avelllanas Calibre Grande",
+      "name": "Avellanas Calibre Grande",
       "emoji": "🌰",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_836566-MLA108761782383_032026-F.webp",
       "images": [
@@ -244,22 +244,24 @@
       ],
       "cat": "frutos",
       "prices": {
-        "1kg": 35000,
-        "500g": 18580,
-        "250g": 10500,
-        "5kg": 150000
+        "1kg": 37500,
+        "500g": 19890,
+        "200g": 8780,
+        "10Kg": 325000,
+        "20Kg": 600000
       },
       "visible": true,
       "stock": [
         {
-          "qty": 8,
+          "qty": 11,
           "unit": "kg"
         }
       ],
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false
+      "trending": false,
+      "basePricePerKg": 37500
     },
     {
       "id": 48,
@@ -910,7 +912,7 @@
     },
     {
       "id": 25,
-      "name": "Pistachio c/Cascara Tostado y Salado",
+      "name": "Pistachio C/Cascara Tostado y Salado",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
@@ -933,20 +935,19 @@
     },
     {
       "id": 24,
-      "name": "Pistachio s/Cascara  Natural Pepas",
+      "name": "Pistachio Pelado Natural Pepas",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "cat": "frutos",
       "prices": {
-        "200g": 18550,
-        "500g": 42200,
-        "1kg": 80000,
-        "2Kg": 140000
+        "200g": 19700,
+        "500g": 44830,
+        "1kg": 85000
       },
       "visible": true,
       "stock": [
         {
-          "qty": 3,
+          "qty": 0,
           "unit": "kg"
         }
       ],
@@ -954,11 +955,11 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false,
-      "basePricePerKg": 80000
+      "basePricePerKg": 85000
     },
     {
       "id": 42,
-      "name": "Pistachio s/CascaraTostado y Salado",
+      "name": "Pistachio Pelado Tostado y Salado",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "images": [

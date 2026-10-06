@@ -65,149 +65,6 @@
   ],
   "products": [
     {
-      "id": 58,
-      "name": "Nuez Chandler Light Premium 2026",
-      "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_708299-MLA106660344827_022026-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_708299-MLA106660344827_022026-F.webp",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "200g": 5210,
-        "500g": 11750,
-        "1kg": 22000,
-        "5kg": 100000,
-        "10kg": 180000
-      },
-      "basePricePerKg": 22000,
-      "visible": true,
-      "stock": [
-        {
-          "qty": 10,
-          "unit": "kg"
-        }
-      ],
-      "stockIncoming": false,
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 57,
-      "name": "Semillas de girasol confitadas",
-      "emoji": "🥜",
-      "img": "",
-      "images": [
-        "",
-        "",
-        ""
-      ],
-      "cat": "confitados",
-      "prices": {
-        "120g": 2800
-      },
-      "basePricePerKg": null,
-      "visible": true,
-      "stock": [
-        {
-          "qty": 0,
-          "unit": "kg"
-        }
-      ],
-      "stockIncoming": false,
-      "description": "",
-      "nutrition": "",
-      "onOffer": true,
-      "offerPercent": 10
-    },
-    {
-      "id": 56,
-      "name": "Almendra Guara calibre surtido",
-      "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
-        "https://http2.mlstatic.com/D_NQ_NP_2X_874904-MLA106665029848_022026-F.webp",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "200g": 5440,
-        "500g": 12280,
-        "1kg": 23000
-      },
-      "basePricePerKg": 23000,
-      "visible": true,
-      "stock": [
-        {
-          "qty": 2,
-          "unit": "kg"
-        }
-      ],
-      "stockIncoming": false,
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 55,
-      "name": "Miel cruda entera",
-      "emoji": "🌰",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_764801-MLA110505322791_042026-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_764801-MLA110505322791_042026-F.webp",
-        "https://http2.mlstatic.com/D_NQ_NP_2X_601014-MLA110510701679_042026-F.webp",
-        "https://http2.mlstatic.com/D_NQ_NP_2X_762617-MLA110506217599_042026-F.webp"
-      ],
-      "cat": "frutos",
-      "prices": {
-        "470gr": 24600
-      },
-      "basePricePerKg": null,
-      "visible": false,
-      "stock": [
-        {
-          "qty": 1,
-          "unit": "un",
-          "label": "Caja"
-        }
-      ],
-      "stockIncoming": false,
-      "description": "",
-      "nutrition": ""
-    },
-    {
-      "id": 54,
-      "name": "Polvo de hornear Mayana",
-      "emoji": "🥜",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_749131-MLA112454303505_052026-F.webp",
-      "images": [
-        "https://http2.mlstatic.com/D_NQ_NP_2X_749131-MLA112454303505_052026-F.webp",
-        "https://http2.mlstatic.com/D_NQ_NP_2X_613614-MLA95500451802_102025-F.webp",
-        "https://http2.mlstatic.com/D_NQ_NP_2X_623130-MLA112455131107_052026-F.webp"
-      ],
-      "cat": "reposteria",
-      "prices": {
-        "1kg": null,
-        "150G": 3000,
-        "250g": 4000
-      },
-      "basePricePerKg": null,
-      "visible": true,
-      "stock": [
-        {
-          "qty": 10,
-          "unit": "un",
-          "label": "paquetes"
-        }
-      ],
-      "description": "",
-      "nutrition": "",
-      "stockIncoming": false,
-      "trending": false
-    },
-    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -258,6 +115,34 @@
       "offerPercent": 10,
       "stockIncoming": false,
       "trending": false
+    },
+    {
+      "id": 56,
+      "name": "Almendra Guara calibre surtido",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_688642-MLA114541373276_082026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_874904-MLA106665029848_022026-F.webp",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "200g": 5440,
+        "500g": 12280,
+        "1kg": 23000
+      },
+      "basePricePerKg": 23000,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 2,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
     },
     {
       "id": 31,
@@ -739,6 +624,63 @@
       "trending": false
     },
     {
+      "id": 55,
+      "name": "Miel cruda entera",
+      "emoji": "🌰",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_764801-MLA110505322791_042026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_764801-MLA110505322791_042026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_601014-MLA110510701679_042026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_762617-MLA110506217599_042026-F.webp"
+      ],
+      "cat": "frutos",
+      "prices": {
+        "470gr": 24600
+      },
+      "basePricePerKg": null,
+      "visible": false,
+      "stock": [
+        {
+          "qty": 1,
+          "unit": "un",
+          "label": "Caja"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
+      "id": 58,
+      "name": "Nuez Chandler Light Premium 2026",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_708299-MLA106660344827_022026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_708299-MLA106660344827_022026-F.webp",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "200g": 5210,
+        "500g": 11750,
+        "1kg": 22000,
+        "5kg": 100000,
+        "10kg": 180000
+      },
+      "basePricePerKg": 22000,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 10,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 50,
       "name": "Nuez Chandler Mariposa Extra Light 2026 Premium",
       "emoji": "🥜",
@@ -1125,6 +1067,36 @@
       "offerPercent": 10
     },
     {
+      "id": 54,
+      "name": "Polvo de hornear Mayana",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_749131-MLA112454303505_052026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_749131-MLA112454303505_052026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_613614-MLA95500451802_102025-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_623130-MLA112455131107_052026-F.webp"
+      ],
+      "cat": "reposteria",
+      "prices": {
+        "1kg": null,
+        "150G": 3000,
+        "250g": 4000
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 10,
+          "unit": "un",
+          "label": "paquetes"
+        }
+      ],
+      "description": "",
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false
+    },
+    {
       "id": 13,
       "name": "Poroto alubia",
       "emoji": "⚪",
@@ -1276,6 +1248,34 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false
+    },
+    {
+      "id": 57,
+      "name": "Semillas de girasol confitadas",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "confitados",
+      "prices": {
+        "120g": 2800
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 37,

@@ -312,6 +312,37 @@
       "trending": false
     },
     {
+      "id": 59,
+      "name": "Citrato de Magnesio",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_789167-MLA100093946083_122025-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_789167-MLA100093946083_122025-F.webp",
+        "",
+        ""
+      ],
+      "cat": "vitaminas-y-suplementos",
+      "prices": {
+        "100g": 6500
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        },
+        {
+          "qty": 3,
+          "unit": "un",
+          "label": "unidades"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 44,
       "name": "Clavo de Olor",
       "emoji": "🥜",

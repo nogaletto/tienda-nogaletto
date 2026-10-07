@@ -526,9 +526,9 @@
       "cat": "frutos",
       "prices": {
         "100g": 2500,
-        "200g": 4750,
-        "500g": 10700,
-        "1kg": 20000
+        "200g": null,
+        "500g": null,
+        "1kg": null
       },
       "visible": true,
       "stock": [

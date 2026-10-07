@@ -82,6 +82,34 @@
   ],
   "products": [
     {
+      "id": 60,
+      "name": "Almendra Guara Tost c/ Sal",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791377360/Almendra_Guara_Patawsky_lote_02-042026_vvlokx.jpg",
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791377360/Almendra_Guara_Patawsky_lote_02-042026_vvlokx.jpg",
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791377711/Almendra_Guara_m5fldf.jpg",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "200g": 7540,
+        "500g": 17060,
+        "1kg": 32110
+      },
+      "basePricePerKg": 32110,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 2,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -145,15 +173,15 @@
       ],
       "cat": "frutos",
       "prices": {
-        "200g": 5440,
-        "500g": 12280,
-        "1kg": 23000
+        "200g": 5830,
+        "500g": 13170,
+        "1kg": 24700
       },
-      "basePricePerKg": 23000,
+      "basePricePerKg": 24700,
       "visible": true,
       "stock": [
         {
-          "qty": 2,
+          "qty": 10,
           "unit": "kg"
         }
       ],

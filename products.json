@@ -105,7 +105,7 @@
           "unit": "kg"
         }
       ],
-      "stockIncoming": true,
+      "stockIncoming": false,
       "description": "",
       "nutrition": ""
     },

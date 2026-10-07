@@ -93,7 +93,8 @@
       ],
       "cat": "confitados",
       "prices": {
-        "80g": 2500
+        "80g": 2500,
+        "120g": 3000
       },
       "basePricePerKg": null,
       "visible": true,

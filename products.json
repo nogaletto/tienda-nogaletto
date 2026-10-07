@@ -82,6 +82,37 @@
   ],
   "products": [
     {
+      "id": 62,
+      "name": "Calendula en Flor",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_969687-MLA44539434732_012021-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_969687-MLA44539434732_012021-F.webp",
+        "",
+        ""
+      ],
+      "cat": "hierbas-y-especias",
+      "prices": {
+        "50g": 3500
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        },
+        {
+          "qty": 5,
+          "unit": "un",
+          "label": ""
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 61,
       "name": "Pistachio s/casc partido en mitades",
       "emoji": "🥜",

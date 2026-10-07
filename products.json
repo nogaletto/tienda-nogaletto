@@ -1368,15 +1368,11 @@
       ],
       "cat": "hierbas-y-especias",
       "prices": {
-        "100gr": 4000
+        "100gr": 4000,
+        "200g": 7500
       },
       "visible": true,
       "stock": [
-        {
-          "qty": 2,
-          "unit": "un",
-          "label": "paquete 250g"
-        },
         {
           "qty": 2,
           "unit": "un",

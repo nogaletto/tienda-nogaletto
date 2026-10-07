@@ -82,6 +82,32 @@
   ],
   "products": [
     {
+      "id": 63,
+      "name": "Semillas de girasol Confitadas",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "confitados",
+      "prices": {
+        "80g": 2500
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 62,
       "name": "Calendula en Flor",
       "emoji": "🥜",

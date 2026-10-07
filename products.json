@@ -533,8 +533,9 @@
       "visible": true,
       "stock": [
         {
-          "qty": 0.5,
-          "unit": "kg"
+          "qty": 3,
+          "unit": "un",
+          "label": "Paquetes"
         }
       ],
       "description": "",

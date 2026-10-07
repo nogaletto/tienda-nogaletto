@@ -959,16 +959,16 @@
     },
     {
       "id": 23,
-      "name": "Pistachio c/Cáscara Natural sin sal",
+      "name": "Pistachio c/Cáscara Natural",
       "emoji": "💚",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
       "cat": "frutos",
       "prices": {
         "200g": 7050,
         "500g": 15950,
-        "1kg": 30000
+        "1kg": 36800
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 40,
@@ -979,6 +979,35 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false
+    },
+    {
+      "id": 51,
+      "name": "Pistachio c/cascara tostado sin sal",
+      "emoji": "🥜",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1kg": 40000,
+        "200g": 9350,
+        "500g": 21200
+      },
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "description": "",
+      "nutrition": "",
+      "stockIncoming": false,
+      "trending": false,
+      "basePricePerKg": 40000
     },
     {
       "id": 25,
@@ -1059,34 +1088,8 @@
       "basePricePerKg": 85000
     },
     {
-      "id": 51,
-      "name": "Pistacho c/cascara tostado sin sal",
-      "emoji": "🥜",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
-      "images": [
-        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781320042/PISTACHO_CON_CASCARA_nqsfrn.webp",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {
-        "1kg": 40000
-      },
-      "visible": true,
-      "stock": [
-        {
-          "qty": 0,
-          "unit": "kg"
-        }
-      ],
-      "description": "",
-      "nutrition": "",
-      "stockIncoming": false,
-      "trending": false
-    },
-    {
       "id": 52,
-      "name": "Pistacho Pelado Natural tostado sin sal",
+      "name": "Pistacho s/Cascara Tostado sin sal",
       "emoji": "🥜",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "images": [
@@ -1096,9 +1099,9 @@
       ],
       "cat": "frutos",
       "prices": {
-        "1kg": 90000,
-        "200g": 20850,
-        "500g": 47450
+        "1kg": 80000,
+        "200g": 18550,
+        "500g": 42200
       },
       "visible": true,
       "stock": [
@@ -1109,10 +1112,10 @@
       ],
       "description": "",
       "nutrition": "",
-      "basePricePerKg": 90000,
+      "basePricePerKg": 80000,
       "stockIncoming": false,
       "trending": false,
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {

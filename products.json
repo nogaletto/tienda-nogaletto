@@ -561,9 +561,9 @@
       "cat": "semillas",
       "prices": {
         "200g": null,
-        "500g": 3350,
-        "1kg": 6000,
-        "2kg": 11000
+        "500g": null,
+        "1kg": null,
+        "Pote 200g": 2500
       },
       "visible": true,
       "stock": [

@@ -16,11 +16,6 @@
       "emoji": "🌱"
     },
     {
-      "id": "hierbas-y-especies",
-      "name": "Hierbas y especies",
-      "emoji": "🏷️"
-    },
-    {
       "id": "aceites-y-coco",
       "name": "Aceites y Coco",
       "emoji": "🏷️"
@@ -43,6 +38,28 @@
     {
       "id": "confitados",
       "name": "Confitados",
+      "emoji": "🏷️",
+      "sizeTemplate": [
+        {
+          "label": "25g",
+          "ratio": 0.025,
+          "markup": 1.35
+        },
+        {
+          "label": "50g",
+          "ratio": 0.05,
+          "markup": 1.25
+        },
+        {
+          "label": "100g",
+          "ratio": 0.1,
+          "markup": 1.15
+        }
+      ]
+    },
+    {
+      "id": "hierbas-y-especias",
+      "name": "Hierbas y Especias",
       "emoji": "🏷️",
       "sizeTemplate": [
         {
@@ -265,7 +282,7 @@
         "",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "frutos",
       "prices": {
         "50g": 4500,
         "100g": 7500
@@ -352,7 +369,7 @@
         "https://http2.mlstatic.com/D_NQ_NP_2X_777204-MLA52418184159_112022-F.webp",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "frutos",
       "prices": {
         "50gr": 4550,
         "100gr": 8000
@@ -406,7 +423,7 @@
         "",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "frutos",
       "prices": {
         "150g": 3500
       },
@@ -433,7 +450,7 @@
         "",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "frutos",
       "prices": {
         "100g": null,
         "150g": 4000
@@ -506,7 +523,7 @@
       "name": "Hibiscus en Flor (Flor de jamaica)",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/1085/image_1024/Flor%20de%20Hibiscus%20-%205kg?unique=81dd19e",
-      "cat": "hierbas-y-especies",
+      "cat": "frutos",
       "prices": {
         "100g": 2500,
         "200g": 4750,
@@ -537,7 +554,7 @@
         "https://http2.mlstatic.com/D_NQ_NP_2X_947982-MLA105989011817_012026-F.webp",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "frutos",
       "prices": {
         "100gr": 6400
       },
@@ -793,7 +810,7 @@
       "name": "Oregano",
       "emoji": "🥜",
       "img": "https://lbs1.odoo.com/web/image/product.product/1372/image_1024/Or%C3%A9gano-%205kg?unique=9bb4bbe",
-      "cat": "hierbas-y-especies",
+      "cat": "hierbas-y-especias",
       "prices": {
         "100g": 1300,
         "200g": 2450,
@@ -895,7 +912,7 @@
         "",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "hierbas-y-especias",
       "prices": {
         "150gr": 4200
       },
@@ -922,7 +939,7 @@
         "",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "hierbas-y-especias",
       "prices": {
         "150gr": 4300
       },
@@ -1258,7 +1275,7 @@
         "https://http2.mlstatic.com/D_Q_NP_2X_867555-MLA108296279966_032026-F.webp",
         ""
       ],
-      "cat": "hierbas-y-especies",
+      "cat": "hierbas-y-especias",
       "prices": {
         "100gr": 4000
       },

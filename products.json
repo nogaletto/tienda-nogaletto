@@ -1123,7 +1123,7 @@
       "id": 24,
       "name": "Pistachio s/Cascara  Natural Pepas",
       "emoji": "💚",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
+      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791432976/PISTACHO_TOSTADO_SALADO_500G_im93bu.jpg",
       "cat": "frutos",
       "prices": {
         "200g": 18550,
@@ -1142,7 +1142,12 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false,
-      "basePricePerKg": 80000
+      "basePricePerKg": 80000,
+      "images": [
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791432976/PISTACHO_TOSTADO_SALADO_500G_im93bu.jpg",
+        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791432976/PISTACHO_TOSTADO_SALADO_dorso_500G_e1edym.jpg",
+        ""
+      ]
     },
     {
       "id": 42,

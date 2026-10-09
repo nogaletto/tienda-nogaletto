@@ -95,7 +95,8 @@
       "prices": {
         "200g": 7050,
         "500g": 15950,
-        "1kg": 30000
+        "1kg": 30000,
+        "80g": 3500
       },
       "basePricePerKg": 30000,
       "visible": true,

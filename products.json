@@ -565,7 +565,7 @@
         "1kg": null,
         "Pote 200g": 2500
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 5,

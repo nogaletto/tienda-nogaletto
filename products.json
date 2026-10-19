@@ -589,7 +589,7 @@
         "500g": null,
         "1kg": null
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 3,

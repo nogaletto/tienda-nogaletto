@@ -777,7 +777,7 @@
         "10kg": 180000
       },
       "basePricePerKg": 22000,
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 10,
@@ -803,7 +803,7 @@
         "1kg": 25000,
         "500g": 13330
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 8,
@@ -828,7 +828,7 @@
         "500g": 9130,
         "1kg": 17000
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 6,
@@ -1084,7 +1084,7 @@
         "500g": 15950,
         "1kg": 36800
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 40,
@@ -1160,11 +1160,11 @@
       ],
       "cat": "frutos",
       "prices": {
-        "1kg": 65000,
-        "200g": 15100,
-        "500g": 34330
+        "1kg": 60000,
+        "200g": 13950,
+        "500g": 31700
       },
-      "basePricePerKg": 65000,
+      "basePricePerKg": 60000,
       "visible": true,
       "stock": [
         {

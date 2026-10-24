@@ -642,7 +642,7 @@
         "1kg": 4513,
         "2kg": 8700
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 7,

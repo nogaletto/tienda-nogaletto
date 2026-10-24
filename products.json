@@ -82,6 +82,38 @@
   ],
   "products": [
     {
+      "id": 66,
+      "name": "Aceite de coco el cosaco 200cc",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_621206-MLA119460092157_102026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_621206-MLA119460092157_102026-F.webp",
+        "",
+        ""
+      ],
+      "cat": "aceites-y-coco",
+      "prices": {
+        "1 Frasco": 4400,
+        "Pack x6": 22500
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        },
+        {
+          "qty": 20,
+          "unit": "un",
+          "label": "Unidades"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "Neutro.",
+      "nutrition": ""
+    },
+    {
       "id": 28,
       "name": "Aceite de coco frasco 360cc",
       "emoji": "🌰",
@@ -90,7 +122,7 @@
       "prices": {
         "1 frasco 360cc": 7500
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 1,
@@ -224,7 +256,7 @@
         "500g": 2460,
         "1kg": 4300
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 5,
@@ -642,7 +674,7 @@
         "1kg": 4513,
         "2kg": 8700
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 7,
@@ -1112,7 +1144,7 @@
         "200g": 9350,
         "500g": 21200
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 0,
@@ -1146,7 +1178,9 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false
+      "trending": false,
+      "onOffer": false,
+      "offerPercent": 10
     },
     {
       "id": 61,

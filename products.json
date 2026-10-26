@@ -1266,7 +1266,9 @@
         "https://http2.mlstatic.com/D_NQ_NP_2X_958160-MLA118421414392_102026-F.webp",
         "https://http2.mlstatic.com/D_NQ_NP_2X_998369-MLA118422034098_102026-F.webp",
         ""
-      ]
+      ],
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 42,

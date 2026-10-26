@@ -82,6 +82,30 @@
   ],
   "products": [
     {
+      "id": 67,
+      "name": "Nuevo Producto",
+      "emoji": "🥜",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {},
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 66,
       "name": "Aceite de coco el cosaco 200cc",
       "emoji": "🥜",
@@ -1168,7 +1192,7 @@
         "500g": 22250,
         "1kg": 42000
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 1,
@@ -1185,7 +1209,7 @@
     {
       "id": 61,
       "name": "Pistachio s/casc partido en mitades",
-      "emoji": "🥜",
+      "emoji": "🌰",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_655137-MLA89653853502_082025-F.webp",
       "images": [
         "https://http2.mlstatic.com/D_NQ_NP_2X_655137-MLA89653853502_082025-F.webp",
@@ -1217,8 +1241,8 @@
     {
       "id": 24,
       "name": "Pistachio s/Cascara  Natural Pepas",
-      "emoji": "💚",
-      "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791432976/PISTACHO_TOSTADO_SALADO_500G_im93bu.jpg",
+      "emoji": "🌰",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_958160-MLA118421414392_102026-F.webp",
       "cat": "frutos",
       "prices": {
         "200g": 18550,
@@ -1239,15 +1263,15 @@
       "trending": false,
       "basePricePerKg": 80000,
       "images": [
-        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791432976/PISTACHO_TOSTADO_SALADO_500G_im93bu.jpg",
-        "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1791432976/PISTACHO_TOSTADO_SALADO_dorso_500G_e1edym.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_958160-MLA118421414392_102026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_998369-MLA118422034098_102026-F.webp",
         ""
       ]
     },
     {
       "id": 42,
       "name": "Pistachio s/CascaraTostado y Salado",
-      "emoji": "💚",
+      "emoji": "🌰",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "images": [
         "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
@@ -1277,7 +1301,7 @@
     {
       "id": 52,
       "name": "Pistacho s/Cascara Tostado sin sal",
-      "emoji": "🥜",
+      "emoji": "🌰",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",
       "images": [
         "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781316938/Pistachio_Pelado_ix0gt2.jpg",

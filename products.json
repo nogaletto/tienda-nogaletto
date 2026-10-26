@@ -209,7 +209,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 10,
+          "qty": 2000,
           "unit": "kg"
         }
       ],
@@ -237,7 +237,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 2,
+          "qty": 10,
           "unit": "kg"
         }
       ],

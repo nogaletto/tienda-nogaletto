@@ -82,30 +82,6 @@
   ],
   "products": [
     {
-      "id": 67,
-      "name": "Nuevo Producto",
-      "emoji": "🥜",
-      "img": "",
-      "images": [
-        "",
-        "",
-        ""
-      ],
-      "cat": "frutos",
-      "prices": {},
-      "basePricePerKg": null,
-      "visible": true,
-      "stock": [
-        {
-          "qty": 0,
-          "unit": "kg"
-        }
-      ],
-      "stockIncoming": false,
-      "description": "",
-      "nutrition": ""
-    },
-    {
       "id": 66,
       "name": "Aceite de coco el cosaco 200cc",
       "emoji": "🥜",
@@ -201,11 +177,11 @@
       ],
       "cat": "frutos",
       "prices": {
-        "200g": null,
-        "500g": null,
-        "1kg": 24700
+        "200g": 4750,
+        "500g": 10700,
+        "1kg": 20000
       },
-      "basePricePerKg": 24700,
+      "basePricePerKg": 20000,
       "visible": true,
       "stock": [
         {
@@ -229,11 +205,11 @@
       ],
       "cat": "frutos",
       "prices": {
-        "200g": null,
-        "500g": null,
-        "1kg": 32110
+        "200g": 7050,
+        "500g": 15950,
+        "1kg": 30000
       },
-      "basePricePerKg": 32110,
+      "basePricePerKg": 30000,
       "visible": true,
       "stock": [
         {

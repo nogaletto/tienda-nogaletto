@@ -1219,9 +1219,9 @@
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_958160-MLA118421414392_102026-F.webp",
       "cat": "frutos",
       "prices": {
-        "200g": 17400,
-        "500g": 39580,
-        "1kg": 75000,
+        "200g": 15100,
+        "500g": 34330,
+        "1kg": 65000,
         "2Kg": 140000
       },
       "visible": true,
@@ -1235,7 +1235,7 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false,
-      "basePricePerKg": 75000,
+      "basePricePerKg": 65000,
       "images": [
         "https://http2.mlstatic.com/D_NQ_NP_2X_958160-MLA118421414392_102026-F.webp",
         "https://http2.mlstatic.com/D_NQ_NP_2X_998369-MLA118422034098_102026-F.webp",
@@ -1292,7 +1292,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 0,
+          "qty": 10,
           "unit": "kg"
         }
       ],

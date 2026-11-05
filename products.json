@@ -1706,7 +1706,7 @@
     }
   ],
   "config": {
-    "freeShippingThreshold": 60000,
+    "freeShippingThreshold": 35000,
     "transferAlias": "nogaletto",
     "lowStockThresholdKg": 1,
     "lowStockThresholdUn": 3

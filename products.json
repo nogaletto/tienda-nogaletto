@@ -100,10 +100,6 @@
       "visible": true,
       "stock": [
         {
-          "qty": 0,
-          "unit": "kg"
-        },
-        {
           "qty": 20,
           "unit": "un",
           "label": "Unidades"
@@ -252,12 +248,11 @@
       "img": "https://lbs1.odoo.com/web/image/product.product/2179/image_1024/Arvejas%20verde%20partida%20-%2025kg?unique=51c0015",
       "cat": "semillas",
       "prices": {
-        "200g": null,
-        "500g": null,
-        "1kg": null,
-        "5kg": 15000
+        "200g": 1140,
+        "500g": 2460,
+        "1kg": 4300
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 5,
@@ -271,7 +266,7 @@
         "",
         ""
       ],
-      "basePricePerKg": null,
+      "basePricePerKg": 4300,
       "stockIncoming": false,
       "trending": false
     },
@@ -288,23 +283,21 @@
       "cat": "frutos",
       "prices": {
         "1kg": 37500,
-        "500g": 19890,
-        "200g": 8780
+        "500g": 18580,
+        "250g": 10500,
+        "5kg": 150000
       },
       "visible": true,
       "stock": [
         {
-          "qty": 2,
+          "qty": 8,
           "unit": "kg"
         }
       ],
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "basePricePerKg": 37500,
-      "onOffer": true,
-      "offerPercent": 15
+      "trending": false
     },
     {
       "id": 48,
@@ -384,14 +377,13 @@
       "visible": true,
       "stock": [
         {
-          "qty": 4,
-          "unit": "un",
-          "label": "unidad"
+          "qty": 0.8,
+          "unit": "kg"
         }
       ],
       "description": "",
       "nutrition": "",
-      "stockIncoming": true,
+      "stockIncoming": false,
       "trending": false
     },
     {
@@ -472,9 +464,9 @@
       "visible": true,
       "stock": [
         {
-          "qty": 10,
+          "qty": 17,
           "unit": "un",
-          "label": "unidaes"
+          "label": "paquete 50g"
         }
       ],
       "description": "",
@@ -499,14 +491,16 @@
       "visible": true,
       "stock": [
         {
-          "qty": 10,
+          "qty": 18,
           "unit": "kg"
         }
       ],
       "description": "Coco Rallado consulte precio por mayor",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false
+      "trending": false,
+      "onOffer": true,
+      "offerPercent": 10
     },
     {
       "id": 53,
@@ -587,9 +581,7 @@
       "nutrition": "",
       "basePricePerKg": 5200,
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 20
+      "trending": false
     },
     {
       "id": 8,
@@ -680,7 +672,7 @@
         "1kg": 4513,
         "2kg": 8700
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 7,
@@ -707,7 +699,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 4,
+          "qty": 5,
           "unit": "kg"
         }
       ],
@@ -715,13 +707,11 @@
       "nutrition": "",
       "basePricePerKg": 5500,
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 10
+      "trending": false
     },
     {
       "id": 11,
-      "name": "Maní pelado natural",
+      "name": "Maní tostado pelado natural",
       "emoji": "🥜",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1782264444/Mani_tostado_y_salado_en_cuenco_run8ts.png",
       "cat": "semillas",
@@ -735,16 +725,14 @@
       "visible": true,
       "stock": [
         {
-          "qty": 20,
+          "qty": 25,
           "unit": "kg"
         }
       ],
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 20
+      "trending": false
     },
     {
       "id": 12,
@@ -842,14 +830,13 @@
       ],
       "cat": "frutos",
       "prices": {
-        "1kg": 20000,
-        "500g": 10700,
-        "200g": 4750
+        "1kg": 25000,
+        "500g": 13330
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
-          "qty": 1,
+          "qty": 8,
           "unit": "kg"
         }
       ],
@@ -857,7 +844,7 @@
       "nutrition": "",
       "onOffer": false,
       "offerPercent": 10,
-      "basePricePerKg": 20000,
+      "basePricePerKg": 25000,
       "stockIncoming": false,
       "trending": false
     },
@@ -939,9 +926,7 @@
       ],
       "stockIncoming": false,
       "description": "",
-      "nutrition": "",
-      "onOffer": true,
-      "offerPercent": 30
+      "nutrition": ""
     },
     {
       "id": 21,
@@ -989,9 +974,7 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 20
+      "trending": false
     },
     {
       "id": 1,
@@ -1020,7 +1003,7 @@
     },
     {
       "id": 2,
-      "name": "Pasas de uva mediana",
+      "name": "Pasas de uva Jumbo mediana",
       "emoji": "🍇",
       "img": "https://res.cloudinary.com/dxxkjlfpa/image/upload/v1781319783/Pasa_de_uva_Ruvia_bnm3ys.jpg",
       "cat": "frutas",
@@ -1040,9 +1023,7 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false,
-      "basePricePerKg": 7000,
-      "onOffer": true,
-      "offerPercent": 30
+      "basePricePerKg": 7000
     },
     {
       "id": 3,
@@ -1120,9 +1101,7 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 20
+      "trending": false
     },
     {
       "id": 23,
@@ -1238,9 +1217,9 @@
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_958160-MLA118421414392_102026-F.webp",
       "cat": "frutos",
       "prices": {
-        "200g": 17400,
-        "500g": 39580,
-        "1kg": 75000,
+        "200g": 15100,
+        "500g": 34330,
+        "1kg": 65000,
         "2Kg": 140000
       },
       "visible": true,
@@ -1254,7 +1233,7 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false,
-      "basePricePerKg": 75000,
+      "basePricePerKg": 65000,
       "images": [
         "https://http2.mlstatic.com/D_NQ_NP_2X_958160-MLA118421414392_102026-F.webp",
         "https://http2.mlstatic.com/D_NQ_NP_2X_998369-MLA118422034098_102026-F.webp",
@@ -1311,7 +1290,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 0,
+          "qty": 10,
           "unit": "kg"
         }
       ],
@@ -1373,8 +1352,8 @@
       ],
       "description": "",
       "nutrition": "",
-      "onOffer": true,
-      "offerPercent": 1,
+      "onOffer": false,
+      "offerPercent": 10,
       "stockIncoming": false,
       "trending": false
     },
@@ -1399,9 +1378,7 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 10
+      "trending": false
     },
     {
       "id": 15,
@@ -1423,7 +1400,7 @@
       ],
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10,
       "stockIncoming": false,
       "trending": false
@@ -1448,7 +1425,7 @@
       ],
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10,
       "stockIncoming": false,
       "trending": false
@@ -1474,9 +1451,7 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 40
+      "trending": false
     },
     {
       "id": 47,
@@ -1504,9 +1479,7 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 10
+      "trending": false
     },
     {
       "id": 57,
@@ -1523,7 +1496,7 @@
         "120g": 2800
       },
       "basePricePerKg": null,
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 0,
@@ -1533,7 +1506,7 @@
       "stockIncoming": false,
       "description": "",
       "nutrition": "",
-      "onOffer": true,
+      "onOffer": false,
       "offerPercent": 10
     },
     {
@@ -1552,7 +1525,7 @@
         "120g": 3000
       },
       "basePricePerKg": null,
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 0,
@@ -1575,9 +1548,7 @@
       ],
       "cat": "semillas",
       "prices": {
-        "1kg": 15000,
-        "200g": 3600,
-        "500g": 8080
+        "1kg": 15000
       },
       "visible": true,
       "stock": [
@@ -1589,8 +1560,7 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "basePricePerKg": 15000
+      "trending": false
     },
     {
       "id": 19,
@@ -1616,9 +1586,7 @@
       "nutrition": "",
       "stockIncoming": false,
       "trending": false,
-      "basePricePerKg": 12000,
-      "onOffer": true,
-      "offerPercent": 30
+      "basePricePerKg": 12000
     },
     {
       "id": 4,
@@ -1647,9 +1615,7 @@
       "description": "",
       "nutrition": "",
       "stockIncoming": false,
-      "trending": false,
-      "onOffer": true,
-      "offerPercent": 10
+      "trending": false
     },
     {
       "id": 43,
@@ -1675,8 +1641,8 @@
       ],
       "description": "",
       "nutrition": "",
-      "onOffer": true,
-      "offerPercent": 15,
+      "onOffer": false,
+      "offerPercent": 10,
       "stockIncoming": false,
       "trending": false
     },
@@ -1704,8 +1670,8 @@
       ],
       "description": "",
       "nutrition": "",
-      "onOffer": true,
-      "offerPercent": 20,
+      "onOffer": false,
+      "offerPercent": 10,
       "stockIncoming": false,
       "trending": false
     },
@@ -1733,8 +1699,8 @@
       ],
       "description": "",
       "nutrition": "",
-      "onOffer": true,
-      "offerPercent": 20,
+      "onOffer": false,
+      "offerPercent": 10,
       "stockIncoming": false,
       "trending": false
     }

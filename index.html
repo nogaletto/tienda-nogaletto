@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Frutos Secos — Tienda</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght=700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --sand: #F5EDD8;
@@ -918,7 +918,6 @@ function renderProducts() {
   CATEGORIES.forEach(cat => {
     const catProducts = visible.filter(p => p.cat === cat.id);
     if (!catProducts.length) return;
-    // Mostrar los destacados primero dentro de su categoría, y luego el resto
     const sorted = [...catProducts].sort((a, b) => (b.trending ? 1 : 0) - (a.trending ? 1 : 0));
     html += `
       <div class="category-section" id="cat-sec-${cat.id}" data-cat-id="${cat.id}">
@@ -942,7 +941,6 @@ function goToCategory(catId, btn) {
     btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   }
 
-  // Si había texto en el buscador y toca una categoría, limpiamos búsqueda para mostrar el catálogo completo
   const searchInput = document.getElementById('storeSearch');
   if (searchInput && searchInput.value.trim() !== '') {
     searchInput.value = '';
@@ -959,14 +957,13 @@ function goToCategory(catId, btn) {
   setTimeout(() => { isScrollingByClick = false; }, 750);
 }
 
-// Scroll-Spy: ilumina automáticamente la categoría que estás viendo al bajar/subir
 window.addEventListener('scroll', () => {
   if (isScrollingByClick) return;
   const sections = document.querySelectorAll('.category-section');
   if (!sections.length) return;
 
   let activeCatId = 'all';
-  const offsetTrigger = 200; // Punto de lectura debajo del header + barra sticky
+  const offsetTrigger = 200;
 
   sections.forEach(sec => {
     const rect = sec.getBoundingClientRect();

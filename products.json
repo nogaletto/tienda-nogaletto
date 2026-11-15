@@ -174,8 +174,8 @@
       ],
       "cat": "frutos",
       "prices": {
-        "200g": 4750,
-        "500g": 10700,
+        "200g": null,
+        "500g": null,
         "1kg": 20000
       },
       "basePricePerKg": 20000,

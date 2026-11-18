@@ -504,7 +504,7 @@
         "3kg": 40500,
         "2kg": 28000
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 18,

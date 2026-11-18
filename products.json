@@ -82,9 +82,37 @@
   ],
   "products": [
     {
+      "id": 67,
+      "name": "Miel Beepure 500g",
+      "emoji": "🌰",
+      "img": "",
+      "images": [
+        "",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "1 Frasco 500g": 8725
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": "",
+      "onOffer": true,
+      "offerPercent": 15
+    },
+    {
       "id": 66,
       "name": "Aceite de coco el cosaco 200cc",
-      "emoji": "🥜",
+      "emoji": "🌰",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_621206-MLA119460092157_102026-F.webp",
       "images": [
         "https://http2.mlstatic.com/D_NQ_NP_2X_621206-MLA119460092157_102026-F.webp",

@@ -78,6 +78,28 @@
           "markup": 1.15
         }
       ]
+    },
+    {
+      "id": "endulzantes-naturales",
+      "name": "Endulzantes Naturales",
+      "emoji": "🏷️",
+      "sizeTemplate": [
+        {
+          "label": "200g",
+          "ratio": 0.2,
+          "markup": 1.15
+        },
+        {
+          "label": "500g",
+          "ratio": 0.5,
+          "markup": 1.05
+        },
+        {
+          "label": "1kg",
+          "ratio": 1,
+          "markup": 1
+        }
+      ]
     }
   ],
   "products": [
@@ -91,7 +113,7 @@
         "",
         ""
       ],
-      "cat": "frutos",
+      "cat": "endulzantes-naturales",
       "prices": {
         "1 Frasco 500g": 8725
       },

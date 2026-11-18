@@ -383,7 +383,7 @@
         "50g": 4500,
         "100g": 7500
       },
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 3,

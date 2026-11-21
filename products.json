@@ -962,7 +962,7 @@
         "1kg": 25000
       },
       "basePricePerKg": 25000,
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 10,

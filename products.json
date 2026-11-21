@@ -993,10 +993,10 @@
         "80g": 3500
       },
       "basePricePerKg": 30000,
-      "visible": false,
+      "visible": true,
       "stock": [
         {
-          "qty": 3,
+          "qty": 0.5,
           "unit": "kg"
         }
       ],

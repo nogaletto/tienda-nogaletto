@@ -305,7 +305,7 @@
         "500g": 2460,
         "1kg": 4300
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
           "qty": 5,
@@ -403,7 +403,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 0,
+          "qty": 0.4,
           "unit": "kg"
         },
         {
@@ -433,10 +433,10 @@
         "50g": 4500,
         "100g": 7500
       },
-      "visible": false,
+      "visible": true,
       "stock": [
         {
-          "qty": 3,
+          "qty": 1,
           "unit": "un",
           "label": ""
         }

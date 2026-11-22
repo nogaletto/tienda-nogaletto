@@ -100,9 +100,59 @@
           "markup": 1
         }
       ]
+    },
+    {
+      "id": "mayorista",
+      "name": "Mayorista",
+      "emoji": "🏷️",
+      "sizeTemplate": [
+        {
+          "label": "200g",
+          "ratio": 0.2,
+          "markup": 1.15
+        },
+        {
+          "label": "500g",
+          "ratio": 0.5,
+          "markup": 1.05
+        },
+        {
+          "label": "1kg",
+          "ratio": 1,
+          "markup": 1
+        }
+      ]
     }
   ],
   "products": [
+    {
+      "id": 68,
+      "name": "Pistacho pelado partido",
+      "emoji": "🌰",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_996423-MLA120078295613_102026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_996423-MLA120078295613_102026-F.webp",
+        "",
+        ""
+      ],
+      "cat": "mayorista",
+      "prices": {
+        "5Kg": 250000,
+        "10Kg": 450000,
+        "15kg": 630000
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
     {
       "id": 67,
       "name": "Miel Beepure 500g",
@@ -1288,9 +1338,7 @@
       "prices": {
         "1kg": 60000,
         "200g": 13950,
-        "500g": 31700,
-        "15kg": 630000,
-        "5kg": 250000
+        "500g": 31700
       },
       "basePricePerKg": 60000,
       "visible": true,

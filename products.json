@@ -126,6 +126,32 @@
   ],
   "products": [
     {
+      "id": 69,
+      "name": "Aceite de Coco Virgen Entre nuts",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_840950-MLA109024060377_032026-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_840950-MLA109024060377_032026-F.webp",
+        "",
+        ""
+      ],
+      "cat": "frutos",
+      "prices": {
+        "Frasco 360cc": 13000
+      },
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 68,
       "name": "Pistacho pelado partido",
       "emoji": "🌰",

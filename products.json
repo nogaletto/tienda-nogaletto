@@ -141,13 +141,8 @@
       },
       "basePricePerKg": null,
       "visible": true,
-      "stock": [
-        {
-          "qty": 0,
-          "unit": "kg"
-        }
-      ],
-      "stockIncoming": false,
+      "stock": [],
+      "stockIncoming": true,
       "description": "",
       "nutrition": ""
     },
@@ -171,7 +166,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 0,
+          "qty": 90,
           "unit": "kg"
         }
       ],

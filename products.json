@@ -126,6 +126,30 @@
   ],
   "products": [
     {
+      "id": 70,
+      "name": "Aceite de coco Neutro Entrenuts",
+      "emoji": "🥜",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_711195-MLA97556712655_112025-F.webp",
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_711195-MLA97556712655_112025-F.webp",
+        "",
+        ""
+      ],
+      "cat": "aceites-y-coco",
+      "prices": {},
+      "basePricePerKg": null,
+      "visible": true,
+      "stock": [
+        {
+          "qty": 0,
+          "unit": "kg"
+        }
+      ],
+      "stockIncoming": false,
+      "description": "",
+      "nutrition": ""
+    },
+    {
       "id": 69,
       "name": "Aceite de Coco Virgen Entre nuts",
       "emoji": "🥜",
@@ -135,7 +159,7 @@
         "",
         ""
       ],
-      "cat": "frutos",
+      "cat": "aceites-y-coco",
       "prices": {
         "Frasco 360cc": 13000
       },

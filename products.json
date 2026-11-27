@@ -1088,7 +1088,7 @@
         "80g": 3500
       },
       "basePricePerKg": 30000,
-      "visible": true,
+      "visible": false,
       "stock": [
         {
           "qty": 0.5,
@@ -1883,7 +1883,7 @@
     }
   ],
   "config": {
-    "freeShippingThreshold": 50000,
+    "freeShippingThreshold": 25000,
     "transferAlias": "nogaletto",
     "lowStockThresholdKg": 1,
     "lowStockThresholdUn": 3

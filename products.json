@@ -1332,7 +1332,7 @@
       "visible": true,
       "stock": [
         {
-          "qty": 0,
+          "qty": 100,
           "unit": "kg"
         }
       ],
